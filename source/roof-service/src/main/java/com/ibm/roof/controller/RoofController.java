@@ -8,7 +8,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,6 +49,30 @@ public class RoofController {
 		System.out.println("inside get");
 		return roofService.getAll();
 		
+	}
+	
+	@PutMapping(value="/{id}")
+	@CrossOrigin("*")
+	public String updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
+		updatedProp.set_id(id);
+		roofService.update(updatedProp);
+		return "Property updated successfully";
+	}
+	
+	@DeleteMapping(value="/{id}")
+	@CrossOrigin("*")
+	public String deleteProperty(@PathVariable String id) {
+		roofService.delete(id);
+		return "Property deleted successfully";
+	}
+	
+
+	
+	@GetMapping(value="/{id}",produces= {MediaType.APPLICATION_JSON_VALUE})
+	@CrossOrigin("*")
+	public Property getById(@PathVariable String id)
+	{
+		return roofService.getById(id);
 	}
 	
 	

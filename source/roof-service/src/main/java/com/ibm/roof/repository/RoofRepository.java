@@ -3,7 +3,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.ibm.roof.model.*;
 
-public interface RoofRepository extends MongoRepository<Property,Integer>
+public interface RoofRepository extends MongoRepository<Property,Object>
 {
 
 }

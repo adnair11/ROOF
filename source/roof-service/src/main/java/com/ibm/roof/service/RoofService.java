@@ -33,7 +33,28 @@ public class RoofService {
 		return propertyRepo.findAll();
 		
 	}
+
+
 	
+	
+	public boolean update(Property updatedProp) {
+		// TODO Auto-generated method stub
+		propertyRepo.save(updatedProp);
+		return true;
+		
+	}
+
+	public boolean delete(String id) {
+		// TODO Auto-generated method stub
+		propertyRepo.deleteById(id);
+		return true;
+		
+	}
+	
+	public Property getById(String id) {
+		// TODO Auto-generated method stub
+		return propertyRepo.findById(id).get();
+	}
 	
 
 }
