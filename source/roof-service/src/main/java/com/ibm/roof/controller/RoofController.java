@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -47,6 +49,17 @@ public class RoofController {
 		
 		
 	}
+	
+	@GetMapping(value="/rent/{city}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	@CrossOrigin("*")
+	public <Property>List getByBHK(@PathVariable String city,@RequestParam("bhk") Optional<Integer> bhk){
+		System.out.print("bhk is"+bhk);
+		if(bhk.isPresent())
+		return roofService.getByBhk(city,bhk);
+		else
+			return roofService.getByLocation(city);
+	}
+	
 	
 	@GetMapping()
 	@CrossOrigin("*")
