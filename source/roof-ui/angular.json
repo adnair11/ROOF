@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "roof-ui": {
+    "roof": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/roof-ui",
+            "outputPath": "dist/roof",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "roof-ui:build"
+            "browserTarget": "roof:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "roof-ui:build:production"
+              "browserTarget": "roof:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "roof-ui:build"
+            "browserTarget": "roof:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "roof-ui:serve"
+            "devServerTarget": "roof:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "roof-ui:serve:production"
+              "devServerTarget": "roof:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "roof-ui"
+  "defaultProject": "roof"
 }
