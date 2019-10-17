@@ -44,6 +44,31 @@ export class PropertyService {
       }));
     
   }
+
+
+
+
+  deletePropertiesById(propertyData: any) {
+    console.log(propertyData);
+    let promise = new Promise((resolve, reject) => {
+      this.http.delete(this.REST_API_URL+"/"+propertyData , propertyData)
+        .toPromise()
+        .then((res) => {
+          console.log(res);
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        })
+        .finally(() => {
+          console.log("ends");
+        });
+    });
+    return promise;
+  }
+
+
   updateProperty(propertyData: any) {
     console.log(propertyData);
     let promise = new Promise((resolve, reject) => {

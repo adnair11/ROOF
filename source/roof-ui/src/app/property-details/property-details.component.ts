@@ -14,6 +14,7 @@ export class PropertyDetailsComponent implements OnInit {
   duplicatePropertyData : any;
   propertyData: any;
   isSaved:boolean;
+  isTrue:boolean;
   propertySubscription : Subscription;
   constructor(private propertyService: PropertyService,private route: ActivatedRoute) { }
 
@@ -34,6 +35,16 @@ export class PropertyDetailsComponent implements OnInit {
     console.log(formData);
     console.log(formData.value);
     let res = await this.propertyService.updateProperty(this.duplicatePropertyData);
+
+  }
+  saveProperty(){
+    this.isTrue =true;
+  }
+
+  async onDeleteHandler(){
+    console.log(this.id);
+    this.id = this.route.snapshot.paramMap.get("_id")
+    this.propertyService.deletePropertiesById(this.id);
   }
   ngOnDestroy(){
     console.log("Inside destroy");
