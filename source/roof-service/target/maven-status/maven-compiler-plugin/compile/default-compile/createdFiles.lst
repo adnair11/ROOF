@@ -1,5 +1,0 @@
-com\ibm\roof\repository\RoofRepository.class
-com\ibm\roof\RoofApplication.class
-com\ibm\roof\controller\RoofController.class
-com\ibm\roof\model\Property.class
-com\ibm\roof\service\RoofService.class
