@@ -1,9 +1,10 @@
 package com.ibm.roof.controller;
 
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
+import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -16,10 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ibm.roof.model.Property;
+import com.ibm.roof.model.ResponseMessage;
 import com.ibm.roof.service.RoofService;
 
 @RestController
@@ -33,26 +35,17 @@ public class RoofController {
 	
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")
-	public String add(@RequestBody @Valid Property property)
+	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Property property)
 	{
-		
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Employee Added successfully"});
 		roofService.addProperty(property);
 		System.out.println("inisde put");
-		return "YOUR PROPERTY HAS BEEN LISTED";
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(property.get_id()).toUri();
+		return ResponseEntity.created(location).body(res);
 		
 		
-	}
-	
-	
-	
-	@GetMapping(value="/rent/{city}",produces = {MediaType.APPLICATION_JSON_VALUE})
-	@CrossOrigin("*")
-	public <Property>List getByBHK(@PathVariable String city,@RequestParam("bhk") Optional<Integer> bhk){
-		System.out.print("bhk is"+bhk);
-		if(bhk.isPresent())
-		return roofService.getByBhk(city,bhk);
-		else
-			return roofService.getByLocation(city);
 	}
 	
 	@GetMapping()
@@ -67,17 +60,27 @@ public class RoofController {
 	
 	@PutMapping(value="/{id}")
 	@CrossOrigin("*")
-	public String updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
+	public ResponseEntity<ResponseMessage> updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
 		updatedProp.set_id(id);
 		roofService.update(updatedProp);
-		return "Property updated successfully";
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Employee Updated successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+		
 	}
 	
 	@DeleteMapping(value="/{id}")
 	@CrossOrigin("*")
-	public String deleteProperty(@PathVariable String id) {
+	public ResponseEntity<ResponseMessage> deleteProperty(@PathVariable String id) {
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Employee deleted successfully"});
 		roofService.delete(id);
-		return "Property deleted successfully";
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+//		return "Property deleted successfully";
 	}
 	
 
@@ -88,11 +91,6 @@ public class RoofController {
 	{
 		return roofService.getById(id);
 	}
-	
-
-	
-	
-	
 	
 	
 
