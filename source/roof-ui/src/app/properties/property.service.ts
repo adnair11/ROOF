@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class PropertyService {
-  REST_API_URL: string = "http://localhost:8099/properties";
+  REST_API_URL: string = "http://localhost:8060/properties";
   constructor(private http: HttpClient) { }
 
   createProperty(propertyData: any) {
@@ -44,6 +44,31 @@ export class PropertyService {
       }));
     
   }
+
+
+
+
+  deletePropertiesById(propertyData: any) {
+    console.log(propertyData);
+    let promise = new Promise((resolve, reject) => {
+      this.http.delete(this.REST_API_URL+"/"+propertyData , propertyData)
+        .toPromise()
+        .then((res) => {
+          console.log(res);
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        })
+        .finally(() => {
+          console.log("ends");
+        });
+    });
+    return promise;
+  }
+
+
   updateProperty(propertyData: any) {
     console.log(propertyData);
     let promise = new Promise((resolve, reject) => {

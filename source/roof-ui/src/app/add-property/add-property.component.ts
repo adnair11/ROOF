@@ -9,14 +9,14 @@ import { PropertyService } from '../properties/property.service';
 })
 export class AddPropertyComponent implements OnInit {
 
-  isSaved:boolean;
+  isSaved :boolean;
   // Step 1 : create form group
   propertyForm: FormGroup
   constructor( private propertyService:PropertyService) { 
     this.propertyForm = new FormGroup({
       // Step 2 : Create form control
       name : new FormControl('Piyush',Validators.required),
-      bhk : new FormControl('21',[Validators.required,Validators.min(18)]),
+      bhk : new FormControl('21',Validators.required),
       city : new FormControl('fsd',Validators.required)
     });
    }
@@ -26,9 +26,10 @@ export class AddPropertyComponent implements OnInit {
      let res : any = await this.propertyService.createProperty(this.propertyForm.value);
      console.log(res);
      if(res && res.status==="Success"){
-      this.isSaved =true;
+      this.isSaved = true;
     }
    }
+
 
 
   ngOnInit() {

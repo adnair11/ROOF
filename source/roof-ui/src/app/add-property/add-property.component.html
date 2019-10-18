@@ -24,12 +24,11 @@
           <label for="staticPhone" class="col-sm-2 col-form-label">BHK</label>
           <div class="col-sm-10">
             <input type="number" class="form-control" 
-            placeholder="Enter Age" formControlName="bhk" [ngClass]="{'is-invalid':propertyForm.get('bhk').touched
+            placeholder="Enter BHK" formControlName="bhk" [ngClass]="{'is-invalid':propertyForm.get('bhk').touched
             &&propertyForm.get('bhk').invalid
         }" />
             <div class="invalid-feedback">
-              <div *ngIf="propertyForm.get('bhk').errors?.required">Age is required</div>
-              <div *ngIf="propertyForm.get('bhk').errors?.min">Age should be min 18</div>
+              <div *ngIf="propertyForm.get('bhk').errors?.required">BHK is required</div>
             </div>
             
           </div>
@@ -37,13 +36,13 @@
         <div class="form-group row">
           <label for="staticEmail" class="col-sm-2 col-form-label">City</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" placeholder="Enter Department" 
+            <input type="text" class="form-control" placeholder="Enter City" 
             formControlName="city" [ngClass]="{'is-invalid':propertyForm.get('city').touched
             &&propertyForm.get('city').invalid
         }"/>
             
              <div class="invalid-feedback">
-                <div>Department is required</div>
+                <div>City is required</div>
               </div>
           </div>
         </div>

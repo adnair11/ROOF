@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+ redirection: string ="redirect";
+ flag: string ="log out";
 
   constructor() { }
   width :any;
@@ -18,6 +20,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.redirection == "redirect"){
+      this.flag="login";
+    }
   }
 
 }
