@@ -9,6 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddPropertyComponent } from './add-property/add-property.component';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
+import { AdminComponent } from './admin/admin.component';
+import { SignupComponent } from './admin/signup/signup.component';
+import { LoginSignupComponent } from './admin/login-signup/login-signup.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
     HeaderComponent,
     PropertiesComponent,
     AddPropertyComponent,
-    PropertyDetailsComponent
+    PropertyDetailsComponent,
+    AdminComponent,
+    SignupComponent,
+    LoginSignupComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
