@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddPropertyComponent } from './add-property/add-property.component';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
+import { FilterComponent } from './filter/filter.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
     HeaderComponent,
     PropertiesComponent,
     AddPropertyComponent,
-    PropertyDetailsComponent
+    PropertyDetailsComponent,
+    FilterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

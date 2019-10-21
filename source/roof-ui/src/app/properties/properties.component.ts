@@ -10,7 +10,7 @@ import { PropertyService } from './property.service';
 export class PropertiesComponent implements OnInit,OnDestroy {
   propertyList : any[];
   propertySubscription : Subscription;
-
+  
   constructor(private propertyService:PropertyService) {
 
    }
@@ -20,6 +20,7 @@ export class PropertiesComponent implements OnInit,OnDestroy {
     .subscribe( (res : any[]) =>{
       console.log(res);
       this.propertyList =res;
+      
     });
   }
   ngOnDestroy(){

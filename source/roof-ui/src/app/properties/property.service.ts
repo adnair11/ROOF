@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class PropertyService {
-  REST_API_URL: string = "http://localhost:8099/properties";
+  REST_API_URL: string = "http://localhost:8060/properties";
   constructor(private http: HttpClient) { }
 
   createProperty(propertyData: any) {
@@ -45,7 +45,7 @@ export class PropertyService {
     
   }
 
-
+  
 
 
   deletePropertiesById(propertyData: any) {

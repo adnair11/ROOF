@@ -21,6 +21,7 @@ export class AddPropertyComponent implements OnInit {
     });
    }
    async onAddPropertyHandler(){
+     console.log(this.propertyForm.value.name);
     console.log(this.propertyForm);
      console.log(this.propertyForm.value);
      let res : any = await this.propertyService.createProperty(this.propertyForm.value);
