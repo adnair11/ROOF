@@ -27,6 +27,18 @@
             <button type="submit" class="btn btn-primary">Search</button>
 
     </div>
-
-
 </form>
+
+    <div class="row">
+    
+            <div class="card col-sm-3" *ngFor="let property of allPropertyData">
+                <div class="card-body">
+                    <h5 class="card-title">{{property.name}}</h5>
+                    <p class="card-text">City: {{property.city}}</p>
+                    <!-- <a routerLink="/employees/{{employee.empId}}" class="link">View Details</a> -->
+                </div>
+            </div>
+    
+        </div>
+
+

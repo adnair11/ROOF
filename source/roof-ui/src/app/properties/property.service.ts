@@ -45,7 +45,25 @@ export class PropertyService {
     
   }
 
-  
+  filterProperty(city,bhk){
+   let _url = this.REST_API_URL+"/rent/"+city+"?bhk="+bhk;
+  //  let promise = new Promise((resolve,reject) => {
+    return this.http.get(_url)
+    .toPromise()
+    .then((res:any[]) => {
+      console.log(res);
+      return res;
+    })
+    .catch(err =>{
+      return (err);
+
+    })
+   
+
+  //  });
+  //  console.log(promise);
+  //  return promise;
+  }
 
 
   deletePropertiesById(propertyData: any) {
