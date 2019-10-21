@@ -1,7 +1,10 @@
 package com.ibm.roof.controller;
 
 import org.springframework.http.MediaType;
+import com.ibm.roof.security.*;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.net.URI;
 import java.util.List;
@@ -9,6 +12,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,18 +28,25 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ibm.roof.model.Property;
 import com.ibm.roof.model.ResponseMessage;
+import com.ibm.roof.security.UserRepository;
+import com.ibm.roof.security.Users;
 import com.ibm.roof.service.RoofService;
 
 @RestController
-@RequestMapping("/properties")
+@CrossOrigin("*")
 public class RoofController {
 	
 	@Autowired
 	RoofService roofService;
-//	@Autowired
-//	RoofRepository roofRepo;
+
+	@Autowired
+	UserRepository userRepo;
 	
-	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
+
+	@Autowired
+	PasswordEncoder encoder;
+	
+	@PostMapping(value="rentor/properties",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Property property)
 	{
@@ -50,7 +61,46 @@ public class RoofController {
 		
 	}
 	
-	@GetMapping(value="/rent/{city}",produces = {MediaType.APPLICATION_JSON_VALUE})
+
+	@GetMapping(value="/rentor/properties")
+	@CrossOrigin("*")
+	public List<Property> getUserProperties()
+	{
+		
+		System.out.println("inside get");
+		return roofService.getAll();
+		
+	}
+	
+	
+	//USER REGSITRATION
+	
+	@PostMapping(value="/user/register",consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@CrossOrigin("*")
+	public Users createUser( @Valid @RequestBody Users user)
+	{
+		
+		user.set_id(ObjectId.get());
+		user.setPassword(encoder.encode(user.getPassword()));
+		userRepo.save(user);
+		return user;
+		
+	}
+	
+	
+	//USER LOGIN GET USER BY ID
+	@GetMapping(value="/user/login/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Users getUserById(@PathVariable("id") ObjectId id)
+	{
+		return userRepo.findBy_id(id);
+		
+	}
+	
+	
+	
+	
+	
+	@GetMapping(value="properties/{city}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public <Property>List getByBHK(@PathVariable String city,@RequestParam("bhk") Optional<Integer> bhk){
 		System.out.print("bhk is"+bhk);
@@ -61,7 +111,10 @@ public class RoofController {
 	}
 	
 	
-	@GetMapping()
+	
+	
+	
+	@GetMapping(value="/properties")
 	@CrossOrigin("*")
 	public List<Property> getAllProperties()
 	{
@@ -71,7 +124,7 @@ public class RoofController {
 		
 	}
 	
-	@PutMapping(value="/{id}")
+	@PutMapping(value="rentor/properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
 		updatedProp.set_id(id);
@@ -84,7 +137,7 @@ public class RoofController {
 		
 	}
 	
-	@DeleteMapping(value="/{id}")
+	@DeleteMapping(value="rentor/properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> deleteProperty(@PathVariable String id) {
 		ResponseMessage res;
@@ -96,9 +149,12 @@ public class RoofController {
 //		return "Property deleted successfully";
 	}
 	
+	
+	
+	
 
 	
-	@GetMapping(value="/{id}",produces= {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value="rentor/properties/{id}",produces= {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public Property getById(@PathVariable String id)
 	{

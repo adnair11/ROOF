@@ -11,13 +11,13 @@
               <form [formGroup]="LoginForm" (ngSubmit)="login()" class="form">
                 <br><br>
                 <div class="form-group">
-                  <h3><label for="username" class="text-info">Username:</label></h3>
-                  <input type="text" placeholder="Username" formControlName="username" class="form-control">
+                  <h3><label for="name" class="text-info">Username:</label></h3>
+                  <input type="text" placeholder="Username" formControlName="name" class="form-control">
   
                   <div
-                    *ngIf="LoginForm.controls['username'].invalid && (LoginForm.controls['username'].dirty || LoginForm.controls['username'].touched )"
+                    *ngIf="LoginForm.controls['name'].invalid && (LoginForm.controls['name'].dirty || LoginForm.controls['name'].touched )"
                     class="alert-danger">
-                    <div *ngIf="LoginForm.controls['username'].errors.required">Please Enter User Name</div>
+                    <div *ngIf="LoginForm.controls['name'].errors.required">Please Enter User Name</div>
                   </div>
                 </div>
                 <div class="form-group">

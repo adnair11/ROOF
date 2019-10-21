@@ -1,6 +1,10 @@
+com\ibm\roof\security\MongoUserDetailsService.class
 com\ibm\roof\model\ResponseMessage.class
 com\ibm\roof\controller\RoofController.class
+com\ibm\roof\security\UserRepository.class
 com\ibm\roof\service\RoofService.class
 com\ibm\roof\repository\RoofRepository.class
+com\ibm\roof\security\Users.class
 com\ibm\roof\RoofApplication.class
 com\ibm\roof\model\Property.class
+com\ibm\roof\security\SecurityConfiguration.class
