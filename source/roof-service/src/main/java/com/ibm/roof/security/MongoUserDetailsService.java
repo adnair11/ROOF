@@ -28,10 +28,10 @@ public class MongoUserDetailsService implements UserDetailsService {
 	    }
 
 //	    List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
-	    
-	    System.out.println( new User(user.getName(), user.getPassword(), AuthorityUtils.createAuthorityList("ROLE_" + user.getRole())));
+	    System.out.println(user);
+//	    System.out.println( new User(user.getName(), user.getPassword(), AuthorityUtils.createAuthorityList("ROLE_" + user.getRole())));
 	    return new User(user.getName(), user.getPassword(), AuthorityUtils.createAuthorityList("ROLE_" + user.getRole()));
-
+	    
 //	    return new User(user.getName(), user.getPassword(), authorities);
 	  }
 

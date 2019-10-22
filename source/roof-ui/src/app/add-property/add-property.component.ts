@@ -24,7 +24,7 @@ export class AddPropertyComponent implements OnInit {
     console.log(this.propertyForm);
      console.log(this.propertyForm.value);
      let res : any = await this.propertyService.createProperty(this.propertyForm.value);
-     console.log(res);
+    //  console.log(res);
      if(res && res.status==="Success"){
       this.isSaved = true;
     }

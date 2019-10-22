@@ -8,6 +8,8 @@ import { LoginSignupComponent } from './admin/login-signup/login-signup.componen
 import { SignupComponent } from './admin/signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { LogoutComponent } from './logout/logout.component';
+import { AuthGaurdService } from './service/auth-gaurd.service';
 
 
 
@@ -20,6 +22,7 @@ const routes: Routes = [
   {path:'loginsignup', component: LoginSignupComponent},
   {path:'signup', component: SignupComponent},
   {path:'footer', component: FooterComponent},
+  {path: 'logout', component: LogoutComponent},
 
 ];
 

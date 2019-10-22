@@ -11,15 +11,17 @@ export class PropertyService {
 
   createProperty(propertyData: any) {
     console.log(propertyData);
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    console.log(uandp);
     const headers = new HttpHeaders({
                                   
                                   'Content-Type':  'application/json',
-                                  'Authorization': 'Basic ' + btoa('piyush:piyush')});
-    
+                                  'Authorization': 'Basic ' + btoa(uandp)});
+      console.log(headers);
       this.http.post(this.REST_API_URL, propertyData,{headers: headers})
         .toPromise()
         .then((res) => {
-          console.log(res);
+          console.log("hellp"+res);
           return res;
         })
         .catch((err) => {

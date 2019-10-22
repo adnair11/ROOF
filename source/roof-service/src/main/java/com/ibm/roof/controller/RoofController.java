@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.net.URI;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,6 +84,18 @@ public class RoofController {
 		user.set_id(ObjectId.get());
 		user.setPassword(encoder.encode(user.getPassword()));
 		userRepo.save(user);
+		return user;
+		
+	}
+
+	//USER Authentication 
+	@PostMapping(value="/user/auth")
+	@CrossOrigin("*")
+	public Principal authenticate(Principal user)
+	{
+		System.out.println("LoggedIn User: " + user);
+		
+		
 		return user;
 		
 	}

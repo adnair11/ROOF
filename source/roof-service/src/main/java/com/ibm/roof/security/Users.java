@@ -49,6 +49,10 @@ public class Users {
 		this.password = password;
 		this.role = role;
 	}
+	@Override
+	public String toString() {
+		return "Users [_id=" + _id + ", name=" + name + ", password=" + password + ", role=" + role + "]";
+	}
 
 	
 	

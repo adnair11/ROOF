@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 @Component({
   selector: 'app-login-signup',
   templateUrl: './login-signup.component.html',
@@ -10,34 +11,23 @@ import { map } from 'rxjs/operators';
 })
 export class LoginSignupComponent implements OnInit {
 
-  // tslint:disable-next-line:variable-name
-  constructor(private _router: Router, private fb: FormBuilder ,private http: HttpClient) {  }
+  username = 'piyush'
+  password = 'piyush'
+  invalidLogin = false
 
-username: string;
-password: string;
-LoginForm: FormGroup;
-
+  constructor(private router: Router,
+    private loginservice: AuthenticationService) { }
 
   ngOnInit() {
-
-
-    this.LoginForm = this.fb.group({
-      username: ['', [ Validators.required]],
-      password: ['', Validators.required],
-  });
+  }
+  checkLogin() {
+    if (this.loginservice.authenticate(this.username, this.password)
+    ) {
+      this.router.navigate([''])
+      this.invalidLogin = false
+    } else
+      this.invalidLogin = true
+  }
 
 }
-login(){
-  const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.LoginForm.value.name + ':' + this.LoginForm.value.password) });
-  this.http.get("http://localhost:8060/user/login",{headers})
-          .toPromise()
-          .then((res) => {
-            console.log(res);
-            return res;
-          })
-          .catch((err) => {
-            return err;
-          })
-}
-    }
 
