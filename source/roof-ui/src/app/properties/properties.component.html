@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <section class="col-sm-12 main-section ">
+            <div class="jumbotron">
+                <h1 class="display-4">Roof</h1>
+                <a class="btn btn-primary btn-lg" routerLink="/properties/new" role="button">Post New Property</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="row">
+
+        <div class="card col-sm-3" *ngFor="let property of propertyList">
+            <div class="card-body">
+                <h5 class="card-title">{{property.name}}</h5>
+                <p class="card-text">City: {{property.city}}</p>
+                <a routerLink="/properties/{{property._id}}" class="link">View Details</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

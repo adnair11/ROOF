@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'roof-ui';
+  title = 'roof'; 
+  width :any;
+  openNav(){
+    this.width  = '250px' ;
+  }
+
+  closeNav(){
+    this.width  = '0px' ;
+  }
 }

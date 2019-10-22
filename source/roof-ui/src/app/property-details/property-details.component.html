@@ -1,0 +1,68 @@
+<a routerLink="/properties"><<Go back</a> 
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-12">
+                <div class="card-body" *ngIf="isSaved">
+                    <h5 class="card-title">{{propertyData.name}}</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <p>City : {{propertyData.city}}</p>
+                    <p>BHK : {{propertyData.bhk}}</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPropertyModal"(click)="onEditHandler()">Edit</button>
+                    <button type="button" class="btn btn-danger" routerLink="/properties" (click)="onDeleteHandler()">Delete</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="editPropertyModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Update Property</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" *ngIf="duplicatePropertyData">
+                                    <form ngNativeValidate #f="ngForm" (ngSubmit)="onUpdateHandler(f)">
+                                        <div class="form-group row" >
+                                            <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="name"
+                                                    placeholder="Enter name"
+                                                    [(ngModel)]="duplicatePropertyData.name" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label">BHK</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="bhk"
+                                                    placeholder="Enter BHK" [(ngModel)]="duplicatePropertyData.bhk" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label">City</label>
+                                            <div class="col-sm-9">
+                                                <input type="etext" class="form-control" name="designation"
+                                                    placeholder="Enter City" [(ngModel)]="duplicatePropertyData.city" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="alert alert-success" *ngIf="isTrue">
+                                            Updated successfully!
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" (click)="saveProperty()">Save changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>

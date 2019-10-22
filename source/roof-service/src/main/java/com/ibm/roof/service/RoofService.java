@@ -1,6 +1,7 @@
 package com.ibm.roof.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +34,46 @@ public class RoofService {
 		return propertyRepo.findAll();
 		
 	}
+
+
 	
+	
+	public boolean update(Property updatedProp) {
+		// TODO Auto-generated method stub
+		propertyRepo.save(updatedProp);
+		return true;
+		
+	}
+
+	public boolean delete(String id) {
+		// TODO Auto-generated method stub
+		propertyRepo.deleteById(id);
+		return true;
+		
+	}
+	
+	public Property getById(String id) {
+		// TODO Auto-generated method stub
+		return propertyRepo.findById(id).get();
+	}
+
+
+	public List getByLocation(String city) {
+		// TODO Auto-generated method stub
+		return propertyRepo.getByCity(city);
+	}
+	
+	
+
+
+	public List getByBhk(String city, Optional<Integer> bhk) {
+		// TODO Auto-generated method stub
+		return propertyRepo.getByCityAndBhk(city,bhk);
+	}
+
+
+
+
 	
 
 }

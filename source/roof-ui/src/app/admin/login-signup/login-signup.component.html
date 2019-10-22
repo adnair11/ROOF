@@ -1,0 +1,57 @@
+<body>
+
+    <h1 class="text-center text-blue pt-5">LOGIN FORM</h1>
+    <div id="form-wrapper" style="max-width:1500px;margin:auto;">
+  
+    <div id="login" >
+      <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+          <div id="login-column" class="col-md-6">
+            <div id="login-box" class="col-md-12">
+              <form [formGroup]="LoginForm" (ngSubmit)="login()" class="form">
+                <br><br>
+                <div class="form-group">
+                  <h3><label for="username" class="text-info">Username:</label></h3>
+                  <input type="text" placeholder="Username" formControlName="username" class="form-control">
+  
+                  <div
+                    *ngIf="LoginForm.controls['username'].invalid && (LoginForm.controls['username'].dirty || LoginForm.controls['username'].touched )"
+                    class="alert-danger">
+                    <div *ngIf="LoginForm.controls['username'].errors.required">Please Enter User Name</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <span>
+                    <h3> <label for="password" class="text-info">Password:</label></h3>
+  
+                    <input type="password" placeholder="Password" formControlName="password" class="form-control">
+                    <div
+                      *ngIf="LoginForm.controls['password'].invalid && (LoginForm.controls['password'].dirty || LoginForm.controls['password'].touched)"
+                      class="alert-danger">
+                      <div *ngIf="LoginForm.controls['password'].errors.required">Please Enter Password</div>
+                    </div>
+                  </span>
+                </div><br>
+                <div class="form-group">
+  
+                  <button type="submit" class="btn btn-info btn-md">LOGIN</button>
+  
+                  <div id="register-link" class="text-right">
+                    <h4> New Customer!<a routerLink="/signup"><br>Register here</a></h4>
+                  </div>
+                </div>
+  
+                <!-- [disabled]="LoginForm.invalid" -->
+  
+              </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- <app-hr-dashboard  [data]='profiles' ></app-hr-dashboard> -->
+    
+  </body>
+  
