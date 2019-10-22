@@ -1,1 +1,14 @@
-/.metadata/
+*.project
+*.classpath
+*.springbeans
+package-lock.json
+**/*.settings
+**/target
+**/bin
+**/build
+**/RemoteSystemsTempFiles
+**/.metadata
+**/.settings
+**/.recommenders
+**/Servers
+**/*.log
