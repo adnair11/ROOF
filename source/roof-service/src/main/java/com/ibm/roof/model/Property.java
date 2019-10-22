@@ -1,6 +1,7 @@
 package com.ibm.roof.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -49,9 +50,54 @@ public class Property {
 	boolean ac;
 	boolean internet;
 	
+	//Booking
+	List<Booking> booking;
 	
 	
 	
+	
+	
+	public Property(String _id, String usrId, String name, int bhk, String type, int age, int floor, int totalFloors,
+			int size, String city, String locality, float rent, float deposit, Date available, String prefTenant,
+			String furnish, String parking, int bathrooms, int balconies, boolean lift, boolean ac, boolean internet,
+			List<Booking> booking) {
+		super();
+		this._id = _id;
+		this.usrId = usrId;
+		this.name = name;
+		this.bhk = bhk;
+		this.type = type;
+		this.age = age;
+		this.floor = floor;
+		this.totalFloors = totalFloors;
+		this.size = size;
+		this.city = city;
+		this.locality = locality;
+		this.rent = rent;
+		this.deposit = deposit;
+		this.available = available;
+		this.prefTenant = prefTenant;
+		this.furnish = furnish;
+		this.parking = parking;
+		this.bathrooms = bathrooms;
+		this.balconies = balconies;
+		this.lift = lift;
+		this.ac = ac;
+		this.internet = internet;
+		this.booking = booking;
+	}
+	public String getUsrId() {
+		return usrId;
+	}
+	public void setUsrId(String usrId) {
+		this.usrId = usrId;
+	}
+	public List<Booking> getBooking() {
+		return booking;
+	}
+	public void setBooking(List<Booking> booking) {
+		this.booking = booking;
+	}
 	public String getType() {
 		return type;
 	}
@@ -178,12 +224,15 @@ public class Property {
 	public void set_id(String _id) {
 		this._id = _id;
 	}
-	public Property( String name, int bhk, String city) {
+	
+	
+	public Property( String name, int bhk, String city,Booking booking) {
 		super();
 		
 		this.name = name;
 		this.bhk = bhk;
 		this.city = city;
+		this.booking.add(booking);
 	}
 	
 	

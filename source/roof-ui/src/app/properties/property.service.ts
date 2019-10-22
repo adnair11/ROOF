@@ -47,7 +47,7 @@ export class PropertyService {
 
   filterProperty(city,bhk){
    let _url = this.REST_API_URL+"/rent/"+city+"?bhk="+bhk;
-  //  let promise = new Promise((resolve,reject) => {
+  
     return this.http.get(_url)
     .toPromise()
     .then((res:any[]) => {
@@ -60,9 +60,7 @@ export class PropertyService {
     })
    
 
-  //  });
-  //  console.log(promise);
-  //  return promise;
+  
   }
 
 
