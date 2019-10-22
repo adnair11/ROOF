@@ -11,12 +11,12 @@ export class PropertyService {
 
   createProperty(propertyData: any) {
     console.log(propertyData);
-    let headers = new HttpHeaders({
+    const headers = new HttpHeaders({
                                   
                                   'Content-Type':  'application/json',
                                   'Authorization': 'Basic ' + btoa('piyush:piyush')});
     
-      this.http.post(this.REST_API_URL, propertyData,{headers})
+      this.http.post(this.REST_API_URL, propertyData,{headers: headers})
         .toPromise()
         .then((res) => {
           console.log(res);
