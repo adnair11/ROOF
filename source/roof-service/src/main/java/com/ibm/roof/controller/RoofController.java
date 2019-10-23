@@ -47,7 +47,7 @@ public class RoofController {
 	@Autowired
 	PasswordEncoder encoder;
 	
-	@PostMapping(value="rentor/properties",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
+	@PostMapping(value="/properties",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Property property)
 	{
@@ -63,15 +63,13 @@ public class RoofController {
 	}
 	
 
-	@GetMapping(value="/rentor/properties")
-	@CrossOrigin("*")
-	public List<Property> getUserProperties()
-	{
-		
-		System.out.println("inside get");
-		return roofService.getAll();
-		
-	}
+//	@GetMapping(value="/rentor/properties/{usrId}")
+//	@CrossOrigin("*")
+//	public List<Property> getUserProperties(@PathVariable String usrId)
+//	{	
+//		System.out.println("inside get");
+//		return roofService.getByUsrId(usrId);
+//	}
 	
 	
 	//USER REGSITRATION
@@ -129,15 +127,21 @@ public class RoofController {
 	
 	@GetMapping(value="/properties")
 	@CrossOrigin("*")
-	public List<Property> getAllProperties()
+	public List<Property> getAllProperties(@RequestParam("userId") String userId)
 	{
+		
+		if(userId != null && userId.length() > 0) {
+			// TODO: Logic to fetch properties for given user id
+			
+			return roofService.getByUsrId(userId);
+		}
 		
 		System.out.println("inside get");
 		return roofService.getAll();
 		
 	}
 	
-	@PutMapping(value="rentor/properties/{id}")
+	@PutMapping(value="properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
 		updatedProp.set_id(id);
@@ -150,7 +154,7 @@ public class RoofController {
 		
 	}
 	
-	@DeleteMapping(value="rentor/properties/{id}")
+	@DeleteMapping(value="properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> deleteProperty(@PathVariable String id) {
 		ResponseMessage res;
@@ -166,11 +170,13 @@ public class RoofController {
 	
 	
 
-	
+//	
 	@GetMapping(value="rentor/properties/{id}",produces= {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public Property getById(@PathVariable String id)
 	{
+		System.out.println("hello piyush");
+		System.out.println(roofService.getById(id));
 		return roofService.getById(id);
 	}
 	

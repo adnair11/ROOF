@@ -17,7 +17,8 @@ export class AddPropertyComponent implements OnInit {
       // Step 2 : Create form control
       name : new FormControl('Piyush',Validators.required),
       bhk : new FormControl('21',Validators.required),
-      city : new FormControl('fsd',Validators.required)
+      city : new FormControl('fsd',Validators.required),
+      usrId :new FormControl(sessionStorage.getItem('username'))
     });
    }
    async onAddPropertyHandler(){

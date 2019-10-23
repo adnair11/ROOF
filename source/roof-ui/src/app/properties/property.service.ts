@@ -6,13 +6,14 @@ import { map } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class PropertyService {
-  REST_API_URL: string = "http://localhost:8060/rentor/properties";
+  REST_API_URL: string = "http://localhost:8060/properties";
+  
   constructor(private http: HttpClient) { }
+  
 
   createProperty(propertyData: any) {
     console.log(propertyData);
     let uandp = sessionStorage.getItem('usernameandpassword');
-    console.log(uandp);
     const headers = new HttpHeaders({
                                   
                                   'Content-Type':  'application/json',
@@ -32,7 +33,15 @@ export class PropertyService {
     
   }
   getProperties(){
-    return this.http.get(this.REST_API_URL)
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    let User = sessionStorage.getItem('username');
+    console.log(User);
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
+                    // HttpParams({});
+    return this.http.get(this.REST_API_URL + "?userId=" +User , {headers: headers})
       .pipe( map(res => {
         console.log(res);
         return res;
@@ -40,7 +49,12 @@ export class PropertyService {
     
   }
   getPropertiesById(id){
-    return this.http.get(this.REST_API_URL+'/'+id)
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
+    return this.http.get("http://localhost:8060/rentor/properties/"+id, {headers: headers})
       .pipe( map(res => {
         console.log(res);
         return res;
@@ -52,9 +66,14 @@ export class PropertyService {
 
 
   deletePropertiesById(propertyData: any) {
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
     console.log(propertyData);
     let promise = new Promise((resolve, reject) => {
-      this.http.delete(this.REST_API_URL+"/"+propertyData , propertyData)
+      this.http.delete(this.REST_API_URL+"/"+propertyData ,{headers: headers})
         .toPromise()
         .then((res) => {
           console.log(res);
@@ -73,9 +92,14 @@ export class PropertyService {
 
 
   updateProperty(propertyData: any) {
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
     console.log(propertyData);
     let promise = new Promise((resolve, reject) => {
-      this.http.put(this.REST_API_URL+"/"+propertyData._id , propertyData)
+      this.http.put(this.REST_API_URL+"/"+propertyData._id , propertyData,{headers: headers})
         .toPromise()
         .then((res) => {
           console.log(res);

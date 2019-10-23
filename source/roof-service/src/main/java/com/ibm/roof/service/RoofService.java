@@ -34,6 +34,11 @@ public class RoofService {
 		return propertyRepo.findAll();
 		
 	}
+	
+	public List<Property> getByUsrId(String id)
+	{
+		return propertyRepo.getByUsrId(id);
+	}
 
 
 	

@@ -15,7 +15,7 @@ import { AuthGaurdService } from './service/auth-gaurd.service';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'properties',component:PropertiesComponent},
+  {path:'properties',component:PropertiesComponent,canActivate:[AuthGaurdService]},
   {path: 'properties/new', component: AddPropertyComponent },
   {path: 'properties/:_id', component: PropertyDetailsComponent },
   {path:'admin', component: AdminComponent},

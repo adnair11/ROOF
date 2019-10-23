@@ -39,6 +39,7 @@ export class AuthenticationService {
     // } else {
     //   return false;
     // }
+    return true;
   }
 
   isUserLoggedIn() {
@@ -49,5 +50,6 @@ export class AuthenticationService {
 
   logOut() {
     sessionStorage.removeItem('username')
+    sessionStorage.removeItem('usernameandpassword')
   }
 }

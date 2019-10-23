@@ -21,6 +21,12 @@ public class Property {
 	//userid of current user
 	String usrId;
 	
+	public String getUsrId() {
+		return usrId;
+	}
+	public void setUsrId(String usrId) {
+		this.usrId = usrId;
+	}
 	//Property details
 	String name;
 	int bhk;

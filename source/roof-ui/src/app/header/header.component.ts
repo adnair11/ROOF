@@ -9,6 +9,7 @@ import { AuthenticationService } from '../service/authentication.service';
 export class HeaderComponent implements OnInit {
  redirection: string ="redirect";
  flag: string ="log out";
+ pass:string = "hello";
  User:string =sessionStorage.getItem('username');
 
   constructor(private loginService:AuthenticationService) { }

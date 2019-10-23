@@ -56,9 +56,7 @@ return this.profileForm.controls;
           .catch((err) => {
             return err;
           })
-          
-    
-      
+
     }
 
   

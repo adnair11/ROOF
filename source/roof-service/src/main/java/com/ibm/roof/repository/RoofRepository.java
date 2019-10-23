@@ -11,5 +11,6 @@ public interface RoofRepository extends MongoRepository<Property,Object>
 
 	List getByCity(String city);
 	List getByCityAndBhk(String city, Optional<Integer> bhk);
+	List getByUsrId(String usrId);
 
 }
