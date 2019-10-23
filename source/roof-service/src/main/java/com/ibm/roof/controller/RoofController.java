@@ -124,7 +124,7 @@ public class RoofController {
 	
 	
 	
-	
+//	get all property of only user	
 	@GetMapping(value="/properties")
 	@CrossOrigin("*")
 	public List<Property> getAllProperties(@RequestParam("userId") String userId)
@@ -140,7 +140,7 @@ public class RoofController {
 		return roofService.getAll();
 		
 	}
-	
+//	update property of user by ID	
 	@PutMapping(value="properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
@@ -153,7 +153,7 @@ public class RoofController {
 		return ResponseEntity.created(location).body(res);
 		
 	}
-	
+//	delete property of user by ID	
 	@DeleteMapping(value="properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> deleteProperty(@PathVariable String id) {
@@ -170,7 +170,8 @@ public class RoofController {
 	
 	
 
-//	
+//	get property of user by ID
+	
 	@GetMapping(value="rentor/properties/{id}",produces= {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public Property getById(@PathVariable String id)
