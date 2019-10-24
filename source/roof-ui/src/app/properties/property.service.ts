@@ -94,6 +94,20 @@ export class PropertyService {
       }));
     
   }
+
+  getUserById(id){
+    
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
+    return this.http.get("http://localhost:8060/user/login/"+id, {headers: headers})
+      .pipe( map(res => {
+        console.log(res);
+        return res;
+      }));
+  }
  
 
 

@@ -13,7 +13,7 @@
       </ul>
       <div class="nav-item active">
         <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/loginsignup" class="nav-link">Login</a>
-        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/" class="nav-link">{{User}}</a>
+        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/myprofile" class="nav-link">{{User}}</a>
         
       </div>
       <div class="nav-item active">

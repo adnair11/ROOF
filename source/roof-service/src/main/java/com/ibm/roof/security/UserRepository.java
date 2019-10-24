@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface UserRepository extends MongoRepository<Users,String>
 {
-Users findBy_id(ObjectId _id);
+Users findBy_id(String _id);
 Users findByName(String name);
 }

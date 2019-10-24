@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:'signup', component: SignupComponent},
   {path:'footer', component: FooterComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'userprofile', component: UserprofileComponent},
+  {path: 'myprofile', component: UserprofileComponent},
   {path: 'addproperty', component: AddPropertyComponent},
 
 ];

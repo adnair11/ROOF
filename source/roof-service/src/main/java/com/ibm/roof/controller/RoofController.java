@@ -101,9 +101,9 @@ public class RoofController {
 	
 	//USER LOGIN GET USER BY ID
 	@GetMapping(value="/user/login/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Users getUserById(@PathVariable("id") ObjectId id)
+	public Users getUserById(@PathVariable("id") String id)
 	{
-		return userRepo.findBy_id(id);
+		return userRepo.findByName(id);
 		
 	}
 	
@@ -120,6 +120,7 @@ public class RoofController {
 		else
 			return roofService.getByLocation(city);
 	}
+	
 	
 	@GetMapping(value="allproperties",produces = {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")

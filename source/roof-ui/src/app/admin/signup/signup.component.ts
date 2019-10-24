@@ -21,8 +21,8 @@ export class SignupComponent implements OnInit {
 // this.Id = this.getRandomArbitrary(10, 100);
 this.profileForm = this.fb.group({
       name: ['', Validators.required],
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email:['', Validators.required],
       contact: ['', Validators.required],
       password: ['', Validators.required],
@@ -47,8 +47,9 @@ return this.profileForm.controls;
 
   saveProfile() {
    
-        console.log(this.profileForm.value);
+        console.log(this.profileForm.value.firstName);
         this.profileData = this.profileForm.value;
+        
       
         this.http.post("http://localhost:8060/user/register",this.profileData)
           .toPromise()
