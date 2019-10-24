@@ -8,6 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.net.URI;
 import java.security.Principal;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,10 +29,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.ibm.roof.model.Booking;
 import com.ibm.roof.model.Property;
 import com.ibm.roof.model.ResponseMessage;
 import com.ibm.roof.security.UserRepository;
 import com.ibm.roof.security.Users;
+import com.ibm.roof.service.BookingService;
 import com.ibm.roof.service.RoofService;
 
 @RestController
@@ -46,6 +50,61 @@ public class RoofController {
 
 	@Autowired
 	PasswordEncoder encoder;
+	
+	@Autowired
+	BookingService bookingService;
+	
+	@PostMapping(value="/check",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> check(@RequestBody @Valid Booking booking) throws ParseException
+	{
+		ResponseMessage res = null;
+		
+		
+		
+		System.out.println(booking.getPropertyId());
+		List l1=bookingService.getByPropertyId(booking.getPropertyId());
+		
+		for(int i=0;i<l1.size();i++) {
+			Date propertyFromDate = ((com.ibm.roof.model.Booking) l1.get(i)).getFromDate();
+			Date propertyToDate = ((com.ibm.roof.model.Booking) l1.get(i)).getToDate();
+			Date userFromDate = booking.getFromDate();
+			Date userToDate = booking.getToDate();
+			System.out.println("---------------------------------------");
+			System.out.println(propertyFromDate);
+			System.out.println(propertyToDate);
+			System.out.println(userFromDate);
+			System.out.println(userToDate);
+			
+			if (((propertyToDate.compareTo(userFromDate) >= 0 && propertyToDate.compareTo(userToDate)<=0) )||
+					((userFromDate.compareTo(propertyFromDate) >= 0 && userFromDate.compareTo(propertyToDate)<=0))||
+					((userToDate.compareTo(propertyFromDate) >= 0 && userToDate.compareTo(propertyToDate)<=0))||
+					((propertyFromDate.compareTo(userFromDate) >= 0 && propertyFromDate.compareTo(userToDate)<=0))
+					) {
+	            System.out.println("already booked");
+	            res = new ResponseMessage("Success", new String[] {"already booked"});
+	            break;
+	          
+			
+						}
+			else {
+				 res = new ResponseMessage("Success", new String[] {"available for booking"});
+			}
+			
+		
+			}
+		
+		
+		
+		
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(booking.getBookingId()).toUri();
+		return ResponseEntity.created(location).body(res);
+		
+		
+	}
+
+	
 	
 	@PostMapping(value="/properties",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")

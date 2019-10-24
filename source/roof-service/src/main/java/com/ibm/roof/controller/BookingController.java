@@ -81,59 +81,6 @@ public class BookingController {
 //	}
 //	
 //	
-	@PostMapping(value="/check",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
-	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> check(@RequestBody @Valid Booking booking) throws ParseException
-	{
-		ResponseMessage res = null;
-		
-		
-		
-		System.out.println(booking.getPropertyId());
-		List l1=bookingService.getByPropertyId(booking.getPropertyId());
-		
-		for(int i=0;i<l1.size();i++) {
-			Date propertyFromDate = ((com.ibm.roof.model.Booking) l1.get(i)).getFromDate();
-			Date propertyToDate = ((com.ibm.roof.model.Booking) l1.get(i)).getToDate();
-			Date userFromDate = booking.getFromDate();
-			Date userToDate = booking.getToDate();
-			System.out.println("---------------------------------------");
-			System.out.println(propertyFromDate);
-			System.out.println(propertyToDate);
-			System.out.println(userFromDate);
-			System.out.println(userToDate);
-			
-			if (((propertyToDate.compareTo(userFromDate) >= 0 && propertyToDate.compareTo(userToDate)<=0) )||
-					((userFromDate.compareTo(propertyFromDate) >= 0 && userFromDate.compareTo(propertyToDate)<=0))||
-					((userToDate.compareTo(propertyFromDate) >= 0 && userToDate.compareTo(propertyToDate)<=0))||
-					((propertyFromDate.compareTo(userFromDate) >= 0 && propertyFromDate.compareTo(userToDate)<=0))
-					) {
-	            System.out.println("already booked");
-	            res = new ResponseMessage("Success", new String[] {"already booked"});
-	            break;
-	          
-			
-						}
-			else {
-				 res = new ResponseMessage("Success", new String[] {"available for booking"});
-			}
-			
-		
-			}
-		
-		
-		
-		
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(booking.getBookingId()).toUri();
-		return ResponseEntity.created(location).body(res);
-		
-		
-	}
-	
-	
-	
-	
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Booking booking)
