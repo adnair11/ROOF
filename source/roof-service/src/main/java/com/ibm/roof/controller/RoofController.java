@@ -64,8 +64,13 @@ public class RoofController {
 		
 		System.out.println(booking.getPropertyId());
 		List l1=bookingService.getByPropertyId(booking.getPropertyId());
-		
+		int sizex =l1.size();
+		if(sizex==0) {
+			 res = new ResponseMessage("Success", new String[] {"available for booking"});
+		}
+		else {
 		for(int i=0;i<l1.size();i++) {
+			
 			Date propertyFromDate = ((com.ibm.roof.model.Booking) l1.get(i)).getFromDate();
 			Date propertyToDate = ((com.ibm.roof.model.Booking) l1.get(i)).getToDate();
 			Date userFromDate = booking.getFromDate();
@@ -94,7 +99,7 @@ public class RoofController {
 		
 			}
 		
-		
+		}
 		
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
