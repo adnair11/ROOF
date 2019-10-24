@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: black;
+      color: white;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    body {
+      background-color: white;
+      color: black;
+    }
+  }
+  

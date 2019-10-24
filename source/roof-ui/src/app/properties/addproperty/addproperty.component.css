@@ -1,0 +1,58 @@
+.contact{
+    padding: 4%;
+    height: 400px;
+}
+.col-md-3{
+    background: #F8F9FA;
+    padding: 4%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+} 
+.contact-info{
+    margin-top:10%;
+   
+}
+.directives-tab{
+    padding: 4%;
+    
+}
+.contact-info h2{
+    margin-bottom: 10%;
+}
+
+.nav-item{
+    width: 200px;
+}
+.col-md-9{
+    background: #fff;
+    padding: 3%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+
+
+.contact-form label{
+    font-weight:600;
+}
+.contact-form button{
+    background:black;
+    color:wheat;
+    font-weight: 600;
+    width: 35%;
+}
+.contact-form button:focus{
+    box-shadow:none;
+}
+.contact-form label{
+    font-weight:600;
+}
+.contact-form a{
+    background: black;
+    color:wheat;
+    font-weight: 600;
+    width: 25%;
+}
+.nav-tabs{
+  font-size: 130%;
+}

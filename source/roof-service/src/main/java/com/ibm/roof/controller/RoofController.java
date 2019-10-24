@@ -1,14 +1,19 @@
 package com.ibm.roof.controller;
 
 import org.springframework.http.MediaType;
+import com.ibm.roof.security.*;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.net.URI;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,18 +29,25 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ibm.roof.model.Property;
 import com.ibm.roof.model.ResponseMessage;
+import com.ibm.roof.security.UserRepository;
+import com.ibm.roof.security.Users;
 import com.ibm.roof.service.RoofService;
 
 @RestController
-@RequestMapping("/properties")
+@CrossOrigin("*")
 public class RoofController {
 	
 	@Autowired
 	RoofService roofService;
-//	@Autowired
-//	RoofRepository roofRepo;
+
+	@Autowired
+	UserRepository userRepo;
 	
-	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
+
+	@Autowired
+	PasswordEncoder encoder;
+	
+	@PostMapping(value="/properties",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Property property)
 	{
@@ -50,7 +62,56 @@ public class RoofController {
 		
 	}
 	
-	@GetMapping(value="/rent/{city}",produces = {MediaType.APPLICATION_JSON_VALUE})
+
+//	@GetMapping(value="/rentor/properties/{usrId}")
+//	@CrossOrigin("*")
+//	public List<Property> getUserProperties(@PathVariable String usrId)
+//	{	
+//		System.out.println("inside get");
+//		return roofService.getByUsrId(usrId);
+//	}
+	
+	
+	//USER REGSITRATION
+	
+	@PostMapping(value="/user/register",consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@CrossOrigin("*")
+	public Users createUser( @Valid @RequestBody Users user)
+	{
+		
+		user.set_id(ObjectId.get());
+		user.setPassword(encoder.encode(user.getPassword()));
+		userRepo.save(user);
+		return user;
+		
+	}
+
+	//USER Authentication 
+	@PostMapping(value="/user/auth")
+	@CrossOrigin("*")
+	public Principal authenticate(Principal user)
+	{
+		System.out.println("LoggedIn User: " + user);
+		
+		
+		return user;
+		
+	}
+	
+	
+	//USER LOGIN GET USER BY ID
+	@GetMapping(value="/user/login/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Users getUserById(@PathVariable("id") String id)
+	{
+		return userRepo.findByName(id);
+		
+	}
+	
+	
+	
+	
+	
+	@GetMapping(value="properties/{city}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public <Property>List getByBHK(@PathVariable String city,@RequestParam("bhk") Optional<Integer> bhk){
 		System.out.print("bhk is"+bhk);
@@ -61,17 +122,35 @@ public class RoofController {
 	}
 	
 	
-	@GetMapping()
+	@GetMapping(value="allproperties",produces = {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
-	public List<Property> getAllProperties()
+	public <Property>List getAllProperties(){
+	
+		return roofService.getAll();
+	}
+	
+	
+	
+	
+	
+//	get all property of only user	
+	@GetMapping(value="/properties")
+	@CrossOrigin("*")
+	public List<Property> getAllProperties(@RequestParam("userId") String userId)
 	{
+		
+		if(userId != null && userId.length() > 0) {
+			// TODO: Logic to fetch properties for given user id
+			
+			return roofService.getByUsrId(userId);
+		}
 		
 		System.out.println("inside get");
 		return roofService.getAll();
 		
 	}
-	
-	@PutMapping(value="/{id}")
+//	update property of user by ID	
+	@PutMapping(value="properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
 		updatedProp.set_id(id);
@@ -83,8 +162,8 @@ public class RoofController {
 		return ResponseEntity.created(location).body(res);
 		
 	}
-	
-	@DeleteMapping(value="/{id}")
+//	delete property of user by ID	
+	@DeleteMapping(value="properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> deleteProperty(@PathVariable String id) {
 		ResponseMessage res;
@@ -96,12 +175,18 @@ public class RoofController {
 //		return "Property deleted successfully";
 	}
 	
-
 	
-	@GetMapping(value="/{id}",produces= {MediaType.APPLICATION_JSON_VALUE})
+	
+	
+
+//	get property of user by ID
+	
+	@GetMapping(value="rentor/properties/{id}",produces= {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public Property getById(@PathVariable String id)
 	{
+		System.out.println("hello piyush");
+		System.out.println(roofService.getById(id));
 		return roofService.getById(id);
 	}
 	

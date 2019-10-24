@@ -8,18 +8,26 @@ import { LoginSignupComponent } from './admin/login-signup/login-signup.componen
 import { SignupComponent } from './admin/signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { LogoutComponent } from './logout/logout.component';
+import { AuthGaurdService } from './service/auth-gaurd.service';
+import { UserprofileComponent } from './admin/userprofile/userprofile.component';
+import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
+
 
 
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'properties',component:PropertiesComponent},
-  {path: 'properties/new', component: AddPropertyComponent },
+  {path:'properties',component:PropertiesComponent,canActivate:[AuthGaurdService]},
+  {path: 'properties/new', component: AddpropertyComponent },
   {path: 'properties/:_id', component: PropertyDetailsComponent },
   {path:'admin', component: AdminComponent},
   {path:'loginsignup', component: LoginSignupComponent},
   {path:'signup', component: SignupComponent},
   {path:'footer', component: FooterComponent},
+  {path: 'logout', component: LogoutComponent},
+  {path: 'myprofile', component: UserprofileComponent},
+  {path: 'addproperty', component: AddPropertyComponent},
 
 ];
 

@@ -7,13 +7,17 @@
           <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/properties">Properties</a>
+          <a class="nav-link" routerLink="/properties" >Properties</a>
         </li>
   
       </ul>
-      
       <div class="nav-item active">
-        <a class="nav-link" routerLink="/loginsignup">{{flag}}</a>
+        <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/loginsignup" class="nav-link">Login</a>
+        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/myprofile" class="nav-link">{{User}}</a>
+        
+      </div>
+      <div class="nav-item active">
+        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a>
       </div>
       <div class="nav-item active">
         <button class="nav-link btn btn-default" (click)="openNav()">Menu </button>
