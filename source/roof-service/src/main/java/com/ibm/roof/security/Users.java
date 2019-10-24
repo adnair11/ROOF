@@ -9,11 +9,84 @@ public class Users {
 	ObjectId _id;
 	String name;
 	String password;
-	
+	String firstName;
+	String lastName;
+	String email;
+	int contact;
 	String role;
+	String city;
+	String country;
+	String state;
+	int pincode;
 	
 	
 	
+	
+	
+	public Users(ObjectId _id, String name, String password, String firstName, String lastName, String email,
+			int contact, String role, String city, String country, String state, int pincode) {
+		super();
+		this._id = _id;
+		this.name = name;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.contact = contact;
+		this.role = role;
+		this.city = city;
+		this.country = country;
+		this.state = state;
+		this.pincode = pincode;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getContact() {
+		return contact;
+	}
+	public void setContact(int phoneNo) {
+		this.contact = phoneNo;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public int getPincode() {
+		return pincode;
+	}
+	public void setPincode(int pincode) {
+		this.pincode = pincode;
+	}
 	public String getRole() {
 		return role;
 	}
@@ -51,7 +124,9 @@ public class Users {
 	}
 	@Override
 	public String toString() {
-		return "Users [_id=" + _id + ", name=" + name + ", password=" + password + ", role=" + role + "]";
+		return "Users [_id=" + _id + ", name=" + name + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", email=" + email + ", contact=" + contact + ", role=" + role + ", city="
+				+ city + ", country=" + country + ", state=" + state + ", pincode=" + pincode + "]";
 	}
 
 	

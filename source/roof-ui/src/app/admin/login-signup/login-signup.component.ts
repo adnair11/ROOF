@@ -11,8 +11,8 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 export class LoginSignupComponent implements OnInit {
 
-  username = 'piyush'
-  password = 'piyush'
+  username = 'username'
+  password = 'password'
   invalidLogin = false
 
   constructor(private router: Router,

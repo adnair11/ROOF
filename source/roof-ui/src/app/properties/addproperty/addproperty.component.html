@@ -43,6 +43,13 @@
               </div>
             </div>
             <div class="form-group">
+              <label class="control-label col-sm-2" for="fname" > BHK:</label>
+              <div class="col-sm-5">
+                <input type="number" class="form-control" id="bhk" placeholder="Enter BHK"   [ngClass]="{'is-invalid':propertyForm.get('bhk').touched && propertyForm.get('bhk').invalid}"
+                 formControlName="bhk">
+              </div>
+            </div>
+            <div class="form-group">
               <label class="control-label col-sm-2" for="email">Type:</label>
               <div class="col-sm-5">
                 <select class="form-control" id="fname" placeholder="type" [ngClass]="{'is-invalid':propertyForm.get('type').touched && propertyForm.get('type').invalid}" formControlName="type">
@@ -104,7 +111,7 @@
               <label class="control-label col-sm-2" for="email">City:</label>
               <div class="col-sm-5">
                 <select class="form-control" id="fname" placeholder="city" [ngClass]="{'is-invalid':propertyForm.get('city').touched && propertyForm.get('city').invalid}" formControlName="city">
-                  <option>BANGALORE</option>
+                  <option>BANGLORE</option>
                   <option>PUNE</option>
                   <option>DELHI</option>
                 </select>

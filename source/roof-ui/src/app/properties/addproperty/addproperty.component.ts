@@ -21,6 +21,7 @@ isSaved:boolean;
 
     this.propertyForm=new FormGroup({
       name:new FormControl('',[Validators.required]),
+
       size:new FormControl('',[Validators.required]),
       type:new FormControl('',[Validators.required]),
       floor:new FormControl('',[Validators.required]),

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-
+  profileData:any;
   profileForm: any;
   Id: number;
   // data: IProfile;
@@ -23,8 +23,13 @@ this.profileForm = this.fb.group({
       name: ['', Validators.required],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
+      email:['', Validators.required],
       contact: ['', Validators.required],
       password: ['', Validators.required],
+      city:['', Validators.required],
+      state:['', Validators.required],
+      country:['', Validators.required],
+      pincode:['', Validators.required],
       // isAbsentee: ['false'],
       // isActivated: ['false'],
       // isTardy: ['false'],
@@ -43,11 +48,9 @@ return this.profileForm.controls;
   saveProfile() {
    
         console.log(this.profileForm.value);
+        this.profileData = this.profileForm.value;
       
-        this.http.post("http://localhost:8060/user/register",{
-          name: this.profileForm.value.name,
-          password: this.profileForm.value.password
-        })
+        this.http.post("http://localhost:8060/user/register",this.profileData)
           .toPromise()
           .then((res) => {
             console.log(res);
