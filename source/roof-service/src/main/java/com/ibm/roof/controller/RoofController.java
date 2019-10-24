@@ -121,6 +121,14 @@ public class RoofController {
 			return roofService.getByLocation(city);
 	}
 	
+	@GetMapping(value="allproperties",produces = {MediaType.APPLICATION_JSON_VALUE})
+	@CrossOrigin("*")
+	public <Property>List getAllProperties(){
+	
+		return roofService.getAll();
+	}
+	
+	
 	
 	
 	

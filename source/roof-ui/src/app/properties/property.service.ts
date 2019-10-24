@@ -33,7 +33,7 @@ export class PropertyService {
     
   }
   filterProperty(city, bhk) {
-    let _url = this.REST_API_URL + "/rent/" + city + "?bhk=" + bhk;
+    let _url = this.REST_API_URL + "/" + city + "?bhk=" + bhk;
 
     return this.http.get(_url)
       .toPromise()
@@ -47,6 +47,24 @@ export class PropertyService {
       })
 
   }
+
+  getAllProperties(){
+    let _url = "http://localhost:8060/allproperties";
+
+    return this.http.get(_url)
+      .toPromise()
+      .then((res: any[]) => {
+        console.log(res);
+        return res;
+      })
+      .catch(err => {
+        return (err);
+
+      })
+
+  }
+
+
   getProperties(){
     let uandp = sessionStorage.getItem('usernameandpassword');
     let User = sessionStorage.getItem('username');

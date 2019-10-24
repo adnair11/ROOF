@@ -11,6 +11,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGaurdService } from './service/auth-gaurd.service';
 import { UserprofileComponent } from './admin/userprofile/userprofile.component';
+import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
+
 
 
 

@@ -34,13 +34,15 @@ export class HomeComponent implements OnInit {
     console.log(this.propertyData);
     
   }
+  async getAllProperties(){
+    this.allPropertyData = await this.propertyService.getAllProperties(); 
+  }
   ngOnInit() {
-   this.propertyService.getProperties()
-    .subscribe( (res : any[]) =>{
-      console.log(res);
-      this.allPropertyData =res;
+   
+    this.getAllProperties();
       
-    });
+      
+  
   }
 
 } 
