@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document
 @XmlRootElement
 public class Property {
@@ -34,7 +35,7 @@ public class Property {
 	int age;
 	int floor;
 	int totalFloors;
-	int size;
+	String size;
 	
 	//locality details
 	String city;
@@ -51,9 +52,9 @@ public class Property {
 	//Amenities 
 	int bathrooms;
 	int balconies;
-	boolean lift;
-	boolean ac;
-	boolean internet;
+	String lift;
+	String ac;
+	String internet;
 	
 	
 	
@@ -82,10 +83,10 @@ public class Property {
 	public void setTotalFloors(int totalFloors) {
 		this.totalFloors = totalFloors;
 	}
-	public int getSize() {
+	public String getSize() {
 		return size;
 	}
-	public void setSize(int size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 	public String getLocality() {
@@ -142,22 +143,22 @@ public class Property {
 	public void setBalconies(int balconies) {
 		this.balconies = balconies;
 	}
-	public boolean isLift() {
+	public String isLift() {
 		return lift;
 	}
-	public void setLift(boolean lift) {
+	public void setLift(String lift) {
 		this.lift = lift;
 	}
-	public boolean isAc() {
+	public String isAc() {
 		return ac;
 	}
-	public void setAc(boolean ac) {
+	public void setAc(String ac) {
 		this.ac = ac;
 	}
-	public boolean isInternet() {
+	public String isInternet() {
 		return internet;
 	}
-	public void setInternet(boolean internet) {
+	public void setInternet(String internet) {
 		this.internet = internet;
 	}
 	public String getName() {

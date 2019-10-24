@@ -19,7 +19,7 @@ import { AddpropertyComponent } from './properties/addproperty/addproperty.compo
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'properties',component:PropertiesComponent,canActivate:[AuthGaurdService]},
-  {path: 'properties/new', component: AddPropertyComponent },
+  {path: 'properties/new', component: AddpropertyComponent },
   {path: 'properties/:_id', component: PropertyDetailsComponent },
   {path:'admin', component: AdminComponent},
   {path:'loginsignup', component: LoginSignupComponent},

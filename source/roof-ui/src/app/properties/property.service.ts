@@ -26,7 +26,7 @@ export class PropertyService {
           return res;
         })
         .catch((err) => {
-          console.log(err);
+          console.log("Error"+err);
           return err;
         });
         
