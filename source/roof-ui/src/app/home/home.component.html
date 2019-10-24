@@ -1,4 +1,65 @@
-<main role="main">
+<div id="searchBox" style="width: 100%;">
+
+  <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSearchPropertyHandler()">
+    <div class="form-group "  id="searchbar">
+      <select class="form-control" formControlName="city" placeholder="City" style="width: 200px; height: 50px;">
+        <option>DELHI</option>
+        <option>PUNE</option>
+        <option>BANGLORE</option>
+
+      </select>
+      <div class="form-group" id="searchbar2">
+      <select class="form-control" formControlName="bhk" style="width: 150px;height: 50px"  required>
+        <option aria-activedescendant="searchbar2">bhk</option>
+        <option value="1">1-BHK</option>
+        <option value="2">2-BHK</option>
+        <option value="3">3-BHK</option>
+
+      </select>
+
+   </div>
+     
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" style="width: 100px;height: 50px">Search</button>
+    </div>
+    </div> 
+  </form>
+</div>
+
+
+
+
+
+<!-- --------------------------------------------------------- -->
+<div class="album py-5 bg-light">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-4" *ngFor="let property of allPropertyData">
+        <div class="card mb-4 shadow-sm">
+          <div class="card" style="width: 100% ; height: 225px;">
+            <img
+              src="https://media.istockphoto.com/photos/walkway-leading-along-the-new-colorful-cmplex-of-apartment-buildings-picture-id889473004?k=6&m=889473004&s=612x612&w=0&h=6lQi62MTrabi-GbvPLI966CkIjq7TXL5xGquM-snovw="
+              style="width: 100% ; height: 100%;" class="card-img-top" alt="...">
+
+          </div>
+          <div class="card-body">
+            <p class="card-text">Name: {{property.name}}<br>BHK: {{property.bhk}} <br> Location: {{property.city}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">RENT</button>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <main role="main">
 
     <section class="jumbotron text-center">
       <div class="container">
@@ -180,4 +241,4 @@
       </div>
     </div>
 </main>
-
+ -->

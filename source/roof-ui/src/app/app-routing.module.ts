@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGaurdService } from './service/auth-gaurd.service';
+import { UserprofileComponent } from './admin/userprofile/userprofile.component';
 
 
 
@@ -23,6 +24,8 @@ const routes: Routes = [
   {path:'signup', component: SignupComponent},
   {path:'footer', component: FooterComponent},
   {path: 'logout', component: LogoutComponent},
+  {path: 'userprofile', component: UserprofileComponent},
+  {path: 'addproperty', component: AddPropertyComponent},
 
 ];
 

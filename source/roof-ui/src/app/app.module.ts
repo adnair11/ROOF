@@ -15,6 +15,8 @@ import { LoginSignupComponent } from './admin/login-signup/login-signup.componen
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UserprofileComponent } from './admin/userprofile/userprofile.component';
+import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { LogoutComponent } from './logout/logout.component';
     LoginSignupComponent,
     FooterComponent,
     HomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    UserprofileComponent,
+    AddpropertyComponent
   ],
   imports: [
     BrowserModule,
