@@ -80,13 +80,16 @@ public class RoofController {
 			System.out.println(propertyToDate);
 			System.out.println(userFromDate);
 			System.out.println(userToDate);
+			Date currDate = new Date();
 			
 			if (((propertyToDate.compareTo(userFromDate) >= 0 && propertyToDate.compareTo(userToDate)<=0) )||
 					((userFromDate.compareTo(propertyFromDate) >= 0 && userFromDate.compareTo(propertyToDate)<=0))||
 					((userToDate.compareTo(propertyFromDate) >= 0 && userToDate.compareTo(propertyToDate)<=0))||
-					((propertyFromDate.compareTo(userFromDate) >= 0 && propertyFromDate.compareTo(userToDate)<=0))
+					((propertyFromDate.compareTo(userFromDate) >= 0 && propertyFromDate.compareTo(userToDate)<=0))||
+					((userFromDate.compareTo(currDate)<0))
 					) {
 	            System.out.println("already booked");
+	            System.out.println("curr date is"+currDate);
 	            res = new ResponseMessage("Success", new String[] {"already booked"});
 	            break;
 	          
