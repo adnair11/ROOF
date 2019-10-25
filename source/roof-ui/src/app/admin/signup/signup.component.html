@@ -1,23 +1,23 @@
 <body>
-    <h1 class="text-center text-blue pt-6">Register Here</h1>
-    <div id="form-wrapper" style="max-width:1000px; margin:auto;">
-  
+  <h2 class="text-center text-blue pt-6">REGISTER HERE</h2>
+  <div id="form-wrapper" style="max-width:1000px; margin:auto;">
+
     <div id="login">
-  
+
       <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
           <div id="login-column" class="col-md-8">
             <div id="login-box" class="col-md-12">
               <!-- <div class="card-header"> -->
-                <!-- {{pageTitle}} -->
+              <!-- {{pageTitle}} -->
               <!-- </div> -->
-  
+
               <div class="card-body">
                 <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
-  
+
                   <div class="form-group row mb-2">
                     <label class="col-md-3 col-form-label" for="username">
-                      <h4>Username</h4>
+                      <h5>Username</h5>
                     </label>
                     <div class="col-md-8">
                       <input class="form-control" id="username" type="text" placeholder="Name (required)"
@@ -28,111 +28,113 @@
     </span> -->
                     </div>
                   </div>
-  
+
                   <div class="form-group row mb-2">
                     <label class="col-md-3 col-form-label" for="firstname">
-                      <h4>First Name</h4>
+                      <h5>First Name</h5>
                     </label>
                     <div class="col-md-8">
                       <input style="width: 300px" class="form-control" id="firstname" type="text"
                         placeholder="firstname (required)" formControlName="firstName" />
-  
+
                     </div>
                   </div>
-  
+
                   <div class="form-group row mb-2">
                     <label class="col-md-3 col-form-label" for="lastname">
-                      <h4>Last Name</h4>
+                      <h5>Last Name</h5>
                     </label>
-  
+
                     <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="lastname" type="text"
-                        placeholder="LastName" formControlName="lastName" />
-  
+                      <input style="width: 300px" class="form-control" id="lastname" type="text" placeholder="LastName"
+                        formControlName="lastName" />
+
                     </div>
                   </div>
 
                   <div class="form-group row mb-2">
                     <label class="col-md-3 col-form-label" for="email">
-                      <h4>E-mail</h4>
+                      <h5>E-mail</h5>
                     </label>
-  
+
                     <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="email" type="email"
-                        placeholder="Email" formControlName="email" />
-  
-                    </div>
+                      <input style="width: 300px" class="form-control" id="email" type="email" placeholder="Email"
+                        formControlName="email" />
 
-                    <div class="form-group row mb-2">
-                      <label class="col-md-3 col-form-label" for="city">
-                        <h4>City</h4>
-                      </label>
-    
-                      <div class="col-md-8">
-                        <input style="width: 300px" class="form-control" id="city" type="text"
-                          placeholder="city" formControlName="city" />
-    
-                      </div>
                     </div>
-
-                    <div class="form-group row mb-2">
-                      <label class="col-md-3 col-form-label" for="state">
-                        <h4>State</h4>
-                      </label>
-    
-                      <div class="col-md-8">
-                        <input style="width: 300px" class="form-control" id="state" type="text"
-                          placeholder="State" formControlName="state" />
-    
-                      </div>
-                    </div>
-
-                    <div class="form-group row mb-2">
-                      <label class="col-md-3 col-form-label" for="country">
-                        <h4>Country</h4>
-                      </label>
-    
-                      <div class="col-md-8">
-                        <input style="width: 300px" class="form-control" id="country" type="text"
-                          placeholder="Country" formControlName="country" />
-    
-                      </div>
-                    </div>
-
                   </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-md-3 col-form-label" for="city">
+                      <h5>City</h5>
+                    </label>
+
+                    <div class="col-md-8">
+                      <input style="width: 300px" class="form-control" id="city" type="text" placeholder="city"
+                        formControlName="city" />
+
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-md-3 col-form-label" for="state">
+                      <h5>State</h5>
+                    </label>
+
+                    <div class="col-md-8">
+                      <input style="width: 300px" class="form-control" id="state" type="text" placeholder="State"
+                        formControlName="state" />
+
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+                    <label class="col-md-3 col-form-label" for="country">
+                      <h5>Country</h5>
+                    </label>
+
+                    <div class="col-md-8">
+                      <input style="width: 300px" class="form-control" id="country" type="text" placeholder="Country"
+                        formControlName="country" />
+
+                    </div>
+                  </div>
+
+
                   <div class="form-group row mb-2">
                     <label class="col-md-3 col-form-label" for="Pincode">
-                      <h4>Pincode</h4>
+                      <h5>Pincode</h5>
                     </label>
-  
+
                     <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="pincode" type="number"
-                        placeholder="Pincode" formControlName="pincode" />
-                          
+                      <input style="width: 300px" class="form-control" id="pincode" type="number" placeholder="Pincode"
+                        formControlName="pincode" />
+
                     </div>
                   </div>
 
                   <div class="form-group row mb-2">
                     <label class="col-md-3 col-form-label" for="Contact">
-                      <h4>Contact</h4>
+                      <h5>Contact</h5>
                     </label>
-  
+
                     <div class="col-md-8">
                       <input style="width: 300px" class="form-control" id="contact" type="number"
                         placeholder="Contact No." formControlName="contact" />
-                          
+
                     </div>
                   </div>
+
                   <div class="form-group row mb-2">
                     <label class="col-md-3 col-form-label" for="password">
-                      <h4>Password</h4>
+                      <h5>Password</h5>
                     </label>
-  
+
                     <div class="col-md-8">
                       <input style="width: 300px" class="form-control" id="password" type="password"
                         placeholder="Password" formControlName="password" />
                     </div>
-  
+
                   </div>
                   <br>
                   <!-- <br> -->
@@ -143,23 +145,22 @@
                         [disabled]="!profileForm.valid">
                         Save
                       </button>
-  
+
                       <button class="btn btn-outline-secondary mr-3" type="button" title="Cancel your edits"
                         routerLink="/loginsignup">
                         Cancel
                       </button>
-  
+
                     </div>
                   </div>
                 </form>
               </div>
-  
+
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
-  </body>
-  
+</body>

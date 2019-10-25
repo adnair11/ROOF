@@ -20,7 +20,7 @@ export class UserprofileComponent implements OnInit {
         console.log(res);
         this.userData = res;
         console.log(this.userData.name);
-        
+
       })
 
   }
