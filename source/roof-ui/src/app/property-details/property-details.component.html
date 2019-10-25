@@ -1,4 +1,4 @@
-<a routerLink="/properties">Go back</a> 
+<a routerLink="/properties">Go back</a>
     <div class="container">
         <div class="row">
             <div class="card col-md-12">
@@ -6,8 +6,26 @@
                     <h5 class="card-title">{{propertyData.name}}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
-                    <p>City : {{propertyData.city}}</p>
-                    <p>BHK : {{propertyData.bhk}}</p>
+                        <p>Bhk: {{propertyData.bhk}}</p>
+                        <p>Type: {{propertyData.type}}</p>
+                        <p>Age: {{propertyData.age}}</p>
+                        <p>floor: {{propertyData.floor}}</p>
+                        <p>totalFloors: {{propertyData.totalFloors}}</p>
+                        <p>size: {{propertyData.size}}</p>
+                        <p>city: {{propertyData.city}}</p>
+                        <p>locality: {{propertyData.locality}}</p>
+                        <p>rent: {{propertyData.rent}}</p>
+                        <p>diposit: {{propertyData.deposit}}</p>
+                        <p>Available: {{propertyData.available}}</p>
+                        <p>prefTenant: {{propertyData.prefTenant}}</p>
+                        <p>furnish: {{propertyData.furnish}}</p>
+                        <p>parking: {{propertyData.parking}}</p>
+                        <p>bathrooms: {{propertyData.bathrooms}}</p>
+                        <p>balconies: {{propertyData.balconies}}</p>
+                        <p>lift: {{propertyData.lift}}</p>
+                        <p>AC: {{propertyData.ac}}</p>
+                        <p>Internet: {{propertyData.internet}}</p>
+
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPropertyModal"(click)="onEditHandler()">Edit</button>
                     <button type="button" class="btn btn-danger" routerLink="/properties" (click)="onDeleteHandler()">Delete</button>
 
@@ -32,6 +50,265 @@
                                                     [(ngModel)]="duplicatePropertyData.name" required>
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">Age</label>
+                                          <div class="col-sm-9">
+                                              <input type="text" class="form-control" name="age"
+                                                  placeholder="Enter Age"
+                                                  [(ngModel)]="duplicatePropertyData.age" >
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">Bhk</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="bhk"
+                                                  placeholder="Enter bhk"
+                                                  [(ngModel)]="duplicatePropertyData.bhk" > -->
+                                                  <select class="form-control" name="bhk"
+                                       placeholder="Enter bhk"
+                                       [(ngModel)]="duplicatePropertyData.bhk" >
+                                                      <option>1</option>
+                                                      <option>2</option>
+                                                      <option>3</option>
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">Type</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="type"
+                                                  placeholder="Enter type"
+                                                  [(ngModel)]="duplicatePropertyData.type" > -->
+                                                  <select class="form-control" name="type"
+                                       placeholder="Enter type"
+                                       [(ngModel)]="duplicatePropertyData.type" >
+                                                      <option>House</option>
+                                                      <option>Apartment</option>
+
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">floor</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="floor"
+                                                  placeholder="Enter floor"
+                                                  [(ngModel)]="duplicatePropertyData.floor" > -->
+                                                  <select class="form-control" name="floor"
+                                       placeholder="Enter floor"
+                                       [(ngModel)]="duplicatePropertyData.floor" >
+                                                      <option>0</option>
+                                                      <option>1</option>
+                                                      <option>2</option>
+                                                      <option>3</option>
+                                                      <option>4</option>
+                                                      <option>5</option>
+                                                      <option>6</option>
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">Total Floors</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="totalFloors"
+                                                  placeholder="Enter totalFloors"
+                                                  [(ngModel)]="duplicatePropertyData.totalFloors" > -->
+                                                  <select class="form-control" name="totalFloors"
+                                       placeholder="Enter totalFloors"
+                                       [(ngModel)]="duplicatePropertyData.totalFloors" >
+                                                      <option>0</option>
+                                                      <option>1</option>
+                                                      <option>2</option>
+                                                      <option>3</option>
+                                                      <option>4</option>
+                                                      <option>5</option>
+                                                      <option>6</option>
+                                                    </select>
+
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">size</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="size"
+                                                  placeholder="Enter size"
+                                                  [(ngModel)]="duplicatePropertyData.size" > -->
+
+                                                  <select class="form-control" name="size"
+                                       placeholder="Enter size"
+                                       [(ngModel)]="duplicatePropertyData.size" >
+                                                      <option>500-700</option>
+                                                      <option>700-1500</option>
+                                                      <option>1500-2000</option>
+
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">city</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="city"
+                                                  placeholder="Enter city"
+                                                  [(ngModel)]="duplicatePropertyData.city" > -->
+                                                  <select class="form-control" name="city"
+                                       placeholder="Enter city"
+                                       [(ngModel)]="duplicatePropertyData.city" >
+                                                      <option>BANGALORE</option>
+                                                      <option>PUNE</option>
+                                                      <option>DELHI</option>
+
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">locality</label>
+                                          <div class="col-sm-9">
+                                              <input type="text" class="form-control" name="locality"
+                                                  placeholder="Enter locality"
+                                                  [(ngModel)]="duplicatePropertyData.locality" >
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">rent</label>
+                                          <div class="col-sm-9">
+                                              <input type="text" class="form-control" name="rent"
+                                                  placeholder="Enter rent"
+                                                  [(ngModel)]="duplicatePropertyData.rent" >
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">deposit</label>
+                                          <div class="col-sm-9">
+                                              <input type="text" class="form-control" name="deposit"
+                                                  placeholder="Enter deposit"
+                                                  [(ngModel)]="duplicatePropertyData.deposit" >
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">date</label>
+                                          <div class="col-sm-9">
+                                              <input type="text" class="form-control" name="available"
+                                                  placeholder="Enter available"
+                                                  [(ngModel)]="duplicatePropertyData.available" >
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">prefTenant</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="prefTenant"
+                                                  placeholder="Enter prefTenant"
+                                                  [(ngModel)]="duplicatePropertyData.prefTenant" > -->
+                                                  <select class="form-control" name="prefTenant"
+                                       placeholder="Enter prefTenant"
+                                       [(ngModel)]="duplicatePropertyData.prefTenant" >
+                                                      <option>Family</option>
+                                                      <option>All</option>
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">furnish</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="furnish"
+                                                  placeholder="Enter furnish"
+                                                  [(ngModel)]="duplicatePropertyData.furnish" > -->
+                                                  <select class="form-control" name="furnish"
+                                       placeholder="Enter furnish"
+                                       [(ngModel)]="duplicatePropertyData.furnish" >
+                                                      <option>yes</option>
+                                                      <option>no</option>
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">parking</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="parking"
+                                                  placeholder="Enter parking"
+                                                  [(ngModel)]="duplicatePropertyData.parking" > -->
+                                                  <select class="form-control" name="parking"
+                                       placeholder="Enter parking"
+                                       [(ngModel)]="duplicatePropertyData.parking" >
+                                                      <option>yes</option>
+                                                      <option>no</option>
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">bathrooms</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="bathrooms"
+                                                  placeholder="Enter bathrooms"
+                                                  [(ngModel)]="duplicatePropertyData.bathrooms" > -->
+                                                  <select class="form-control" name="bathrooms"
+                                       placeholder="Enter bathrooms"
+                                       [(ngModel)]="duplicatePropertyData.bathrooms" >
+                                                      <option>1</option>
+                                                      <option>2</option>
+                                                    </select>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">balconies</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="balconies"
+                                                  placeholder="Enter balconies"
+                                                  [(ngModel)]="duplicatePropertyData.balconies" > -->
+                                                  <select class="form-control" name="balconies"
+                                       placeholder="Enter balconies"
+                                       [(ngModel)]="duplicatePropertyData.balconies" >
+                                                      <option>1</option>
+                                                      <option>2</option>
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">lift</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="lift"
+                                                  placeholder="Enter lift"
+                                                  [(ngModel)]="duplicatePropertyData.lift" > -->
+
+                                                  <select class="form-control" name="lift"
+                                       placeholder="Enter lift"
+                                       [(ngModel)]="duplicatePropertyData.lift" >
+                                                      <option>yes</option>
+                                                      <option>no</option>
+                                                    </select>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">ac</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="ac"
+                                                  placeholder="Enter ac"
+                                                  [(ngModel)]="duplicatePropertyData.ac" > -->
+
+                                                  <select class="form-control" name="ac"
+                                       placeholder="Enter ac"
+                                       [(ngModel)]="duplicatePropertyData.ac" >
+                                                      <option>yes</option>
+                                                      <option>no</option>
+                                                    </select>
+
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-3 col-form-label">internet</label>
+                                          <div class="col-sm-9">
+                                              <!-- <input type="text" class="form-control" name="internet"
+                                                  placeholder="Enter internet"
+                                                  [(ngModel)]="duplicatePropertyData.internet" > -->
+
+                                       <select class="form-control" name="internet"
+                                       placeholder="Enter internet"
+                                       [(ngModel)]="duplicatePropertyData.internet" >
+                                                      <option>yes</option>
+                                                      <option>no</option>
+                                                    </select>
+                                          </div>
+                                      </div>
                                         <div class="form-group row">
                                             <label for="staticEmail" class="col-sm-3 col-form-label">BHK</label>
                                             <div class="col-sm-9">
