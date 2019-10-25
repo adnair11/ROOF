@@ -89,8 +89,11 @@ public class RoofController {
 					((userFromDate.compareTo(currDate)<0))
 					) {
 	            System.out.println("already booked");
+
 	            System.out.println("curr date is"+currDate);
 	            res = new ResponseMessage("Success", new String[] {"already booked"});
+
+	           
 	            break;
 	          
 			
