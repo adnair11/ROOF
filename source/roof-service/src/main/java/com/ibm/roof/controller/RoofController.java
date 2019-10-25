@@ -59,8 +59,7 @@ public class RoofController {
 	public ResponseEntity<ResponseMessage> check(@RequestBody @Valid Booking booking) throws ParseException
 	{
 		ResponseMessage res = null;
-		
-		
+				
 		
 		System.out.println(booking.getPropertyId());
 		List l1=bookingService.getByPropertyId(booking.getPropertyId());
@@ -91,7 +90,7 @@ public class RoofController {
 	            System.out.println("already booked");
 
 	            System.out.println("curr date is"+currDate);
-	            res = new ResponseMessage("Success", new String[] {"already booked"});
+	            res = new ResponseMessage("Failure", new String[] {"already booked"});
 
 	           
 	            break;
