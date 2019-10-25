@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UserprofileComponent } from './admin/userprofile/userprofile.component';
 import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddpropertyComponent } from './properties/addproperty/addproperty.compo
     HomeComponent,
     LogoutComponent,
     UserprofileComponent,
-    AddpropertyComponent
+    AddpropertyComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,

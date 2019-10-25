@@ -87,7 +87,7 @@ public class RoofController {
 					((propertyFromDate.compareTo(userFromDate) >= 0 && propertyFromDate.compareTo(userToDate)<=0))
 					) {
 	            System.out.println("already booked");
-	            res = new ResponseMessage("Success", new String[] {"already booked"});
+	            res = new ResponseMessage("Failure", new String[] {"already booked"});
 	            break;
 	          
 			
