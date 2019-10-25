@@ -85,6 +85,7 @@ public class BookingController {
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Booking booking)
 	{
+		System.out.println("Booking-"+booking);
 		ResponseMessage res;
 		res = new ResponseMessage("Success", new String[] {"Booked successfully"});
 		bookingService.bookProperty(booking);

@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'myprofile', component: UserprofileComponent},
   {path: 'addproperty', component: AddPropertyComponent},
-  {path: 'booking/:_id', component:BookingComponent}
+  {path: 'booking/:_id', component:BookingComponent,canActivate:[AuthGaurdService]}
 
 ];
 

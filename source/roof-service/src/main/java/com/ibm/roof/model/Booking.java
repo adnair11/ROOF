@@ -16,18 +16,18 @@ public class Booking {
 	String bookingId;
 	String propertyId;
 	String ownerId;
-	String renterId;
+	String usrId;
 	Date fromDate;
 	Date toDate;
 	
 	
 	
-	public Booking(String bookingId, String propertyId, String ownerId, String renterId, Date fromDate, Date toDate) {
+	public Booking(String bookingId, String propertyId, String ownerId, String usrId, Date fromDate, Date toDate) {
 		super();
 		this.bookingId = bookingId;
 		this.propertyId = propertyId;
 		this.ownerId = ownerId;
-		this.renterId = renterId;
+		this.usrId = usrId;
 		this.fromDate = fromDate;
 		this.toDate = toDate;
 	}
@@ -52,11 +52,11 @@ public class Booking {
 	public void setOwnerId(String ownerId) {
 		this.ownerId = ownerId;
 	}
-	public String getRenterId() {
-		return renterId;
+	public String getUsrId() {
+		return usrId;
 	}
-	public void setRenterId(String renterId) {
-		this.renterId = renterId;
+	public void setUsrId(String usrId) {
+		this.usrId = usrId;
 	}
 	public Date getFromDate() {
 		return fromDate;
@@ -73,8 +73,8 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking [bookingId=" + bookingId + ", propertyId=" + propertyId + ", ownerId=" + ownerId + ", renterId="
-				+ renterId + ", fromDate=" + fromDate + ", toDate=" + toDate + "]";
+		return "Booking [bookingId=" + bookingId + ", propertyId=" + propertyId + ", ownerId=" + ownerId + ", renteeId="
+				+ usrId + ", fromDate=" + fromDate + ", toDate=" + toDate + "]";
 	}
 	
 	
