@@ -54,6 +54,17 @@ public class RoofController {
 	@Autowired
 	BookingService bookingService;
 	
+	@GetMapping(value="/user/book/{userId}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public <Booking>List getBookingByUserId(@PathVariable String userId) 
+	
+	{
+		System.out.println(userId);
+		System.out.println("Inside user/book controller");
+		return bookingService.getbyUserId(userId);
+		
+	}
+
+	
 	@PostMapping(value="/check",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> check(@RequestBody @Valid Booking booking) throws ParseException
@@ -167,7 +178,7 @@ public class RoofController {
 		
 	}
 	
-	
+		
 	//USER LOGIN GET USER BY ID
 	@GetMapping(value="/user/login/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Users getUserById(@PathVariable("id") String id)

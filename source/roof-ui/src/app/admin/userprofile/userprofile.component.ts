@@ -23,7 +23,7 @@ export class UserprofileComponent implements OnInit {
         this.userData = res;
         console.log(this.userData.name);
 
-        this.bookingSubscription= this.propertyService.getBookingsByUsrId(this.User)
+    this.bookingSubscription= this.propertyService.getBookingsByUsrId(this.User)
         .subscribe( (res : any[]) =>{
         console.log(res);
         this.bookingList =res;
