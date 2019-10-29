@@ -1,0 +1,84 @@
+<a routerLink="/">Go back</a>
+<div class="container">
+    <div class="row">
+        <div class="card col-md-12">
+            <div class="card-body">
+                <h5 class="card-title">{{propertyData.name}}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <p>Bhk: {{propertyData.bhk}}</p>
+                <p>Type: {{propertyData.type}}</p>
+                <p>Age: {{propertyData.age}}</p>
+                <p>floor: {{propertyData.floor}}</p>
+                <p>totalFloors: {{propertyData.totalFloors}}</p>
+                <p>size: {{propertyData.size}}</p>
+                <p>city: {{propertyData.city}}</p>
+                <p>locality: {{propertyData.locality}}</p>
+                <p>rent: {{propertyData.rent}}</p>
+                <p>diposit: {{propertyData.deposit}}</p>
+                <p>Available: {{propertyData.available}}</p>
+                <p>prefTenant: {{propertyData.prefTenant}}</p>
+                <p>furnish: {{propertyData.furnish}}</p>
+                <p>parking: {{propertyData.parking}}</p>
+                <p>bathrooms: {{propertyData.bathrooms}}</p>
+                <p>balconies: {{propertyData.balconies}}</p>
+                <p>lift: {{propertyData.lift}}</p>
+                <p>AC: {{propertyData.ac}}</p>
+                <p>Internet: {{propertyData.internet}}</p>
+
+
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bookPropertyModal"
+                    >Book Now</button>
+
+                <div class="modal fade" id="bookPropertyModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Book Property</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" >
+                                <form ngNativeValidate #f="ngForm" [formGroup]="bookForm" (ngSubmit)="bookProperty()" >
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-3 col-form-label">From Date</label>
+                                        <div class="col-sm-9">
+                                            <input type="date" class="form-control" name="fromDate" formControlName="fromDate"
+                                                placeholder="Enter from Date" 
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-3 col-form-label">To Date</label>
+                                        <div class="col-sm-9">
+                                            <input type="date" class="form-control" name="toDate" formControlName="toDate"
+                                                placeholder="Enter To Date"
+                                                required>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="alert alert-success" *ngIf="isAvail">
+                                        Booked successfully!
+                                    </div>
+                                    <div class="alert" *ngIf="isNotAvail">
+                                        Dates are unavailable!
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" >Book
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

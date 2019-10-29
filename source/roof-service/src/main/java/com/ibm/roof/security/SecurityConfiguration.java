@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	      .antMatchers("/user/register").permitAll()
 //	      .antMatchers("/rentor/properties/**").permitAll()
 	      .antMatchers("/user/auth").permitAll()
-//	      .antMatchers("/**").permitAll()
+	      .antMatchers("/**").permitAll()
 	      .anyRequest().permitAll()
 	      .and().httpBasic()
 	      .and().formLogin();

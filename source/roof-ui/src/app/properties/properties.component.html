@@ -1,16 +1,43 @@
 <div class="container">
-    <div class="row">
-        <section class="col-sm-12 main-section ">
-            <div class="jumbotron">
-                <h1 class="display-4">Roof</h1>
-                <a class="btn btn-primary btn-lg" routerLink="/properties/new" role="button">Post New Property</a>
+  <div class="row" id="properties-img" style="height: 500px; width: 100%;">
+
+        <div >
+          <a class="btn btn-primary btn-lg" id="postbutton" routerLink="/properties/new" role="button">Post New Property</a>
+        </div>
+
+
+  </div>
+
+  <div class="album py-5 bg-light" style="margin: 20px;">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-3" *ngFor="let property of propertyList">
+          <div class="card sm-3 shadow-sm">
+            <div class="card" style="width: 100% ; height: 175px;">
+              <img
+                src="https://media.istockphoto.com/photos/walkway-leading-along-the-new-colorful-cmplex-of-apartment-buildings-picture-id889473004?k=6&m=889473004&s=612x612&w=0&h=6lQi62MTrabi-GbvPLI966CkIjq7TXL5xGquM-snovw="
+                style="width: 100% ; height: 100%;" class="card-img-top" alt="...">
+
             </div>
-        </section>
+            <div class="card-body">
+              <p class="card-text">Name: {{property.name}}<br>BHK: {{property.bhk}} <br> Location: {{property.city}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/properties/{{property._id}}">VIEW DETAILS</button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <!-- <div class="row">
 
-    <div class="row">
-
-        <div class="card col-sm-3" *ngFor="let property of propertyList">
+    <div class="card col-sm-3" *ngFor="let property of propertyList">
             <div class="card-body">
                 <h5 class="card-title">{{property.name}}</h5>
                 <p class="card-text">City: {{property.city}}</p>
@@ -18,6 +45,6 @@
             </div>
         </div>
 
-    </div>
+  </div> -->
 
 </div>
