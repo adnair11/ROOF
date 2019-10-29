@@ -140,6 +140,17 @@ export class PropertyService {
         
     
   }
+
+  getBookingsByUsrId(usrId){
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
+      console.log(headers);
+      
+
+  }
   
 
   getUserById(id){

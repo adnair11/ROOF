@@ -10,6 +10,8 @@ import { PropertyService } from 'src/app/properties/property.service';
 export class UserprofileComponent implements OnInit {
   userData:any;
   userSubscription:Subscription;
+  bookingList : any[];
+  bookingSubscription : Subscription;
   User:string =sessionStorage.getItem('username');
   constructor(private propertyService:PropertyService) { }
 
@@ -21,8 +23,22 @@ export class UserprofileComponent implements OnInit {
         this.userData = res;
         console.log(this.userData.name);
 
+        this.bookingSubscription= this.propertyService.getBookingsByUsrId(this.User)
+        .subscribe( (res : any[]) =>{
+        console.log(res);
+        this.bookingList =res;
+    });
+
       })
 
   }
 
 }
+
+
+
+
+
+ 
+
+  
