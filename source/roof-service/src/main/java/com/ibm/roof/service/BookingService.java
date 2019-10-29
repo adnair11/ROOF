@@ -46,4 +46,9 @@ public class BookingService {
 		// TODO Auto-generated method stub
 		return bookingRepository.getByUsrId(userId);
 	}
+
+	public List getbyOwnerId(String ownerId) {
+		// TODO Auto-generated method stub
+		return bookingRepository.getByOwnerId(ownerId);
+	}
 }
