@@ -4,7 +4,7 @@
         <div class="card col-md-12">
             <div class="card-body">
                 <h5 class="card-title">{{propertyData.name}}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's content.</p>
                 <p>Bhk: {{propertyData.bhk}}</p>
                 <p>Type: {{propertyData.type}}</p>
@@ -24,7 +24,121 @@
                 <p>balconies: {{propertyData.balconies}}</p>
                 <p>lift: {{propertyData.lift}}</p>
                 <p>AC: {{propertyData.ac}}</p>
-                <p>Internet: {{propertyData.internet}}</p>
+                <p>Internet: {{propertyData.internet}}</p> -->
+
+
+
+                <div class="container">
+                    <div class="row">
+                            <div class="col-md-4 mar-cls"></div>
+                            <div class="col-md-4 mar-cls"></div>
+                            <div class="col-md-4 mar-cls"></div>
+                    <div class="col-md-6 mar-cls">
+
+                        <div class="panel-group" id="accordion">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
+                                                </span>Property details</button>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>
+                                                            <p>Name: {{propertyData.name}}</p>
+                                                            <p>Bhk: {{propertyData.bhk}}</p>
+                                                            <p>Type: {{propertyData.type}}</p>
+                                                            <p>Age: {{propertyData.age}}</p>
+                                                            <p>Floor: {{propertyData.floor}}</p>
+                                                            <p>TotalFloors: {{propertyData.totalFloors}}</p>
+                                                            <p>Size: {{propertyData.size}}</p>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                                                </span>Locality Details</button>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>
+                                                                <p>City: {{propertyData.city}}</p>
+                                                                <p>Locality: {{propertyData.locality}}</p>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                                                </span>Rental Details</button>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>
+                                                                <p>Rent: {{propertyData.rent}}</p>
+                                                                <p>Diposit: {{propertyData.diposit}}</p>
+                                                                <p>Available: {{propertyData.available}}</p>
+                                                                <p>PrefTenant: {{propertyData.prefTenant}}</p>
+                                                                <p>Furnish: {{propertyData.furnish}}</p>
+                                                                <p>Parking: {{propertyData.parking}}</p>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                                                </span>Amenities</button>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseFour" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>
+                                                                <p>Bathrooms: {{propertyData.bathrooms}}</p>
+                                                                <p>Balconies: {{propertyData.balconies}}</p>
+                                                                <p>Lift: {{propertyData.lift}}</p>
+                                                                <p>AC: {{propertyData.ac}}</p>
+                                                                <p>Internet: {{propertyData.internet}}</p>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                    </div>
+                    </div>
+
+
+
 
 
 
@@ -47,7 +161,7 @@
                                         <label for="staticEmail" class="col-sm-3 col-form-label">From Date</label>
                                         <div class="col-sm-9">
                                             <input type="date" class="form-control" name="fromDate" formControlName="fromDate"
-                                                placeholder="Enter from Date" 
+                                                placeholder="Enter from Date"
                                                 required>
                                         </div>
                                     </div>

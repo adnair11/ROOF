@@ -12,7 +12,7 @@ export class AuthenticationService {
   authenticate(username, password) {
 
     const headers = new HttpHeaders({
-                                  
+
       'Content-Type':  'application/json',
       'Authorization': 'Basic ' + btoa(username+':'+password)});
       sessionStorage.setItem('usernameandpassword', username+':'+password)
@@ -25,7 +25,7 @@ export class AuthenticationService {
         let userObj = JSON.parse(user);
         console.log("response: " + JSON.stringify(res));
         console.log("username: " + userObj.principal.username);
-        sessionStorage.setItem('username', userObj.principal.username)
+        sessionStorage.setItem('username', userObj.principal.username);
         return res;
       })
       .catch((err) => {

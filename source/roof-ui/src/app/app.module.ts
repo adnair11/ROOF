@@ -19,6 +19,8 @@ import { UserprofileComponent } from './admin/userprofile/userprofile.component'
 import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
 import { BookingComponent } from './booking/booking.component';
 import { PropertyBookedComponent } from './properties/property-booked/property-booked.component';
+import { TeamComponent } from './team/team.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { PropertyBookedComponent } from './properties/property-booked/property-b
     UserprofileComponent,
     AddpropertyComponent,
     BookingComponent,
-    PropertyBookedComponent
+    PropertyBookedComponent,
+    TeamComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,

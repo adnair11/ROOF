@@ -14,23 +14,27 @@ import { UserprofileComponent } from './admin/userprofile/userprofile.component'
 import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
 import { BookingComponent } from './booking/booking.component';
 import { PropertyBookedComponent } from './properties/property-booked/property-booked.component';
+import { TeamComponent } from './team/team.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 
 
 const routes: Routes = [
-  {path:'', component: HomeComponent},
-  {path:'properties',component:PropertiesComponent,canActivate:[AuthGaurdService]},
+  {path: '', component: HomeComponent},
+  {path: 'properties', component: PropertiesComponent, canActivate: [AuthGaurdService]},
   {path: 'properties/new', component: AddpropertyComponent },
   {path: 'properties/booked', component: PropertyBookedComponent },
   {path: 'properties/:_id', component: PropertyDetailsComponent },
-  {path:'admin', component: AdminComponent},
-  {path:'loginsignup', component: LoginSignupComponent},
-  {path:'signup', component: SignupComponent},
-  {path:'footer', component: FooterComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'loginsignup', component: LoginSignupComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'footer', component: FooterComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'myprofile', component: UserprofileComponent},
   {path: 'addproperty', component: AddPropertyComponent},
-  {path: 'booking/:_id', component:BookingComponent,canActivate:[AuthGaurdService]}
+  {path: 'team', component: TeamComponent},
+  {path: 'aboutus', component: AboutusComponent},
+  {path: 'booking/:_id', component: BookingComponent, canActivate: [AuthGaurdService]}
 
 ];
 

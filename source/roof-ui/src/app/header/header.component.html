@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
     <a class="navbar-brand" routerLink="/">ROOF</a>
-  
+
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -9,12 +9,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/properties" >Properties</a>
         </li>
-  
+
       </ul>
       <div class="nav-item active">
         <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/loginsignup" class="nav-link">Login</a>
         <a *ngIf="loginService.isUserLoggedIn()" routerLink="/myprofile" class="nav-link">{{User}}</a>
-        
+
       </div>
       <div class="nav-item active">
         <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a>
@@ -23,13 +23,12 @@
         <button class="nav-link btn btn-default" (click)="openNav()">Menu </button>
       </div>
     </div>
-  
+
     <div id="mySidenav" [ngStyle]="{'width' : width}" class="sidenav float-right">
       <a routerLink="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-      <a routerLink="/">About</a>
+      <a routerLink="/aboutus">About</a>
       <a routerLink="/">Services</a>
-      <a routerLink="/">Clients</a>
+      <a routerLink="/team">Team</a>
       <a routerLink="/">Contact</a>
     </div>
   </nav>
-  
