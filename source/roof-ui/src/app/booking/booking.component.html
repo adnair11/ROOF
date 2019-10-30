@@ -49,6 +49,7 @@
                                                     <tr>
                                                         <td>
                                                             <p>Name: {{propertyData.name}}</p>
+                                                            <p>Owner:{{propertyData.usrId}}</p>
                                                             <p>Bhk: {{propertyData.bhk}}</p>
                                                             <p>Type: {{propertyData.type}}</p>
                                                             <p>Age: {{propertyData.age}}</p>
@@ -96,7 +97,7 @@
                                                     <tr>
                                                         <td>
                                                                 <p>Rent: {{propertyData.rent}}</p>
-                                                                <p>Diposit: {{propertyData.diposit}}</p>
+                                                                <p>Deposit: {{propertyData.deposit}}</p>
                                                                 <p>Available: {{propertyData.available}}</p>
                                                                 <p>PrefTenant: {{propertyData.prefTenant}}</p>
                                                                 <p>Furnish: {{propertyData.furnish}}</p>
@@ -132,6 +133,35 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-file">
+                                                    </span>Reviews</button>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseFive" class="panel-collapse collapse"  >
+                                                <div class="panel-body">
+                                                    <table class="table" *ngFor="let review of propertyData.reviews">
+                                                        <tr>
+                                                            <td  *ngIf="isCheck">
+                                                                    <p>Review: {{review.text}}</p>
+                                                                    <p>user: {{review.usrId}}</p>
+                                                                    
+                                                            </td>
+
+                                                            
+                                                        </tr>
+    
+                                                    </table>
+                                                    <div *ngIf="!isCheck">
+                                                            <p>No reviews yet!</p>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                 </div>
                     </div>
                     </div>

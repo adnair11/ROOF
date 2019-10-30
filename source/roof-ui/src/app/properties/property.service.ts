@@ -9,6 +9,29 @@ export class PropertyService {
   REST_API_URL: string = "http://localhost:8060/properties";
   
   constructor(private http: HttpClient) { }
+
+  reviewProperty(reviewProperty:any){
+    console.log(reviewProperty);
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
+      console.log(headers);
+      this.http.post("http://localhost:8060/review", reviewProperty,{headers: headers})
+        .toPromise()
+        .then((res) => {
+          if(res)
+          console.log("hellp"+res);
+          return res;
+        })
+        .catch((err) => {
+          console.log("Error"+err);
+          return err;
+        });
+
+
+  }
   
 
   createProperty(propertyData: any) {

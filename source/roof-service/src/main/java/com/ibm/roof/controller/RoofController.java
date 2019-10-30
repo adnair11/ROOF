@@ -38,6 +38,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.ibm.roof.model.Booking;
 import com.ibm.roof.model.Property;
 import com.ibm.roof.model.ResponseMessage;
+import com.ibm.roof.model.Review;
 import com.ibm.roof.security.UserRepository;
 import com.ibm.roof.security.Users;
 import com.ibm.roof.service.BookingService;
@@ -119,6 +120,25 @@ public class RoofController {
 		System.out.println("ownerId-"+ownerId);
 		System.out.println("Inside user/properties/book controller");
 		return bookingService.getbyOwnerId(ownerId);
+		
+	}
+	
+	@PostMapping(value="/review",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE})
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> addReview(@RequestBody Review reviews)
+	{
+		System.out.println(reviews);
+		String id= reviews.getPropertyId();
+		System.out.println("Id-"+id);
+		Property p = roofService.getById(id);
+		System.out.println(p);
+		p.setReviews(reviews);
+		roofService.update(p);
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Reviews added successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(reviews.getPropertyId()).toUri();
+		return ResponseEntity.created(location).body(res);
 		
 	}
 	
