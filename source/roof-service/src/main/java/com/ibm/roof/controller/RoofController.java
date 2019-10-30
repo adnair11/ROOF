@@ -98,8 +98,6 @@ public class RoofController {
 //		return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/user/book/{userId}",produces = {MediaType.APPLICATION_JSON_VALUE})
-	public <Booking>List getBookingByUserId(@PathVariable String userId) 
 
 	@GetMapping(value="user/book{userId}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public <Booking>List getBookingByUserId(@PathVariable("userId") String userId) 
