@@ -60,6 +60,7 @@ public class RoofController {
 	@Autowired
 	BookingService bookingService;
 	
+
 	
 	@RequestMapping(value="/upload/{propertyId}", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestBody MultipartFile[] file,@PathVariable String propertyId) throws IOException {
@@ -99,9 +100,13 @@ public class RoofController {
 	
 	@GetMapping(value="/user/book/{userId}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public <Booking>List getBookingByUserId(@PathVariable String userId) 
+
+	@GetMapping(value="user/book{userId}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public <Booking>List getBookingByUserId(@PathVariable("userId") String userId) 
+
 	
 	{
-		System.out.println(userId);
+		System.out.println("userId-"+userId);
 		System.out.println("Inside user/book controller");
 		return bookingService.getbyUserId(userId);
 		
@@ -109,6 +114,15 @@ public class RoofController {
 	
 	
 
+	@GetMapping(value="user/properties/book{ownerId}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public <Booking>List getBookingByOwnerId(@PathVariable("ownerId") String ownerId) 
+	
+	{
+		System.out.println("ownerId-"+ownerId);
+		System.out.println("Inside user/properties/book controller");
+		return bookingService.getbyOwnerId(ownerId);
+		
+	}
 	
 	@PostMapping(value="/check",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")
@@ -179,7 +193,7 @@ public class RoofController {
 		ResponseMessage res;
 		res = new ResponseMessage("Success", new String[] {"Employee Added successfully"});
 		roofService.addProperty(property);
-		System.out.println("inisde put");
+		System.out.println("inisde add");
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(property.get_id()).toUri();
 		return ResponseEntity.created(location).body(res);

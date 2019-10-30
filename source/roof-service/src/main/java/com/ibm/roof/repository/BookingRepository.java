@@ -14,7 +14,8 @@ public interface BookingRepository extends MongoRepository<Booking,Object>{
 	List getByBookingId(String bookingId);
 	List getByPropertyId(String propertyId);
 	
-	List getByUsrId( String usrId);
+	List getByUsrId(String usrId);
+	List getByOwnerId(String ownerId);
 	
 
 }

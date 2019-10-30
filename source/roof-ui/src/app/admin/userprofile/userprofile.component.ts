@@ -13,6 +13,7 @@ export class UserprofileComponent implements OnInit {
   bookingList : any[];
   bookingSubscription : Subscription;
   User:string =sessionStorage.getItem('username');
+  propId:String;
   constructor(private propertyService:PropertyService) { }
 
 
@@ -27,10 +28,12 @@ export class UserprofileComponent implements OnInit {
         .subscribe( (res : any[]) =>{
         console.log(res);
         this.bookingList =res;
+       
     });
 
       })
 
+      
   }
 
 }
