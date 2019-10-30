@@ -69,7 +69,7 @@ isSaved:boolean;
       uploadData.append('file', this.selectedFile[i], this.selectedFile[i].name);
     this.selectedFile.length=0;
     console.log("upload data is "+uploadData);
-    this.http.post('http://localhost:8060/upload/1234', uploadData, {
+    this.http.post('http://localhost:8060/upload', uploadData, {
       reportProgress: true
       // observe: 'events'
     })

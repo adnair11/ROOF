@@ -38,7 +38,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.ibm.roof.model.Booking;
 import com.ibm.roof.model.Property;
 import com.ibm.roof.model.ResponseMessage;
-import com.ibm.roof.model.Review;
 import com.ibm.roof.security.UserRepository;
 import com.ibm.roof.security.Users;
 import com.ibm.roof.service.BookingService;
@@ -61,10 +60,11 @@ public class RoofController {
 	@Autowired
 	BookingService bookingService;
 	
-
+	long propertyId;
+	int noOfImages;
 	
-	@RequestMapping(value="/upload/{propertyId}", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<ResponseMessage> uploadFile(@RequestBody MultipartFile[] file,@PathVariable String propertyId) throws IOException {
+	@RequestMapping(value="/upload", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<ResponseMessage> uploadFile(@RequestBody MultipartFile[] file) throws IOException {
 //		System.out.println("hello piyush i am here");
 //		new File("C:\\piyush\\"+propertyId).mkdir();
 //		
@@ -75,8 +75,10 @@ public class RoofController {
 //		File convertFile = new File("C:\\piyush\\"+propertyId+"\\"+fileCount+".png");
 //		
 //		
+		propertyId=(long) ((Math.random() * ((10000 - 0) + 1)) + 0);
 		System.out.println("file length = "+file.length);
 		System.out.println("hello piyush");
+		noOfImages=file.length;
 		for(MultipartFile uploadedFile : file) {
 			new File("C:\\piyush\\"+propertyId).mkdir();
 			File directory=new File("C:\\piyush\\"+propertyId);
@@ -120,25 +122,6 @@ public class RoofController {
 		System.out.println("ownerId-"+ownerId);
 		System.out.println("Inside user/properties/book controller");
 		return bookingService.getbyOwnerId(ownerId);
-		
-	}
-	
-	@PostMapping(value="/review",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE})
-	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> addReview(@RequestBody Review reviews)
-	{
-		System.out.println(reviews);
-		String id= reviews.getPropertyId();
-		System.out.println("Id-"+id);
-		Property p = roofService.getById(id);
-		System.out.println(p);
-		p.setReviews(reviews);
-		roofService.update(p);
-		ResponseMessage res;
-		res = new ResponseMessage("Success", new String[] {"Reviews added successfully"});
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(reviews.getPropertyId()).toUri();
-		return ResponseEntity.created(location).body(res);
 		
 	}
 	
@@ -209,7 +192,9 @@ public class RoofController {
 	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Property property)
 	{
 		ResponseMessage res;
-		res = new ResponseMessage("Success", new String[] {"Employee Added successfully"});
+		res = new ResponseMessage("Success", new String[] {"Property Added successfully"});
+		property.setImageFolder(propertyId);
+		property.setNoOfImages(noOfImages);
 		roofService.addProperty(property);
 		System.out.println("inisde add");
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

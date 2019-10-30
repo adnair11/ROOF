@@ -1,8 +1,6 @@
 package com.ibm.roof.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -20,8 +18,15 @@ public class Property {
 	@Id
 	String _id;
 	long imageFolder;
+	int noOfImages;
 	
 	
+	public int getNoOfImages() {
+		return noOfImages;
+	}
+	public void setNoOfImages(int noOfImages) {
+		this.noOfImages = noOfImages;
+	}
 	public long getImageFolder() {
 		return imageFolder;
 	}
@@ -66,30 +71,8 @@ public class Property {
 	String internet;
 	
 	
-	//review
-	
-	List <Review> reviews =new ArrayList();
 	
 	
-	
-	
-	
-	public List<Review> getReviews() {
-		return reviews;
-	}
-	public void setReviews(Review review) {
-		this.reviews.add(review);
-		System.out.println(this.reviews);
-	}
-	public String getLift() {
-		return lift;
-	}
-	public String getAc() {
-		return ac;
-	}
-	public String getInternet() {
-		return internet;
-	}
 	public String getType() {
 		return type;
 	}
