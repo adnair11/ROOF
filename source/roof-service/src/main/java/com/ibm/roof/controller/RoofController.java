@@ -1,11 +1,15 @@
 package com.ibm.roof.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import com.ibm.roof.security.*;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.text.ParseException;
@@ -25,8 +29,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ibm.roof.model.Booking;
@@ -54,6 +60,43 @@ public class RoofController {
 	@Autowired
 	BookingService bookingService;
 	
+	
+	@RequestMapping(value="/upload/{propertyId}", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<ResponseMessage> uploadFile(@RequestBody MultipartFile[] file,@PathVariable String propertyId) throws IOException {
+//		System.out.println("hello piyush i am here");
+//		new File("C:\\piyush\\"+propertyId).mkdir();
+//		
+//		File directory=new File("C:\\piyush\\"+propertyId);
+//	    int fileCount=directory.list().length;
+//	    System.out.println("File Count:"+fileCount);
+//	    
+//		File convertFile = new File("C:\\piyush\\"+propertyId+"\\"+fileCount+".png");
+//		
+//		
+		System.out.println("file length = "+file.length);
+		System.out.println("hello piyush");
+		for(MultipartFile uploadedFile : file) {
+			new File("C:\\piyush\\"+propertyId).mkdir();
+			File directory=new File("C:\\piyush\\"+propertyId);
+			int fileCount=directory.list().length;
+			System.out.println("File Count:"+fileCount);
+			System.out.println(uploadedFile.getOriginalFilename());
+			File convertFile = new File("C:\\piyush\\"+propertyId+"\\"+fileCount+".png");
+//            File convertFile = new File(uploadingDir + uploadedFile.getOriginalFilename());
+            uploadedFile.transferTo(convertFile);
+        }
+		
+		
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Image Upload sucessfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(1).toUri();
+		return ResponseEntity.created(location).body(res);
+		
+		
+//		return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
+	}
+	
 	@GetMapping(value="/user/book/{userId}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public <Booking>List getBookingByUserId(@PathVariable String userId) 
 	
@@ -63,6 +106,8 @@ public class RoofController {
 		return bookingService.getbyUserId(userId);
 		
 	}
+	
+	
 
 	
 	@PostMapping(value="/check",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
@@ -271,5 +316,9 @@ public class RoofController {
 	}
 	
 	
+	
+	
+	
+
 
 }

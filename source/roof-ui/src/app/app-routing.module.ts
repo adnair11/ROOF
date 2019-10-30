@@ -13,6 +13,7 @@ import { AuthGaurdService } from './service/auth-gaurd.service';
 import { UserprofileComponent } from './admin/userprofile/userprofile.component';
 import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
 import { BookingComponent } from './booking/booking.component';
+import { UploadComponent } from './upload/upload.component';
 
 
 
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'myprofile', component: UserprofileComponent},
   {path: 'addproperty', component: AddPropertyComponent},
-  {path: 'booking/:_id', component:BookingComponent,canActivate:[AuthGaurdService]}
+  {path: 'booking/:_id', component:BookingComponent,canActivate:[AuthGaurdService]},
+  {path: 'upload', component: UploadComponent},
 
 ];
 
