@@ -18,11 +18,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { UserprofileComponent } from './admin/userprofile/userprofile.component';
 import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
 import { BookingComponent } from './booking/booking.component';
-<<<<<<< HEAD
 import { UploadComponent } from './upload/upload.component';
-=======
 import { PropertyBookedComponent } from './properties/property-booked/property-booked.component';
->>>>>>> 49006aee51a49fe498cfcdcda3f4bca45afb8906
 
 @NgModule({
   declarations: [
@@ -40,11 +37,8 @@ import { PropertyBookedComponent } from './properties/property-booked/property-b
     UserprofileComponent,
     AddpropertyComponent,
     BookingComponent,
-<<<<<<< HEAD
-    UploadComponent
-=======
+    UploadComponent,
     PropertyBookedComponent
->>>>>>> 49006aee51a49fe498cfcdcda3f4bca45afb8906
   ],
   imports: [
     BrowserModule,
