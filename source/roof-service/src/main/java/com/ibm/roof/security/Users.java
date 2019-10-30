@@ -12,7 +12,7 @@ public class Users {
 	String firstName;
 	String lastName;
 	String email;
-	int contact;
+	long  contact;
 	String role;
 	String city;
 	String country;
@@ -24,7 +24,7 @@ public class Users {
 	
 	
 	public Users(ObjectId _id, String name, String password, String firstName, String lastName, String email,
-			int contact, String role, String city, String country, String state, int pincode) {
+		long contact, String role, String city, String country, String state, int pincode) {
 		super();
 		this._id = _id;
 		this.name = name;
@@ -57,10 +57,10 @@ public class Users {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getContact() {
+	public long getContact() {
 		return contact;
 	}
-	public void setContact(int phoneNo) {
+	public void setContact(long phoneNo) {
 		this.contact = phoneNo;
 	}
 	public String getCity() {
