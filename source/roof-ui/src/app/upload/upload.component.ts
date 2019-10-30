@@ -12,33 +12,36 @@ export class UploadComponent {
 
   constructor (private http: HttpClient) {  }
 
-  myFiles:string [] = [];
+  myFiles:File [] = [];
   sMsg:string = '';
-
+  selectedFile:File[]=[];
   ngOnInit () {  }
 
-  getFileDetails (e) {
-    //console.log (e.target.files);
-    for (var i = 0; i < e.target.files.length; i++) { 
-      this.myFiles.push(e.target.files[i]);
-    }
-  }
 
-  uploadFiles () {
-    const file = new FormData();
-    
-    for (var i = 0; i < this.myFiles.length; i++) { 
-      file.append("fileUpload", this.myFiles[i]);
-      console.log(this.myFiles[i]);
+  onFileChanged(event) {
+    // this.selectedFile[] = event.target.files[0];
+    for(let i=0;i<event.target.files.length;i++){
+      this.selectedFile.push(event.target.files[i]);
     }
-    
-    console.log("upload data is "+file);
-    this.http.post('http://localhost:8060/upload/1234', file, {
-      reportProgress: true,
-      observe: 'events'
+
+  }
+  uploadFiles () {
+    const file2 = new FormData();
+    const uploadData = new FormData();
+    for(let i=0;i<this.selectedFile.length;i++)
+      uploadData.append('file', this.selectedFile[i], this.selectedFile[i].name);
+    this.selectedFile.length=0;
+    console.log("upload data is "+uploadData);
+    this.http.post('http://localhost:8060/upload/1234', uploadData, {
+      reportProgress: true
+      // observe: 'events'
     })
       .subscribe(event => {
         // console.log(event); // handle event here
       });
   }
+    
+
+    
   }
+  
