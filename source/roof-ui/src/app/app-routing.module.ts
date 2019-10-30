@@ -13,11 +13,10 @@ import { AuthGaurdService } from './service/auth-gaurd.service';
 import { UserprofileComponent } from './admin/userprofile/userprofile.component';
 import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
 import { BookingComponent } from './booking/booking.component';
+import { UploadComponent } from './upload/upload.component';
 import { PropertyBookedComponent } from './properties/property-booked/property-booked.component';
 import { TeamComponent } from './team/team.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
-
-
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,7 +33,8 @@ const routes: Routes = [
   {path: 'addproperty', component: AddPropertyComponent},
   {path: 'team', component: TeamComponent},
   {path: 'aboutus', component: AboutusComponent},
-  {path: 'booking/:_id', component: BookingComponent, canActivate: [AuthGaurdService]}
+  {path: 'booking/:_id', component: BookingComponent, canActivate: [AuthGaurdService]},
+  {path: 'upload', component: UploadComponent},
 
 ];
 

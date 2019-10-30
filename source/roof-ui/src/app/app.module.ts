@@ -18,6 +18,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { UserprofileComponent } from './admin/userprofile/userprofile.component';
 import { AddpropertyComponent } from './properties/addproperty/addproperty.component';
 import { BookingComponent } from './booking/booking.component';
+import { UploadComponent } from './upload/upload.component';
 import { PropertyBookedComponent } from './properties/property-booked/property-booked.component';
 import { TeamComponent } from './team/team.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
@@ -40,7 +41,9 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     BookingComponent,
     PropertyBookedComponent,
     TeamComponent,
-    AboutusComponent
+    AboutusComponent,
+    UploadComponent,
+    PropertyBookedComponent
   ],
   imports: [
     BrowserModule,
