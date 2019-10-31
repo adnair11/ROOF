@@ -23,7 +23,8 @@ import { PropertyBookedComponent } from './properties/property-booked/property-b
 import { TeamComponent } from './team/team.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ReviewComponent } from './review/review.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ContactComponent } from './contact/contact.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AboutusComponent,
     UploadComponent,
     PropertyBookedComponent,
-    ReviewComponent
+    ReviewComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

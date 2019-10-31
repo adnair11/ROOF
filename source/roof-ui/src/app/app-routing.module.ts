@@ -18,6 +18,7 @@ import { PropertyBookedComponent } from './properties/property-booked/property-b
 import { TeamComponent } from './team/team.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ReviewComponent } from './review/review.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'aboutus', component: AboutusComponent},
   {path: 'booking/:_id', component: BookingComponent, canActivate: [AuthGaurdService]},
   {path: 'upload', component: UploadComponent},
-  {path:'review/:_id',component: ReviewComponent}
+  {path: 'review/:_id', component: ReviewComponent},
+  {path: 'contact', component: ContactComponent},
 
 ];
 
