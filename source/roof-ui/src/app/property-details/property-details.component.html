@@ -1,386 +1,449 @@
 <a routerLink="/properties">
   <<Go back</a> <div class="container">
-      <div class="row">
-          <div class="card col-md-12">
-              <div class="card-body" *ngIf="propertyData">
-                  <div class="row" style="margin-left: 80%">
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editEmployeeModal"
-                      (click)="onEditHandler()" >Edit</button>
-                  <button type="button" class="btn btn-danger" (click)="onDeleteHandler()" >Delete</button></div>
-                  <h1 class="card-title">{{propertyData.name}}</h1>
-                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+    <div class="row">
+      <div class="card col-md-12">
+        <div class="card-body" *ngIf="propertyData">
+          <div class="row" style="margin-left: 80%">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editEmployeeModal"
+              (click)="onEditHandler()">Edit</button>
+            <button type="button" class="btn btn-danger" (click)="onDeleteHandler()">Delete</button></div>
+          <h1 class="card-title">{{propertyData.name}}</h1>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                       card's content.</p> -->
 
 
-                  <div class="container">
-                          <div class="row">
-                                  <div class="col-md-4 mar-cls"></div>
-                                  <div class="col-md-4 mar-cls"></div>
-                                  <div class="col-md-4 mar-cls"></div>
-                          <div class="col-md-6 mar-cls">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-8 mar-cls"></div>
+                  <div class="col-md-8 mar-cls"></div>
+                  <div class="col-md-8 mar-cls"></div>
+                  <div class="col-md-8 mar-cls">
 
-                              <div class="panel-group" id="accordion">
-                                          <div class="panel panel-default">
-                                              <div class="panel-heading">
-                                                  <h4 class="panel-title">
-                                                      <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
-                                                      </span>Property details</button>
-                                                  </h4>
-                                              </div>
-                                              <div id="collapseOne" class="panel-collapse collapse in">
-                                                  <div class="panel-body">
-                                                      <table class="table">
-                                                          <tr>
-                                                              <td>
-                                                                  <p>Name: {{propertyData.name}}</p>
-                                                                  <p>Bhk: {{propertyData.bhk}}</p>
-                                                                  <p>Type: {{propertyData.type}}</p>
-                                                                  <p>Age: {{propertyData.age}}</p>
-                                                                  <p>Floor: {{propertyData.floor}}</p>
-                                                                  <p>TotalFloors: {{propertyData.totalFloors}}</p>
-                                                                  <p>Size: {{propertyData.size}}</p>
-                                                              </td>
-                                                          </tr>
+                    <div class="panel-group" id="accordion">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <button type="button" class="btn btn-dark btn-block" data-toggle="collapse"
+                              data-parent="#accordion" href="#collapseOne"><span
+                                class="glyphicon glyphicon-folder-close">
+                              </span>Property details</button>
+                          </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                          <div class="panel-body">
+                            <table class="table">
+                              <tr>
+                                <td>
+                                  <p>Name: {{propertyData.name}}</p>
+                                  <p>Bhk: {{propertyData.bhk}}</p>
+                                  <p>Type: {{propertyData.type}}</p>
+                                  <p>Age: {{propertyData.age}}</p>
+                                  <p>Floor: {{propertyData.floor}}</p>
+                                  <p>TotalFloors: {{propertyData.totalFloors}}</p>
+                                  <p>Size: {{propertyData.size}}</p>
+                                </td>
+                              </tr>
 
-                                                      </table>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="panel panel-default">
-                                              <div class="panel-heading">
-                                                  <h4 class="panel-title">
-                                                      <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
-                                                      </span>Locality Details</button>
-                                                  </h4>
-                                              </div>
-                                              <div id="collapseTwo" class="panel-collapse collapse">
-                                                  <div class="panel-body">
-                                                      <table class="table">
-                                                          <tr>
-                                                              <td>
-                                                                      <p>City: {{propertyData.city}}</p>
-                                                                      <p>Locality: {{propertyData.locality}}</p>
-                                                              </td>
-                                                          </tr>
-
-                                                      </table>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="panel panel-default">
-                                              <div class="panel-heading">
-                                                  <h4 class="panel-title">
-                                                      <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
-                                                      </span>Rental Details</button>
-                                                  </h4>
-                                              </div>
-                                              <div id="collapseThree" class="panel-collapse collapse">
-                                                  <div class="panel-body">
-                                                      <table class="table">
-                                                          <tr>
-                                                              <td>
-                                                                      <p>Rent: {{propertyData.rent}}</p>
-                                                                      <p>Diposit: {{propertyData.diposit}}</p>
-                                                                      <p>Available: {{propertyData.available}}</p>
-                                                                      <p>PrefTenant: {{propertyData.prefTenant}}</p>
-                                                                      <p>Furnish: {{propertyData.furnish}}</p>
-                                                                      <p>Parking: {{propertyData.parking}}</p>
-                                                              </td>
-                                                          </tr>
-
-                                                      </table>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="panel panel-default">
-                                              <div class="panel-heading">
-                                                  <h4 class="panel-title">
-                                                      <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
-                                                      </span>Amenities</button>
-                                                  </h4>
-                                              </div>
-                                              <div id="collapseFour" class="panel-collapse collapse">
-                                                  <div class="panel-body">
-                                                      <table class="table">
-                                                          <tr>
-                                                              <td>
-                                                                      <p>Bathrooms: {{propertyData.bathrooms}}</p>
-                                                                      <p>Balconies: {{propertyData.balconies}}</p>
-                                                                      <p>Lift: {{propertyData.lift}}</p>
-                                                                      <p>AC: {{propertyData.ac}}</p>
-                                                                      <p>Internet: {{propertyData.internet}}</p>
-                                                              </td>
-                                                          </tr>
-
-                                                      </table>
-                                                  </div>
-                                              </div>
-                                          </div>
-
-                                          <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h4 class="panel-title">
-                                                        <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-file">
-                                                        </span>Reviews</button>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseFive" class="panel-collapse collapse" *ngFor="let review of propertyData.reviews">
-                                                    <div class="panel-body">
-                                                        <table class="table">
-                                                            <tr>
-                                                                <td>
-                                                                        <p>Review: {{review.text}}</p>
-                                                                        <p>user: {{review.usrId}}</p>
-                                                                        
-                                                                </td>
-                                                            </tr>
-        
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                      </div>
+                            </table>
                           </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <button type="button" class="btn btn-dark btn-block" data-toggle="collapse"
+                              data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                              </span>Locality Details</button>
+                          </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <table class="table">
+                              <tr>
+                                <td>
+                                  <p>City: {{propertyData.city}}</p>
+                                  <p>Locality: {{propertyData.locality}}</p>
+                                </td>
+                              </tr>
+
+                            </table>
                           </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <button type="button" class="btn btn-dark btn-block" data-toggle="collapse"
+                              data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                              </span>Rental Details</button>
+                          </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <table class="table">
+                              <tr>
+                                <td>
+                                  <p>Rent: {{propertyData.rent}}</p>
+                                  <p>Diposit: {{propertyData.diposit}}</p>
+                                  <p>Available: {{propertyData.available}}</p>
+                                  <p>PrefTenant: {{propertyData.prefTenant}}</p>
+                                  <p>Furnish: {{propertyData.furnish}}</p>
+                                  <p>Parking: {{propertyData.parking}}</p>
+                                </td>
+                              </tr>
+
+                            </table>
                           </div>
-                  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editEmployeeModal"
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <button type="button" class="btn btn-dark btn-block" data-toggle="collapse"
+                              data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                              </span>Amenities</button>
+                          </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <table class="table">
+                              <tr>
+                                <td>
+                                  <p>Bathrooms: {{propertyData.bathrooms}}</p>
+                                  <p>Balconies: {{propertyData.balconies}}</p>
+                                  <p>Lift: {{propertyData.lift}}</p>
+                                  <p>AC: {{propertyData.ac}}</p>
+                                  <p>Internet: {{propertyData.internet}}</p>
+                                </td>
+                              </tr>
+
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <button type="button" class="btn btn-dark btn-block" data-toggle="collapse"
+                              data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-file">
+                              </span>Reviews</button>
+                          </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse"
+                          *ngFor="let review of propertyData.reviews">
+                          <div class="panel-body">
+                            <table class="table">
+                              <tr>
+                                <td>
+                                  <p>Review: {{review.text}}</p>
+                                  <p>user: {{review.usrId}}</p>
+
+                                </td>
+                              </tr>
+
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editEmployeeModal"
                       (click)="onEditHandler()">Edit</button>
                   <button type="button" class="btn btn-danger">Delete</button> -->
 
-                  <!-- Modal -->
-                  <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog"
-                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Update Employee</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                  </button>
-                              </div>
-                              <div class="modal-body" *ngIf="duplicatePropertyData">
-                                  <form ngNativeValidate #f="ngForm" (ngSubmit)="onUpdateHandler(f)">
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="name"
-                                                  placeholder="Enter name" [(ngModel)]="duplicatePropertyData.name">
-                                          </div>
-                                      </div>
+                <!-- Modal -->
+                <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Employee</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body" *ngIf="duplicatePropertyData">
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="onUpdateHandler(f)">
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="name" placeholder="Enter name"
+                                [(ngModel)]="duplicatePropertyData.name">
+                            </div>
+                          </div>
 
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Age</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="age"
-                                                  placeholder="Enter Age" [(ngModel)]="duplicatePropertyData.age">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Bhk</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="bhk"
-                                                  placeholder="Enter bhk" [(ngModel)]="duplicatePropertyData.bhk">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Type</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="type"
-                                                  placeholder="Enter type" [(ngModel)]="duplicatePropertyData.type">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Floor</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="floor"
-                                                  placeholder="Enter floor" [(ngModel)]="duplicatePropertyData.floor">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Total
-                                              Floors</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="totalFloors"
-                                                  placeholder="Enter totalFloors"
-                                                  [(ngModel)]="duplicatePropertyData.totalFloors">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Size</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="size"
-                                                  placeholder="Enter size" [(ngModel)]="duplicatePropertyData.size">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">City</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="city"
-                                                  placeholder="Enter city" [(ngModel)]="duplicatePropertyData.city">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Locality</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="locality"
-                                                  placeholder="Enter locality"
-                                                  [(ngModel)]="duplicatePropertyData.locality">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Rent</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="rent"
-                                                  placeholder="Enter rent" [(ngModel)]="duplicatePropertyData.rent">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Deposit</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="deposit"
-                                                  placeholder="Enter deposit"
-                                                  [(ngModel)]="duplicatePropertyData.deposit">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Date</label>
-                                          <div class="col-sm-9">
-                                              <input type="text" class="form-control" name="available"
-                                                  placeholder="Enter available"
-                                                  [(ngModel)]="duplicatePropertyData.available">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">PrefTenant</label>
-                                          <div class="col-sm-9">
-                                              <!-- <input type="text" class="form-control" name="prefTenant"
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Age</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="age" placeholder="Enter Age"
+                                [(ngModel)]="duplicatePropertyData.age">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Bhk</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="bhk" placeholder="Enter bhk"
+                                [(ngModel)]="duplicatePropertyData.bhk">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Type</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="type" placeholder="Enter type"
+                                [(ngModel)]="duplicatePropertyData.type">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Floor</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="floor" placeholder="Enter floor"
+                                [(ngModel)]="duplicatePropertyData.floor">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Total
+                              Floors</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="totalFloors" placeholder="Enter totalFloors"
+                                [(ngModel)]="duplicatePropertyData.totalFloors">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Size</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="size" placeholder="Enter size"
+                                [(ngModel)]="duplicatePropertyData.size">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">City</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="city" placeholder="Enter city"
+                                [(ngModel)]="duplicatePropertyData.city">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Locality</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="locality" placeholder="Enter locality"
+                                [(ngModel)]="duplicatePropertyData.locality">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Rent</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="rent" placeholder="Enter rent"
+                                [(ngModel)]="duplicatePropertyData.rent">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Deposit</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="deposit" placeholder="Enter deposit"
+                                [(ngModel)]="duplicatePropertyData.deposit">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Date</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" name="available" placeholder="Enter available"
+                                [(ngModel)]="duplicatePropertyData.available">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">PrefTenant</label>
+                            <div class="col-sm-9">
+                              <!-- <input type="text" class="form-control" name="prefTenant"
                                                   placeholder="Enter prefTenant"
                                                   [(ngModel)]="duplicatePropertyData.prefTenant" > -->
-                                              <select class="form-control" name="prefTenant"
-                                                  placeholder="Enter prefTenant"
-                                                  [(ngModel)]="duplicatePropertyData.prefTenant">
-                                                  <option>Family</option>
-                                                  <option>All</option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Furnish</label>
-                                          <div class="col-sm-9">
-                                              <!-- <input type="text" class="form-control" name="furnish"
+                              <select class="form-control" name="prefTenant" placeholder="Enter prefTenant"
+                                [(ngModel)]="duplicatePropertyData.prefTenant">
+                                <option>Family</option>
+                                <option>All</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Furnish</label>
+                            <div class="col-sm-9">
+                              <!-- <input type="text" class="form-control" name="furnish"
                                                   placeholder="Enter furnish"
                                                   [(ngModel)]="duplicatePropertyData.furnish" >  -->
-                                              <select class="form-control" name="furnish" placeholder="Enter furnish"
-                                                  [(ngModel)]="duplicatePropertyData.furnish">
-                                                  <option>yes</option>
-                                                  <option>no</option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Parking</label>
-                                          <div class="col-sm-9">
-                                              <!-- <input type="text" class="form-control" name="parking"
+                              <select class="form-control" name="furnish" placeholder="Enter furnish"
+                                [(ngModel)]="duplicatePropertyData.furnish">
+                                <option>yes</option>
+                                <option>no</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Parking</label>
+                            <div class="col-sm-9">
+                              <!-- <input type="text" class="form-control" name="parking"
                                                   placeholder="Enter parking"
                                                   [(ngModel)]="duplicatePropertyData.parking" >-->
-                                              <select class="form-control" name="parking" placeholder="Enter parking"
-                                                  [(ngModel)]="duplicatePropertyData.parking">
-                                                  <option>yes</option>
-                                                  <option>no</option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Bathrooms</label>
-                                          <div class="col-sm-9">
-                                              <!-- <input type="text" class="form-control" name="bathrooms"
+                              <select class="form-control" name="parking" placeholder="Enter parking"
+                                [(ngModel)]="duplicatePropertyData.parking">
+                                <option>yes</option>
+                                <option>no</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Bathrooms</label>
+                            <div class="col-sm-9">
+                              <!-- <input type="text" class="form-control" name="bathrooms"
                                                   placeholder="Enter bathrooms"
                                                   [(ngModel)]="duplicatePropertyData.bathrooms" > -->
-                                              <select class="form-control" name="bathrooms"
-                                                  placeholder="Enter bathrooms"
-                                                  [(ngModel)]="duplicatePropertyData.bathrooms">
-                                                  <option>yes</option>
-                                                  <option>no</option>
-                                              </select>
-                                          </div>
-                                      </div>
+                              <select class="form-control" name="bathrooms" placeholder="Enter bathrooms"
+                                [(ngModel)]="duplicatePropertyData.bathrooms">
+                                <option>yes</option>
+                                <option>no</option>
+                              </select>
+                            </div>
+                          </div>
 
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Balconies</label>
-                                          <div class="col-sm-9">
-                                              <!-- <input type="text" class="form-control" name="balconies"
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Balconies</label>
+                            <div class="col-sm-9">
+                              <!-- <input type="text" class="form-control" name="balconies"
                                                   placeholder="Enter balconies"
                                                   [(ngModel)]="duplicatePropertyData.balconies" > -->
-                                              <select class="form-control" name="balconies"
-                                                  placeholder="Enter balconies"
-                                                  [(ngModel)]="duplicatePropertyData.balconies">
-                                                  <option>yes</option>
-                                                  <option>no</option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Lift</label>
-                                          <div class="col-sm-9">
-                                              <!-- <input type="text" class="form-control" name="lift"
+                              <select class="form-control" name="balconies" placeholder="Enter balconies"
+                                [(ngModel)]="duplicatePropertyData.balconies">
+                                <option>yes</option>
+                                <option>no</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Lift</label>
+                            <div class="col-sm-9">
+                              <!-- <input type="text" class="form-control" name="lift"
                                                   placeholder="Enter lift"
                                                   [(ngModel)]="duplicatePropertyData.lift" > -->
 
-                                              <select class="form-control" name="lift" placeholder="Enter lift"
-                                                  [(ngModel)]="duplicatePropertyData.lift">
-                                                  <option>yes</option>
-                                                  <option>no</option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Ac</label>
-                                          <div class="col-sm-9">
-                                              <!-- <input type="text" class="form-control" name="ac"
+                              <select class="form-control" name="lift" placeholder="Enter lift"
+                                [(ngModel)]="duplicatePropertyData.lift">
+                                <option>yes</option>
+                                <option>no</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Ac</label>
+                            <div class="col-sm-9">
+                              <!-- <input type="text" class="form-control" name="ac"
                                                   placeholder="Enter ac"
                                                   [(ngModel)]="duplicatePropertyData.ac" > -->
 
-                                              <select class="form-control" name="ac" placeholder="Enter ac"
-                                                  [(ngModel)]="duplicatePropertyData.ac">
-                                                  <option>yes</option>
-                                                  <option>no</option>
-                                              </select>
+                              <select class="form-control" name="ac" placeholder="Enter ac"
+                                [(ngModel)]="duplicatePropertyData.ac">
+                                <option>yes</option>
+                                <option>no</option>
+                              </select>
 
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="staticEmail" class="col-sm-3 col-form-label">Internet</label>
-                                          <div class="col-sm-9">
-                                              <!-- <input type="text" class="form-control" name="internet"
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Internet</label>
+                            <div class="col-sm-9">
+                              <!-- <input type="text" class="form-control" name="internet"
                                                   placeholder="Enter internet"
                                                   [(ngModel)]="duplicatePropertyData.internet" > -->
 
-                                              <select class="form-control" name="internet"
-                                                  placeholder="Enter internet"
-                                                  [(ngModel)]="duplicatePropertyData.internet">
-                                                  <option>yes</option>
-                                                  <option>no</option>
-                                              </select>
-                                          </div>
-                                      </div>
+                              <select class="form-control" name="internet" placeholder="Enter internet"
+                                [(ngModel)]="duplicatePropertyData.internet">
+                                <option>yes</option>
+                                <option>no</option>
+                              </select>
+                            </div>
+                          </div>
 
-                                      <div class="alert alert-success">
-                                          Updated successfully!
-                                      </div>
+                          <div class="alert alert-success">
+                            Updated successfully!
+                          </div>
 
-                                      <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary"
-                                              data-dismiss="modal">Close</button>
-                                          <button type="submit" class="btn btn-primary">Save changes</button>
-                                      </div>
-                                  </form>
-                              </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
+                      </div>
 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+
+                <div id="demo" class="carousel slide" data-ride="carousel">
+
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                      <li data-target="#demo" data-slide-to="0" class="active"></li>
+                      <li data-target="#demo" data-slide-to="1"></li>
+                      <li data-target="#demo" data-slide-to="2"></li>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+
+                      <div class="carousel-item active"
+                        style="background: url(http://www.coolhdwallpapers.net/gallery/interior-home-design-wallpaper.jpg);height:300px;width: 500px; background-size: cover;">
+                        <div class="container">
+
+                          <div id="searchBox" style="width: 100%;">
+                              <!-- <h1>We’ll help you find a place you’ll love.</h1> -->
+                         </div>
+                          <div class="carousel-caption">
+                            <h3>Providing you the Best</h3>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item"
+                        style="background: url(https://www.elsetge.cat/myimg/f/200-2002568_home-screen-wallpaper-phone-best-inside-house.jpg);height:300px;width: 500px;background-size: cover;">
+                        <div class="container">
+                            <div id="searchBox" style="width: 100%;">
+
+
+                            </div>
+                            <div class="carousel-caption">
+                              <h3>Providing you the Best</h3>
+                            </div>
                           </div>
                       </div>
-                  </div>
 
+                      <div class="carousel-item"
+                        style="background: url(https://media.architecturaldigest.in/wp-content/uploads/2019/10/Noida-Studio-Wood-featured-image.jpg);height: 300px;width: 500px;background-size: cover;" >
+                        <div class="container">
+
+                            <div class="carousel-caption">
+                              <h3>Providing you the Best</h3>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+
+
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                      <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                      <span class="carousel-control-next-icon"></span>
+                    </a>
+                  </div>
               </div>
+            </div>
+
           </div>
-      </div>
+        </div>
       </div>
