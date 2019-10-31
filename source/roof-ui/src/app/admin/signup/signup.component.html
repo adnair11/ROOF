@@ -1,168 +1,168 @@
 <body>
-  <h2 class="text-center text-blue pt-6">REGISTER HERE</h2>
-  <div id="form-wrapper" style="max-width:1000px; margin:auto;">
+    <h2 class="text-center text-blue pt-6">REGISTER HERE</h2>
+    <div id="form-wrapper" style="max-width:1000px; margin:auto;">
 
-    <div id="login">
+      <div id="login">
 
-      <div class="container">
-        <div id="login-row" class="row justify-content-center align-items-center">
-          <div id="login-column" class="col-md-8">
-            <div id="login-box" class="col-md-12">
-              <!-- <div class="card-header"> -->
-              <!-- {{pageTitle}} -->
-              <!-- </div> -->
+        <div class="container">
+          <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-8">
+              <div id="login-box" class="col-md-12">
+                <!-- <div class="card-header"> -->
+                <!-- {{pageTitle}} -->
+                <!-- </div> -->
 
-              <div class="card-body">
-                <form [formGroup]="profileForm" >
-                    <!-- (ngSubmit)="saveProfile()" -->
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="username">
-                      <h5>Username</h5>
-                    </label>
-                    <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="username" type="text" placeholder="Name (required)"
-                        formControlName="name" required />
-</div>
-                  </div>
-
-
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="firstname">
-                      <h5>First Name</h5>
-                    </label>
-                    <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="firstname" type="text"
-                        placeholder="firstname (required)" formControlName="firstName"
-
-                        required/>
-
-                        <div class="invalid-feedback">
-                          <div>First Name is required.</div>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="lastname">
-                      <h5>Last Name</h5>
-                    </label>
-
-                    <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="lastname" type="text" placeholder="LastName"
-                        formControlName="lastName" required />
-
-                    </div>
-                  </div>
-
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="email">
-                      <h5>E-mail</h5>
-                    </label>
-
-                    <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="email" type="email" placeholder="Email"
-                        formControlName="email" required />
-
-                    </div>
-                  </div>
-
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="city">
-                      <h5>City</h5>
-                    </label>
-
-                    <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="city" type="text" placeholder="city"
-                        formControlName="city" required />
-
-                    </div>
-                  </div>
-
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="state">
-                      <h5>State</h5>
-                    </label>
-
-                    <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="state" type="text" placeholder="State"
-                        formControlName="state" required/>
-
-                    </div>
-                  </div>
-
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="country">
-                      <h5>Country</h5>
-                    </label>
-
-                    <div class="col-md-8">
-                      <input type='text' style="width: 300px" class="form-control" id="country"  placeholder="Country"
-                        formControlName="country" required/>
-
-                    </div>
-                  </div>
-
-
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="Pincode">
-                      <h5>Pincode</h5>
-                    </label>
-
-                    <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="pincode" type="number" placeholder="Pincode"
-                        formControlName="pincode" [(ngModel)]="value" (change)='checkNum()' required />
-
-                    </div>
-                  </div>
-
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="Contact">
-                      <h5>Contact</h5>
-                    </label>
-
-                    <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="contact" type="number"
-                        placeholder="Contact No." formControlName="contact" [(ngModel)]="value" required />
-
-                    </div>
-                  </div>
-
-                  <div class="form-group row mb-2">
-                    <label class="col-md-3 col-form-label" for="password">
-                      <h5>Password</h5>
-                    </label>
-
-                    <div class="col-md-8">
-                      <input style="width: 300px" class="form-control" id="password" type="password"
-                        placeholder="Password" formControlName="password" required />
+                <div class="card-body">
+                  <form [formGroup]="profileForm" >
+                      <!-- (ngSubmit)="saveProfile()" -->
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="username">
+                        <h5>Email</h5>
+                      </label>
+                      <div class="col-md-8">
+                        <input style="width: 300px" class="form-control" id="username" type="text" placeholder="Name (required)"
+                          formControlName="name" required />
+  </div>
                     </div>
 
-                  </div>
-                  <br>
-                  <!-- <br> -->
-                  <div class="form-group row mb-2">
-                    <div class="offset-md-2 col-md-6">
-                      <button class="btn btn-primary mr-3" type="submit"
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="firstname">
+                        <h5>First Name</h5>
+                      </label>
+                      <div class="col-md-8">
+                        <input style="width: 300px" class="form-control" id="firstname" type="text"
+                          placeholder="firstname (required)" formControlName="firstName"
+
+                          required/>
+
+                          <div class="invalid-feedback">
+                            <div>First Name is required.</div>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="lastname">
+                        <h5>Last Name</h5>
+                      </label>
+
+                      <div class="col-md-8">
+                        <input style="width: 300px" class="form-control" id="lastname" type="text" placeholder="LastName"
+                          formControlName="lastName" required />
+
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="email">
+                        <h5> Alternate E-mail</h5>
+                      </label>
+
+                      <div class="col-md-8">
+                        <input style="width: 300px" class="form-control" id="email" type="email" placeholder="Email"
+                          formControlName="email" required />
+
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="city">
+                        <h5>City</h5>
+                      </label>
+
+                      <div class="col-md-8">
+                        <input style="width: 300px" class="form-control" id="city" type="text" placeholder="city"
+                          formControlName="city" required />
+
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="state">
+                        <h5>State</h5>
+                      </label>
+
+                      <div class="col-md-8">
+                        <input style="width: 300px" class="form-control" id="state" type="text" placeholder="State"
+                          formControlName="state" required/>
+
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="country">
+                        <h5>Country</h5>
+                      </label>
+
+                      <div class="col-md-8">
+                        <input type='text' style="width: 300px" class="form-control" id="country"  placeholder="Country"
+                          formControlName="country" required/>
+
+                      </div>
+                    </div>
+
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="Pincode">
+                        <h5>Pincode</h5>
+                      </label>
+
+                      <div class="col-md-8">
+                        <input style="width: 300px" class="form-control" id="pincode" type="number" placeholder="Pincode"
+                          formControlName="pincode" [(ngModel)]="value" (change)='checkNum()' required />
+
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="Contact">
+                        <h5>Contact</h5>
+                      </label>
+
+                      <div class="col-md-8">
+                        <input style="width: 300px" class="form-control" id="contact" type="number"
+                          placeholder="Contact No." formControlName="contact" [(ngModel)]="value" required />
+
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-3 col-form-label" for="password">
+                        <h5>Password</h5>
+                      </label>
+
+                      <div class="col-md-8">
+                        <input style="width: 300px" class="form-control" id="password" type="password"
+                          placeholder="Password" formControlName="password" required />
+                      </div>
+
+                    </div>
+                    <br>
+                    <!-- <br> -->
+                    <div class="form-group row mb-2">
+                      <div class="offset-md-2 col-md-6">
+                        <button class="btn btn-primary mr-3" type="submit"
                         [title]="profileForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-                        disabled='!profileForm.valid' (click)='saveProfile()'>
-                        Save
-                      </button>
+                        [disabled]="!profileForm.valid"   (click)='saveProfile()'>
+                          Save
+                        </button>
 
-                      <button class="btn btn-outline-secondary mr-3" type="button" title="Cancel your edits"
-                        routerLink="/loginsignup">
-                        Cancel
-                      </button>
+                        <button class="btn btn-outline-secondary mr-3" type="button" title="Cancel your edits"
+                          routerLink="/loginsignup">
+                          Cancel
+                        </button>
 
+                      </div>
                     </div>
-                  </div>
-                </form>
-              </div>
+                  </form>
+                </div>
 
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</body>
+    </div>
+  </body>

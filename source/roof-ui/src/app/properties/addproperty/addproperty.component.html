@@ -3,29 +3,33 @@
     <div class="col-md-3" style="height: 600px;">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="property-details-tab" data-toggle="tab" href="#property-details" role="tab"
+          <a class="nav-link active" id="property-details-tab" data-toggle="tab" href="#property-details"  role="tab"
             aria-controls="property-details" aria-selected="true">Property Details</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="locality-tab" data-toggle="tab" href="#locality-details" role="tab"
+          <a class="nav-link" id="locality-tab" data-toggle="tab" href="#locality-details"  role="tab"
             aria-controls="locality-details" aria-selected="false">Locality Details</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="rental-tab" data-toggle="tab" href="#rental-details" role="tab"
             aria-controls="rental-details" aria-selected="false">Rental Details</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" id="gallery-tab" data-toggle="tab" href="#gallery" role="tab" aria-controls="gallery"
             aria-selected="false">Gallery</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" id="amenities-tab" data-toggle="tab" href="#amenities" role="tab"
             aria-controls="directives" aria-selected="false">Amenities</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" id="gallery-tab" data-toggle="tab" href="#gallery" role="tab" aria-controls="gallery"
+              aria-selected="false">Gallery</a>
+          </li>
+        <!-- <li class="nav-item">
           <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule"
             aria-selected="false">Schedule</a>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="col-md-9" style="height: 600px;">
@@ -129,7 +133,7 @@
 
           </div>
           <!-- ------------------------locality details------------------------------------------- -->
-          <div class="tab-pane fade" id="locality-details" role="tabpanel" aria-labelledby="locality-details-tab"
+          <div class="tab-pane fade show active " id="locality-details" role="tabpanel" aria-labelledby="locality-details-tab"
             *ngIf="!locality">
             <div class="contact-form">
                 <h3>LOCALITY DETAILS</h3><hr><br>
@@ -162,7 +166,7 @@
 
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-20">
-                  <a class="btn btn-default" routerLink="/rental-details" role="button" (click)="onClickHandler2()">Save
+                  <a class="btn btn-default" routerLink="/rental-details" href="#rental-details" role="button" (click)="onClickHandler2()">Save
                     and continue</a>
                 </div>
               </div>
@@ -170,7 +174,7 @@
             </div>
           </div>
           <!-- ------------------------rental details------------------------------------------- -->
-          <div class="tab-pane fade" id="rental-details" role="tabpanel" aria-labelledby="rental-details-tab"
+          <div class="tab-pane show active " id="rental-details" role="tabpanel" aria-labelledby="rental-details-tab"
             *ngIf="!rental">
             <div class="contact-form">
                 <h3>RENTAL DETAILS</h3><hr><br>
@@ -252,11 +256,19 @@
             </div>
           </div>
           <!-- ------------------------gallery------------------------------------------- -->
-          <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
-              <h3>GALLERY</h3><hr><br><br>
-          </div>
+          <!-- <div class="tab-pane fade show active" id="gallery" role="tabpanel" aria-labelledby="gallery-tab" *ngIf="!gallery">
+              <div class="contact-form">
+            <h3>GALLERY</h3><hr><br><br>
+              <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-20">
+                    <a class="btn btn-default" routerLink="/amenities" role="button" (click)="onClickHandler3()">Save and
+                      continue</a>
+                  </div>
+                </div>
+                </div>
+          </div> -->
           <!-- ------------------------amenities------------------------------------------- -->
-          <div class="tab-pane fade" id="amenities" role="tabpanel" aria-labelledby="amenities-tab" *ngIf="!amenities">
+          <div class="tab-pane fade show active" id="amenities" role="tabpanel" aria-labelledby="amenities-tab" *ngIf="!amenities">
             <div class="contact-form">
                 <h3>AMENITIES</h3><hr><br>
               <div class="row">
@@ -325,16 +337,33 @@
                 </div>
               </div>
               <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-20">
-                  <button type="submit" class="btn btn-default" id="savebtn">Submit</button>
+                <!-- <div class="col-sm-offset-2 col-sm-20">
+                  <button type="submit" class="btn btn-default" id="savebtn">Submit</button> -->
+                  <a class="btn btn-default" routerLink="/gallery" role="button" (click)="onClickHandler4()">Save and
+                    continue</a>
                 </div>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
+            <!-- ------------------------gallery------------------------------------------- -->
+            <div class="tab-pane fade show active" id="gallery" role="tabpanel" aria-labelledby="gallery-tab" *ngIf="!gallery">
+                <div class="contact-form">
+              <h3>GALLERY</h3><hr><br><br>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-20">
+                      <!-- <a class="btn btn-default" routerLink="/amenities" role="button" (click)="onClickHandler3()">Save and
+                        continue</a> -->
+
+                        <button type="submit" class="btn btn-default" id="savebtn">Submit</button>
+                    </div>
+                  </div>
+                  </div>
+            </div>
+            
           <!-- ------------------------schedule------------------------------------------- -->
-          <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
+          <!-- <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
               <h3>SCHEDULE</h3><hr><br>
-          </div>
+          </div> -->
         </form>
       </div>
 

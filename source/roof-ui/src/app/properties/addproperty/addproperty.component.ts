@@ -14,6 +14,7 @@ rental:any=true;
 property:any=false;
 locality:any=true;
 amenities:any=true;
+gallery:any=true;
 propertyForm:FormGroup;
 isSaved:boolean;
 
@@ -64,10 +65,19 @@ isSaved:boolean;
     this.property = true;
     this.locality = true;
 }
+onClickHandler4() {
+  this.gallery=false;
+  this.rental = true;
+  this.property = true;
+  this.locality = true;
+  this.amenities = true;
+}
+
 onClickHandler3() {
   this.rental = true;
   this.property = true;
   this.locality = true;
+  this.gallery=true;
   this.amenities = false;
 }
 }

@@ -10,7 +10,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   authenticate(username, password) {
-
+    console.log("Paras");
     const headers = new HttpHeaders({
 
       'Content-Type':  'application/json',
@@ -18,20 +18,25 @@ export class AuthenticationService {
       sessionStorage.setItem('usernameandpassword', username+':'+password)
 
     console.log("pass"+password);
-    this.http.post(this.REST_API_URL, {}, { headers: headers })
-      .toPromise()
-      .then((res) => {
+    this.http.post(this.REST_API_URL, {}, { headers: headers }).subscribe((res) => {
         let user = JSON.stringify(res);
         let userObj = JSON.parse(user);
         console.log("response: " + JSON.stringify(res));
         console.log("username: " + userObj.principal.username);
         sessionStorage.setItem('username', userObj.principal.username);
-        return res;
-      })
-      .catch((err) => {
-        console.log(err);
-        return err;
+
+        
+        console.log(res);
+       if(res)
+       {
+         return true;
+       }
+       return false;
       });
+      // .catch((err) => {
+      //   console.log(err);
+      //   return err;
+      // });
 
     // if (username === "piyush" && password === "pass") {
     //   sessionStorage.setItem('username', username)
