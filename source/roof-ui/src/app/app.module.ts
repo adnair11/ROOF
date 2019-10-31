@@ -22,6 +22,7 @@ import { UploadComponent } from './upload/upload.component';
 import { PropertyBookedComponent } from './properties/property-booked/property-booked.component';
 import { TeamComponent } from './team/team.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     TeamComponent,
     AboutusComponent,
     UploadComponent,
-    PropertyBookedComponent
+    PropertyBookedComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

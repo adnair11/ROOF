@@ -17,6 +17,7 @@ import { UploadComponent } from './upload/upload.component';
 import { PropertyBookedComponent } from './properties/property-booked/property-booked.component';
 import { TeamComponent } from './team/team.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'aboutus', component: AboutusComponent},
   {path: 'booking/:_id', component: BookingComponent, canActivate: [AuthGaurdService]},
   {path: 'upload', component: UploadComponent},
+  {path:'review/:_id',component: ReviewComponent}
 
 ];
 

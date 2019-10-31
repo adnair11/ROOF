@@ -116,6 +116,29 @@
                                                   </div>
                                               </div>
                                           </div>
+
+                                          <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <button  type="button" class="btn btn-dark btn-block" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-file">
+                                                        </span>Reviews</button>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseFive" class="panel-collapse collapse" *ngFor="let review of propertyData.reviews">
+                                                    <div class="panel-body">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td>
+                                                                        <p>Review: {{review.text}}</p>
+                                                                        <p>user: {{review.usrId}}</p>
+                                                                        
+                                                                </td>
+                                                            </tr>
+        
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                       </div>
                           </div>
                           </div>

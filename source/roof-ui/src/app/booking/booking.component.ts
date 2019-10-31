@@ -16,7 +16,7 @@ export class BookingComponent implements OnInit {
   propertyData:any;
   ownerId:String;
   isNotAvail:boolean;
-  
+  isCheck:boolean=false;
   isAvail:boolean;
   constructor(private propertyService:PropertyService ,private route: ActivatedRoute) {
     this.bookForm=new FormGroup({
@@ -39,7 +39,11 @@ export class BookingComponent implements OnInit {
         console.log(res);
         this.propertyData = res;
         console.log(this.propertyData.usrId);
-        
+        if(this.propertyData.reviews[0]!=null)
+         this.isCheck=true;
+        else
+        this.isCheck=false;
+        console.log(this.isCheck)
       })
 
   }

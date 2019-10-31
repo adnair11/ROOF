@@ -17,8 +17,22 @@ public class Property {
 	//Auto Generated Mongodb property id
 	@Id
 	String _id;
+	long imageFolder;
+	int noOfImages;
 	
 	
+	public int getNoOfImages() {
+		return noOfImages;
+	}
+	public void setNoOfImages(int noOfImages) {
+		this.noOfImages = noOfImages;
+	}
+	public long getImageFolder() {
+		return imageFolder;
+	}
+	public void setImageFolder(long imageFolder) {
+		this.imageFolder = imageFolder;
+	}
 	//userid of current user
 	String usrId;
 	

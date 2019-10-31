@@ -12,16 +12,21 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.ibm.roof.email.EmailCfg;
 import com.ibm.roof.model.Booking;
 import com.ibm.roof.model.Property;
 import com.ibm.roof.model.ResponseMessage;
+import com.ibm.roof.model.Review;
 import com.ibm.roof.security.Users;
 import com.ibm.roof.service.BookingService;
 import com.ibm.roof.service.RoofService;
@@ -32,6 +37,14 @@ public class BookingController {
 	
 	@Autowired
 	BookingService bookingService;
+	@Autowired
+	  private EmailCfg emailCfg;
+	
+	@Autowired
+	JavaMailSender mailSender;
+	
+	@Autowired
+	RoofService roofService;
 	
 //	@PostMapping(value="/check",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 //	@CrossOrigin("*")
@@ -89,6 +102,20 @@ public class BookingController {
 		ResponseMessage res;
 		res = new ResponseMessage("Success", new String[] {"Booked successfully"});
 		bookingService.bookProperty(booking);
+		 SimpleMailMessage mailMessage = new SimpleMailMessage();
+	        
+	        mailMessage.setFrom("roofhomerentals@gmail.com");
+	        mailMessage.setTo(booking.getUsrId());
+	        mailMessage.setSubject("Booking Confirmed");
+	        mailMessage.setText("Your home booking was successful\n Your booking id is " + booking.getPropertyId()+ "\n Owner name :" +booking.getOwnerId()
+	        +"\n FROM " + booking.getFromDate() + "\n TO " + booking.getToDate() +"\n Thank you for booking with us!");
+	        
+	        mailSender.send(mailMessage);
+	        
+	        System.out.println("Email sent successfully!");
+			
+		
+		
 		System.out.println("inisde booking controller");
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(booking.getBookingId()).toUri();
@@ -140,5 +167,4 @@ public class BookingController {
 		return bookingService.getByPropertyId("124443");
 	}
 	
-
 }

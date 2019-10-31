@@ -60,10 +60,11 @@ public class RoofController {
 	@Autowired
 	BookingService bookingService;
 	
-
+	long propertyId;
+	int noOfImages;
 	
-	@RequestMapping(value="/upload/{propertyId}", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<ResponseMessage> uploadFile(@RequestBody MultipartFile[] file,@PathVariable String propertyId) throws IOException {
+	@RequestMapping(value="/upload", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<ResponseMessage> uploadFile(@RequestBody MultipartFile[] file) throws IOException {
 //		System.out.println("hello piyush i am here");
 //		new File("C:\\piyush\\"+propertyId).mkdir();
 //		
@@ -74,8 +75,10 @@ public class RoofController {
 //		File convertFile = new File("C:\\piyush\\"+propertyId+"\\"+fileCount+".png");
 //		
 //		
+		propertyId=(long) ((Math.random() * ((10000 - 0) + 1)) + 0);
 		System.out.println("file length = "+file.length);
 		System.out.println("hello piyush");
+		noOfImages=file.length;
 		for(MultipartFile uploadedFile : file) {
 			new File("C:\\piyush\\"+propertyId).mkdir();
 			File directory=new File("C:\\piyush\\"+propertyId);
@@ -189,7 +192,9 @@ public class RoofController {
 	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Property property)
 	{
 		ResponseMessage res;
-		res = new ResponseMessage("Success", new String[] {"Employee Added successfully"});
+		res = new ResponseMessage("Success", new String[] {"Property Added successfully"});
+		property.setImageFolder(propertyId);
+		property.setNoOfImages(noOfImages);
 		roofService.addProperty(property);
 		System.out.println("inisde add");
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

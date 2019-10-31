@@ -39,8 +39,7 @@
           <div class="tab-pane fade show active" id="property-details" role="tabpanel"
             aria-labelledby="property-details-tab" *ngIf="!property">
             <div class="contact-form">
-              <h3>PROPERTY DETAILS</h3>
-              <hr><br>
+              <h3>PROPERTY DETAILS</h3><hr><br>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -137,8 +136,7 @@
           <div class="tab-pane fade show active " id="locality-details" role="tabpanel" aria-labelledby="locality-details-tab"
             *ngIf="!locality">
             <div class="contact-form">
-              <h3>LOCALITY DETAILS</h3>
-              <hr><br>
+                <h3>LOCALITY DETAILS</h3><hr><br>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -179,8 +177,7 @@
           <div class="tab-pane show active " id="rental-details" role="tabpanel" aria-labelledby="rental-details-tab"
             *ngIf="!rental">
             <div class="contact-form">
-              <h3>RENTAL DETAILS</h3>
-              <hr><br>
+                <h3>RENTAL DETAILS</h3><hr><br>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -259,14 +256,21 @@
             </div>
           </div>
           <!-- ------------------------gallery------------------------------------------- -->
-
-          
-
+          <!-- <div class="tab-pane fade show active" id="gallery" role="tabpanel" aria-labelledby="gallery-tab" *ngIf="!gallery">
+              <div class="contact-form">
+            <h3>GALLERY</h3><hr><br><br>
+              <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-20">
+                    <a class="btn btn-default" routerLink="/amenities" role="button" (click)="onClickHandler3()">Save and
+                      continue</a>
+                  </div>
+                </div>
+                </div>
+          </div> -->
           <!-- ------------------------amenities------------------------------------------- -->
           <div class="tab-pane fade show active" id="amenities" role="tabpanel" aria-labelledby="amenities-tab" *ngIf="!amenities">
             <div class="contact-form">
-              <h3>AMENITIES</h3>
-              <hr><br>
+                <h3>AMENITIES</h3><hr><br>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -343,21 +347,12 @@
           <!-- </div> -->
             <!-- ------------------------gallery------------------------------------------- -->
             <div class="tab-pane fade show active" id="gallery" role="tabpanel" aria-labelledby="gallery-tab" *ngIf="!gallery">
-                <h3>GALLERY</h3>
-                
-                <div>
-                  <ng-container>
-                      <input type="file" id="file" multiple 
-                          (change)="onFileChanged($event)">
-              
-                      <button (click)="uploadFiles()">Upload</button>
-                      <p *ngIf="uploadCheck">Image Uploaded</p>
-                  </ng-container>
-    
-                  
-    
-    
-              </div>
+                <div class="contact-form">
+              <h3>GALLERY</h3><hr><br><br>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-20">
+                      <!-- <a class="btn btn-default" routerLink="/amenities" role="button" (click)="onClickHandler3()">Save and
+                        continue</a> -->
 
                         <button type="submit" class="btn btn-default" id="savebtn">Submit</button>
                     </div>
@@ -365,8 +360,10 @@
                   </div>
             </div>
             
-         
-
+          <!-- ------------------------schedule------------------------------------------- -->
+          <!-- <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
+              <h3>SCHEDULE</h3><hr><br>
+          </div> -->
         </form>
       </div>
 
@@ -536,7 +533,7 @@
 
   <!-- ------------------------locality details------------------------------------------- -->
 
-  <!-- <div class="tab-pane fade" id="locality-details" role="tabpanel" aria-labelledby="locality-details-tab"
+  <div class="tab-pane fade" id="locality-details" role="tabpanel" aria-labelledby="locality-details-tab"
     *ngIf='!locality'>
     <div class="contact-form">
       <div class="form-group">
@@ -564,7 +561,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- ------------------------rental details------------------------------------------- -->
 
