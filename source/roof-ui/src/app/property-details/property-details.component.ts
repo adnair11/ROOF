@@ -10,6 +10,7 @@ import { PropertyService } from '../properties/property.service';
 })
 export class PropertyDetailsComponent implements OnInit {
 
+  isCheck:boolean = false;
   id :any;
   duplicatePropertyData : any;
   propertyData: any;
@@ -27,6 +28,13 @@ export class PropertyDetailsComponent implements OnInit {
         this.propertyData = res;
         this.isSaved =true;
       })
+
+      if(this.propertyData.reviews[0]!=null)
+         this.isCheck=true;
+        else
+        this.isCheck=false;
+        console.log(this.isCheck)
+      
   }
   onEditHandler(){
     this.duplicatePropertyData=JSON.parse(JSON.stringify(this.propertyData));

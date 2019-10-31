@@ -86,7 +86,7 @@
                               <tr>
                                 <td>
                                   <p>Rent: {{propertyData.rent}}</p>
-                                  <p>Diposit: {{propertyData.diposit}}</p>
+                                  <p>Deposit: {{propertyData.deposit}}</p>
                                   <p>Available: {{propertyData.available}}</p>
                                   <p>PrefTenant: {{propertyData.prefTenant}}</p>
                                   <p>Furnish: {{propertyData.furnish}}</p>
@@ -132,21 +132,25 @@
                               </span>Reviews</button>
                           </h4>
                         </div>
-                        <div id="collapseFive" class="panel-collapse collapse"
-                          *ngFor="let review of propertyData.reviews">
+                        <div id="collapseFive" class="panel-collapse collapse"  >
                           <div class="panel-body">
-                            <table class="table">
-                              <tr>
-                                <td>
-                                  <p>Review: {{review.text}}</p>
-                                  <p>user: {{review.usrId}}</p>
+                              <table class="table" *ngFor="let review of propertyData.reviews">
+                                  <tr>
+                                      <td  *ngIf="isCheck">
+                                              <p>Review: {{review.text}}</p>
+                                              <p>user: {{review.usrId}}</p>
+                                              
+                                      </td>
 
-                                </td>
-                              </tr>
+                                      
+                                  </tr>
 
-                            </table>
+                              </table>
+                              <div *ngIf="!isCheck">
+                                      <p>No reviews yet!</p>
+                                  </div>
                           </div>
-                        </div>
+                      </div>
                       </div>
                     </div>
 
