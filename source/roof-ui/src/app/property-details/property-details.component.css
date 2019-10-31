@@ -45,6 +45,8 @@
 
 .carousel-item{
   background-size: cover;
+  border-radius: 10px;
+  box-shadow: 10px;
   height: 500px;
   width: 300px;
   background-position: center center;
