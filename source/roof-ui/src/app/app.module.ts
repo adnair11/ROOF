@@ -23,6 +23,7 @@ import { PropertyBookedComponent } from './properties/property-booked/property-b
 import { TeamComponent } from './team/team.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ReviewComponent } from './review/review.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ReviewComponent } from './review/review.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
