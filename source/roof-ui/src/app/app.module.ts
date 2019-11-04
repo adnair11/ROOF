@@ -24,6 +24,8 @@ import { TeamComponent } from './team/team.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ReviewComponent } from './review/review.component';
 import { ContactComponent } from './contact/contact.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { ContactComponent } from './contact/contact.component';
     UploadComponent,
     PropertyBookedComponent,
     ReviewComponent,
-    ContactComponent
+    ContactComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

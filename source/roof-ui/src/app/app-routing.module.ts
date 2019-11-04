@@ -19,6 +19,8 @@ import { TeamComponent } from './team/team.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ReviewComponent } from './review/review.component';
 import { ContactComponent } from './contact/contact.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -39,7 +41,8 @@ const routes: Routes = [
   {path: 'upload', component: UploadComponent},
   {path: 'review/:_id', component: ReviewComponent},
   {path: 'contact', component: ContactComponent},
-
+  {path: 'forgot',component:ForgotPasswordComponent},
+  {path: 'security/:name',component:ChangePasswordComponent}
 ];
 
 @NgModule({

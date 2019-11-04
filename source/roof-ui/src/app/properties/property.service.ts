@@ -55,6 +55,34 @@ export class PropertyService {
         
     
   }
+getSecurity(name){
+  console.log("in security");
+  return this.http.get("http://localhost:8060/user/login/"+name)
+      .pipe( map(res => {
+        console.log(res);
+        return res;
+      }));
+}
+
+editPassword(name,password){
+
+  let promise = new Promise((resolve, reject) => {
+    this.http.put("http://localhost:8060/forgot/"+name , password)
+      .toPromise()
+      .then((res) => {
+        console.log(res);
+        resolve(res);
+      })
+      .catch((err) => {
+        console.log(err);
+        reject(err);
+      })
+      .finally(() => {
+        console.log("ends");
+      });
+  });
+  return promise;
+}
   filterProperty(city, bhk) {
     let _url;
     if(bhk===null){

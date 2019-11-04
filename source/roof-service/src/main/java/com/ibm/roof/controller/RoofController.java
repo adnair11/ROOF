@@ -223,6 +223,8 @@ public class RoofController {
 		
 		user.set_id(ObjectId.get());
 		user.setPassword(encoder.encode(user.getPassword()));
+		user.setSecurityqn(user.getSecurityqn());
+		user.setAnswer(user.getAnswer());
 		userRepo.save(user);
 		return user;
 		
@@ -245,12 +247,12 @@ public class RoofController {
 	@GetMapping(value="/user/login/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Users getUserById(@PathVariable("id") String id)
 	{
+		System.out.println("In user login");
 		return userRepo.findByName(id);
 		
 	}
 	
-	
-	
+		
 	
 	
 	@GetMapping(value="properties/{city}",produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -330,6 +332,18 @@ public class RoofController {
 		System.out.println("hello piyush");
 		System.out.println(roofService.getById(id));
 		return roofService.getById(id);
+	}
+	
+	@PutMapping(value="forgot/{id}")
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> updateUser(@PathVariable String id, @RequestBody String password) {
+		roofService.updatePassword(id,password);
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Employee Updated successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+		
 	}
 	
 	

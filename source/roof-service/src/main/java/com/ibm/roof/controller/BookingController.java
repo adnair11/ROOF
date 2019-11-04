@@ -31,7 +31,7 @@ import com.ibm.roof.security.Users;
 import com.ibm.roof.service.BookingService;
 import com.ibm.roof.service.RoofService;
 
-@RestController("/book")
+@RestController("")
 @CrossOrigin("*")
 public class BookingController {
 	
@@ -94,7 +94,7 @@ public class BookingController {
 //	}
 //	
 //	
-	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
+	@PostMapping(value="/book",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Booking booking)
 	{
@@ -133,7 +133,7 @@ public class BookingController {
 //		return bookingService.getAll();	
 //	}
 	
-	@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value="/book",produces = {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public <Booking>List getAllBookings() throws ParseException{
 		List l1=bookingService.getByPropertyId("124443");

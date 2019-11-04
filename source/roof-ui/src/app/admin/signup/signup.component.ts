@@ -29,6 +29,9 @@ this.profileForm = this.fb.group({
       state: ['', Validators.required],
       country: ['', Validators.required],
       pincode: ['', Validators.required],
+      securityqn: ['', Validators.required],
+      answer: ['', Validators.required],
+      
             });
   }
 set value(newValue: number)  {

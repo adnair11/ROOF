@@ -8,7 +8,7 @@ export class AuthenticationService {
   REST_API_URL: string = "http://localhost:8060/user/auth";
 
   constructor(private http: HttpClient) { }
-
+  
   authenticate(username, password) {
     console.log("Paras");
     const headers = new HttpHeaders({
@@ -24,7 +24,7 @@ export class AuthenticationService {
         console.log("response: " + JSON.stringify(res));
         console.log("username: " + userObj.principal.username);
         sessionStorage.setItem('username', userObj.principal.username);
-
+        window.location.reload();
         
         console.log(res);
        if(res)

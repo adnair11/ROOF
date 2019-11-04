@@ -18,11 +18,25 @@ public class Users {
 	String country;
 	String state;
 	int pincode;
+	String securityqn;
+	String answer;
 	
 	
 	
 	
 	
+	public String getSecurityqn() {
+		return securityqn;
+	}
+	public void setSecurityqn(String securityqn) {
+		this.securityqn = securityqn;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 	public Users(ObjectId _id, String name, String password, String firstName, String lastName, String email,
 		long contact, String role, String city, String country, String state, int pincode) {
 		super();
