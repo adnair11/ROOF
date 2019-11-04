@@ -172,19 +172,19 @@ List <Review> reviews =new ArrayList();
 	public void setBalconies(int balconies) {
 		this.balconies = balconies;
 	}
-	public String isLift() {
+	public String getLift() {
 		return lift;
 	}
 	public void setLift(String lift) {
 		this.lift = lift;
 	}
-	public String isAc() {
+	public String getAc() {
 		return ac;
 	}
 	public void setAc(String ac) {
 		this.ac = ac;
 	}
-	public String isInternet() {
+	public String getInternet() {
 		return internet;
 	}
 	public void setInternet(String internet) {

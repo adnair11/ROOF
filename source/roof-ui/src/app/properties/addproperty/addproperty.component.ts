@@ -32,7 +32,7 @@ isSaved:boolean;
       city:new FormControl('',[Validators.required]),
       locality:new FormControl('',[Validators.required]),
       rent:new FormControl('',[Validators.required]),
-
+      parking:new FormControl('',[Validators.required]),
       deposit:new FormControl('',[Validators.required]),
       available:new FormControl('',[Validators.required]),
       prefTenant:new FormControl('',[Validators.required]),
@@ -40,7 +40,7 @@ isSaved:boolean;
       balconies:new FormControl('',[Validators.required]),
       lift:new FormControl('',[Validators.required]),
       ac:new FormControl('',[Validators.required]),
-
+      furnish:new FormControl('',[Validators.required]),
       internet:new FormControl('',Validators.required),
       usrId :new FormControl(sessionStorage.getItem('username'))
     });

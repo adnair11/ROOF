@@ -56,7 +56,12 @@ export class PropertyService {
     
   }
   filterProperty(city, bhk) {
-    let _url = this.REST_API_URL + "/" + city + "?bhk=" + bhk;
+    let _url;
+    if(bhk===null){
+       _url = this.REST_API_URL + "/" + city ;
+    }
+    else{
+     _url = this.REST_API_URL + "/" + city + "?bhk=" + bhk;}
 
     return this.http.get(_url)
       .toPromise()

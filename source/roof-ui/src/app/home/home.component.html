@@ -47,7 +47,7 @@
           <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSearchPropertyHandler()">
             <div class="form-group " id="searchbar">
               <select class="custom-select" formControlName="city" value="selected" style="width: 200px; height: 50px;">
-
+           
                   <option >DELHI</option>           
                   <option>PUNE</option>
                   <option>BANGLORE</option>
@@ -58,7 +58,8 @@
 
 
               <div class="form-group" id="searchbar2">
-                <select class="form-control" formControlName="bhk" style="width: 150px;height: 50px" required>
+                <select class="form-control" formControlName="bhk" style="width: 150px;height: 50px" >
+                  
                   <option value="1">1-BHK</option>
                   <option value="2">2-BHK</option>
                   <option value="3">3-BHK</option>
@@ -180,7 +181,7 @@
           </div>
           <div class="card-body">
             <p class="card-text">Name: {{property.name}}<br>BHK: {{property.bhk}} <br> Location: {{property.city}}
-            <br>Rent: {{property.rent}}</p>
+            <br>Rent: {{property.rent}} INR </p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary"

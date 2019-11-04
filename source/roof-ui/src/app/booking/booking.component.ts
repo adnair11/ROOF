@@ -39,6 +39,7 @@ export class BookingComponent implements OnInit {
         console.log(res);
         this.propertyData = res;
         console.log(this.propertyData.usrId);
+        console.log(this.propertyData.lift);
         if(this.propertyData.reviews[0]!=null)
          this.isCheck=true;
         else

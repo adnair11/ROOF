@@ -196,8 +196,8 @@
                   <div class="form-group">
                     <label class="control-label col-sm-6" for="fname"> Deposit:</label>
                     <div class="col">
-                      <input type="text" class="form-control" id="fname" placeholder="Enter Diposit amount"
-                        formControlName="diposit">
+                      <input type="text" class="form-control" id="fname" placeholder="Enter Deposit amount"
+                        formControlName="deposit">
                     </div>
                   </div>
                 </div>
@@ -352,7 +352,7 @@
               <ng-container>
                 <input type="file" id="file" multiple (change)="onFileChanged($event)">
 
-                <button (click)="uploadFiles()">Upload</button>
+                <button (click)="uploadFiles()">Submit</button>
                 <p *ngIf="uploadCheck">Image Uploaded</p>
               </ng-container>
 
@@ -361,7 +361,7 @@
 
             </div>
 
-            <button type="submit" class="btn btn-default" id="savebtn">Submit</button>
+            <!-- <button type="submit" class="btn btn-default" id="savebtn">Submit</button> -->
           </div>
 
 

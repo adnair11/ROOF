@@ -11,9 +11,10 @@ export class HomeComponent implements OnInit {
   title = 'app';
   selectedValue = '';
   items = [
-    { value: '0', view: 'zero' },
+
     { value: '1', view: 'one' },
-    { value: '2', view: 'Two' }
+    { value: '2', view: 'two' },
+    { value: '3', view: 'three' }
   ];
   searchForm: FormGroup;
   propertyData: any[];
@@ -23,12 +24,13 @@ export class HomeComponent implements OnInit {
   constructor(private propertyService: PropertyService) {
     this.searchForm = new FormGroup({
       city: new FormControl(Validators.required),
-      bhk: new FormControl(Validators.required)
+      bhk: new FormControl()
     });
   }
   async onSearchPropertyHandler() {
     console.log(this.searchForm.value.city);
     console.log(this.searchForm.value.bhk);
+    
     this.propertyData = await this.propertyService.filterProperty(this.searchForm.value.city, this.searchForm.value.bhk);
     this.allPropertyData = this.propertyData;
     console.log('Inside filter');
@@ -42,12 +44,6 @@ export class HomeComponent implements OnInit {
 
     this.getAllProperties();
   }
-//   set enteredCity(newValue: string)  {
-//     this._enteredCity = newValue;
-//   }
-//   filterCity() {
-// this.searchForm.value.city = this._enteredCity;
-// console.log(this.searchForm.value.city);
-//   }
+
 
 }

@@ -59,7 +59,7 @@ public class RoofService {
 	
 	public Property getById(String id) {
 		// TODO Auto-generated method stub
-		return propertyRepo.findById(id).get();
+		return propertyRepo.getBy_id(id);
 	}
 
 
