@@ -15,7 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -165,6 +167,19 @@ public class BookingController {
 		}
 		
 		return bookingService.getByPropertyId("124443");
+	}
+	
+	@DeleteMapping(value="/book/{id}")
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> deleteProperty(@PathVariable String id) {
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Booking deleted successfully"});
+		
+		bookingService.delete(id);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+//		return "Property deleted successfully";
 	}
 	
 }

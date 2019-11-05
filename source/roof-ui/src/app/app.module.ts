@@ -26,6 +26,7 @@ import { ReviewComponent } from './review/review.component';
 import { ContactComponent } from './contact/contact.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { DeleteBookingComponent } from './delete-booking/delete-booking.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ReviewComponent,
     ContactComponent,
     ForgotPasswordComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    DeleteBookingComponent
   ],
   imports: [
     BrowserModule,

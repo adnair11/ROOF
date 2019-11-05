@@ -51,4 +51,11 @@ public class BookingService {
 		// TODO Auto-generated method stub
 		return bookingRepository.getByOwnerId(ownerId);
 	}
+
+	public boolean delete(String id) {
+		// TODO Auto-generated method stub
+	 bookingRepository.deleteById(id);
+	 return true;
+		
+	}
 }

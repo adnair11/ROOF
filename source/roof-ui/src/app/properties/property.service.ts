@@ -104,6 +104,32 @@ editPassword(name,password){
 
   }
 
+  deleteBooking(id){
+
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
+    console.log(id);
+    let promise = new Promise((resolve, reject) => {
+      this.http.delete("http://localhost:8060/book"+"/"+id ,{headers: headers})
+        .toPromise()
+        .then((res) => {
+          console.log(res);
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        })
+        .finally(() => {
+          console.log("ends");
+        });
+    });
+    return promise;
+  }
+
   getAllProperties(){
     let _url = "http://localhost:8060/allproperties";
 
@@ -296,5 +322,33 @@ editPassword(name,password){
         });
     });
     return promise;
+  }
+
+  updateUser(name:String,userData:any)
+  {
+
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
+    console.log(userData);
+    let promise = new Promise((resolve, reject) => {
+      this.http.put("http://localhost:8060/user/edit/"+name , userData,{headers: headers})
+        .toPromise()
+        .then((res) => {
+          console.log(res);
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        })
+        .finally(() => {
+          console.log("ends");
+        });
+    });
+    return promise;
+
   }
 }

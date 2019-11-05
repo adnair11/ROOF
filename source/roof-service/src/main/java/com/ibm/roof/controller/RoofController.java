@@ -38,6 +38,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.ibm.roof.model.Booking;
 import com.ibm.roof.model.Property;
 import com.ibm.roof.model.ResponseMessage;
+import com.ibm.roof.model.Review;
 import com.ibm.roof.security.UserRepository;
 import com.ibm.roof.security.Users;
 import com.ibm.roof.service.BookingService;
@@ -99,6 +100,25 @@ public class RoofController {
 		
 		
 //		return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/review",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE})
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> addReview(@RequestBody Review reviews)
+	{
+		System.out.println(reviews);
+		String id= reviews.getPropertyId();
+		System.out.println("Id-"+id);
+		Property p = roofService.getById(id);
+		System.out.println(p);
+		p.setReviews(reviews);
+		roofService.update(p);
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Reviews added successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(reviews.getPropertyId()).toUri();
+		return ResponseEntity.created(location).body(res);
+		
 	}
 	
 
@@ -298,9 +318,10 @@ public class RoofController {
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
 		updatedProp.set_id(id);
+		System.out.println("update prop-"+updatedProp);
 		roofService.update(updatedProp);
 		ResponseMessage res;
-		res = new ResponseMessage("Success", new String[] {"Employee Updated successfully"});
+		res = new ResponseMessage("Success", new String[] {"Property Updated successfully"});
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();
 		return ResponseEntity.created(location).body(res);
@@ -322,7 +343,6 @@ public class RoofController {
 	
 	
 	
-
 //	get property of user by ID
 	
 	@GetMapping(value="rentor/properties/{id}",produces= {MediaType.APPLICATION_JSON_VALUE})
@@ -339,7 +359,20 @@ public class RoofController {
 	public ResponseEntity<ResponseMessage> updateUser(@PathVariable String id, @RequestBody String password) {
 		roofService.updatePassword(id,password);
 		ResponseMessage res;
-		res = new ResponseMessage("Success", new String[] {"Employee Updated successfully"});
+		res = new ResponseMessage("Success", new String[] {"Password Updated successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+		
+	}
+	
+	@PutMapping(value="user/edit/{id}")
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> updateUser(@PathVariable String id, @RequestBody Users updatedUser) {
+		updatedUser.setName(id);
+		userRepo.save(updatedUser);
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"User Updated successfully"});
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();
 		return ResponseEntity.created(location).body(res);
