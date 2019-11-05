@@ -9,6 +9,7 @@ import { PropertyService } from 'src/app/properties/property.service';
 })
 export class UserprofileComponent implements OnInit {
   userData:any;
+  duplicateUserData:any;
   userSubscription:Subscription;
   bookingList : any[];
   bookingSubscription : Subscription;
@@ -28,12 +29,22 @@ export class UserprofileComponent implements OnInit {
         .subscribe( (res : any[]) =>{
         console.log(res);
         this.bookingList =res;
-       
+
     });
 
       })
 
-      
+
+  }
+  onEditHandler(){
+    this.duplicateUserData=JSON.parse(JSON.stringify(this.userData));
+  }
+
+  async onUpdateHandler(formData){
+    console.log(formData);
+    console.log(formData.value);
+    let res = await this.propertyService.updateProperty(this.duplicateUserData);
+
   }
 
 }
@@ -42,6 +53,5 @@ export class UserprofileComponent implements OnInit {
 
 
 
- 
 
-  
+

@@ -4,24 +4,35 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/">{{ 'NAV.N1' | translate }}<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/properties" >Properties</a>
+          <a class="nav-link" routerLink="/properties">{{ 'NAV.N2' | translate }}</a>
         </li>
 
+
       </ul>
+      <div>
+          <select #langselect (change)="translate.use(langselect.value)">
+              <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+            </select>
+
+      </div>
       <div class="nav-item active">
-        <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/loginsignup" class="nav-link">Login</a>
+        <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/loginsignup" class="nav-link">{{ 'NAV.N3' | translate }}</a>
         <a *ngIf="loginService.isUserLoggedIn()" routerLink="/myprofile" class="nav-link">{{User}}</a>
 
       </div>
       <div class="nav-item active">
-        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a>
+        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">{{ 'NAV.N4' | translate }}</a>
       </div>
       <div class="nav-item active">
-        <button class="nav-link btn btn-default" (click)="openNav()">Menu </button>
+        <button class="nav-link btn btn-default" (click)="openNav()">{{ 'NAV.N5' | translate }}</button>
       </div>
+
+
+
+
     </div>
 
     <div id="mySidenav" [ngStyle]="{'width' : width}" class="sidenav float-right">

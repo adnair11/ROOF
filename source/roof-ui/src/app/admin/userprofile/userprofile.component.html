@@ -1,139 +1,210 @@
-
 <div class="container emp-profile">
-    <div method="post">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file"/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="profile-head">
-                            <h5>
-                                Welcome {{userData.firstName}}
-                            </h5>
-                            <!-- <h6>
-                                Web Developer and Designer
-                            </h6> -->
-                            <!-- <p class="proile-rating">RANKINGS : <span>8/10</span></p> -->
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Bookings</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                 <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-            </div>
+  <div method="post">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+            alt="" />
+          <div class="file btn btn-lg btn-primary">
+            Change Photo
+            <input type="file" name="file" />
+          </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h5>
+            Welcome {{userData.firstName}}
+          </h5>
 
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">My Bookings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <input type="submit" class="profile-edit-btn" data-toggle="modal" data-target="#editEmployeeModal"
+          (click)="onEditHandler()" value="Edit Profile" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+              <div class="col-md-6">
+                <label>User Id</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{userData.name}}</p>
+              </div>
             </div>
-            <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>User Id</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{userData.name}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>First Name</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{userData.firstName}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Last Name</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{userData.lastName}}</p>
-                                    </div>
-                                </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>First Name</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{userData.firstName}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Last Name</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{userData.lastName}}</p>
+              </div>
+            </div>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Email</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{userData.email}}<p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Phone</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{userData.contact}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>City</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{userData.city}}</p>
-                                    </div>
-                                </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="album py-5 bg-light" style="margin: 20px;">
-                            <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Email</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{userData.email}}<p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Phone</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{userData.contact}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>City</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{userData.city}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="album py-5 bg-light" style="margin: 20px;">
+              <div class="container">
 
-                              <div class="row">
-                                <div class="col-sm-5" *ngFor="let booking of bookingList">
-                                  <div class="card sm-5 shadow-sm">
-                                    <div class="card" style="width: 100% ; height: 175px;">
-                                      <img
-                                        src="https://media.istockphoto.com/photos/walkway-leading-along-the-new-colorful-cmplex-of-apartment-buildings-picture-id889473004?k=6&m=889473004&s=612x612&w=0&h=6lQi62MTrabi-GbvPLI966CkIjq7TXL5xGquM-snovw="
-                                        style="width: 100% ; height: 100%;" class="card-img-top" alt="...">
+                <div class="row">
+                  <div class="col-sm-5" *ngFor="let booking of bookingList">
+                    <div class="card sm-5 shadow-sm">
+                      <div class="card" style="width: 100% ; height: 175px;">
+                        <img
+                          src="https://media.istockphoto.com/photos/walkway-leading-along-the-new-colorful-cmplex-of-apartment-buildings-picture-id889473004?k=6&m=889473004&s=612x612&w=0&h=6lQi62MTrabi-GbvPLI966CkIjq7TXL5xGquM-snovw="
+                          style="width: 100% ; height: 100%;" class="card-img-top" alt="...">
 
-                                    </div>
-                                    <div class="card-body">
-                                      <p class="card-text">Property Name: {{booking.propertyId}}<br>Owner: {{booking.ownerId}} <br> From Date: {{booking.fromDate| date: 'dd/MM/yyyy'}}
-                                    <br>To Date: {{booking.toDate| date: 'dd/MM/yyyy'}}</p>
-                                      <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                          <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/review/{{booking.propertyId}}">ADD REVIEW</button>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text">Property Name: {{booking.propertyId}}<br>Owner: {{booking.ownerId}} <br>
+                          From Date: {{booking.fromDate| date: 'dd/MM/yyyy'}}
+                          <br>To Date: {{booking.toDate| date: 'dd/MM/yyyy'}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                              routerLink="/review/{{booking.propertyId}}">ADD REVIEW</button>
 
-                                        </div>
-
-                                      </div>
-
-
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
                           </div>
-                        <!-- <div class="row">
-                            <div class="col-md-12">
-                                <label>Your Bio</label><br/>
-                                <p>Your detail description</p>
-                            </div>
-                        </div> -->
+
+                        </div>
+
+
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+
+          </div>
         </div>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- Modal -->
+      <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">EDIT PROFILE</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" *ngIf="duplicateUserData">
+              <form ngNativeValidate #f="ngForm" (ngSubmit)="onUpdateHandler(f)">
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">First Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="name" placeholder="Enter First name"
+                      [(ngModel)]="duplicateUserData.firstName">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Last Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="lastName" placeholder="Enter lastName"
+                      [(ngModel)]="duplicateUserData.lastName">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="email" placeholder="Enter email"
+                      [(ngModel)]="duplicateUserData.email">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Phone</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="phone" placeholder="Enter phone"
+                      [(ngModel)]="duplicateUserData.contact">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">city</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="city" placeholder="Enter city"
+                      [(ngModel)]="duplicateUserData.city">
+                  </div>
+                </div>
 
 
 
+                <div class="alert alert-success">
+                  Updated successfully!
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
