@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   title = 'app';
   selectedValue = '';
   items = [
-
+    
     { value: '1', view: 'one' },
     { value: '2', view: 'two' },
     { value: '3', view: 'three' }
@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private propertyService: PropertyService) {
     this.searchForm = new FormGroup({
-      city: new FormControl(Validators.required),
-      bhk: new FormControl()
+      city: new FormControl('0',Validators.required),
+      bhk: new FormControl('0')
     });
   }
   async onSearchPropertyHandler() {

@@ -15,6 +15,9 @@ export class ChangePasswordComponent implements OnInit {
   name:String;
   userSubscription:Subscription;
   show:boolean = false;
+  confirm:boolean = false;
+  submit:boolean = false;
+  notshow:boolean =false;
   passwordForm:FormGroup;
   constructor(private propertyService:PropertyService ,private route: ActivatedRoute) {
 
@@ -25,6 +28,7 @@ export class ChangePasswordComponent implements OnInit {
 
    this.passwordForm=new FormGroup({
     password:new FormControl('',[Validators.required]),
+    password1:new FormControl('',[Validators.required])
   });
   }
   ngOnInit() {
@@ -52,13 +56,25 @@ export class ChangePasswordComponent implements OnInit {
     if(this.forgotForm.value.answer === this.userData.answer)
       {console.log("answer verified");
        this.show = true;
+       this.notshow = false;
 
    }
+   else
+   this.notshow = true;
   }
 
   async passwordUser(){
     
-    let res = await this.propertyService.editPassword(this.name,this.passwordForm.value.password);
-
+    if(this.passwordForm.value.password != this.passwordForm.value.password1)
+     this.confirm=true;
+     else
+     {this.confirm = false;
+      
+    let res:any = await this.propertyService.editPassword(this.name,this.passwordForm.value.password);
+     if(res.status === "Success")
+     this.submit = true;
+     else
+     this.submit = false;
+  }
   }
 }

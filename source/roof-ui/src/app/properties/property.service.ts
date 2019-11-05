@@ -85,7 +85,7 @@ editPassword(name,password){
 }
   filterProperty(city, bhk) {
     let _url;
-    if(bhk===null){
+    if(bhk===null || bhk === "0"){
        _url = this.REST_API_URL + "/" + city ;
     }
     else{
