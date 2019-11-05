@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../service/authentication.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,15 @@ export class HeaderComponent implements OnInit {
  pass:string = "hello";
  User:string =sessionStorage.getItem('username');
 
-  constructor(private loginService:AuthenticationService) { }
+  constructor(
+    public translate: TranslateService,
+    private loginService:AuthenticationService
+    ) {
+    translate.addLangs(['en', 'fr']);
+    translate.setDefaultLang('en');
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+  }
   width :any;
   openNav(){
     this.width  = '250px' ;

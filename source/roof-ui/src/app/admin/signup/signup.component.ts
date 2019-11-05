@@ -31,7 +31,7 @@ this.profileForm = this.fb.group({
       pincode: ['', Validators.required],
       securityqn: ['', Validators.required],
       answer: ['', Validators.required],
-      
+
             });
   }
 set value(newValue: number)  {
@@ -42,7 +42,7 @@ set value(newValue: number)  {
   get function()  {
 return this.profileForm.controls;
   }
- 
+
 
 
 
@@ -60,6 +60,6 @@ return this.profileForm.controls;
             }, 3000);
            return res;
         });
-        
+
           }
 }

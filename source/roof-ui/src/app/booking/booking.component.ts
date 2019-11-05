@@ -63,7 +63,7 @@ export class BookingComponent implements OnInit {
       this.isAvail=true;
       this.isNotAvail=false
       
-      let res = await this.propertyService.bookProperty(this.bookForm.value.usrId,this.bookForm.value.fromDate,this.bookForm.value.toDate,this.ownerId,this.id);
+      let res = await this.propertyService.bookProperty(this.bookForm.value.usrId,this.bookForm.value.fromDate,this.bookForm.value.toDate,this.ownerId,this.id,this.propertyData.name,this.propertyData.imageFolder);
       console.log(res.status);
     }
     else{

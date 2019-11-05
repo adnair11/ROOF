@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class UserprofileComponent implements OnInit {
   userData:any;
   success:boolean;
+
+
   duplicateUserData:any;
   userSubscription:Subscription;
   bookingList : any[];
@@ -31,13 +33,15 @@ export class UserprofileComponent implements OnInit {
         .subscribe( (res : any[]) =>{
         console.log(res);
         this.bookingList =res;
-       
+
     });
 
       })
 
-      
+
   }
+  
+  
 
   onEditHandler(){
     this.duplicateUserData=JSON.parse(JSON.stringify(this.userData));
@@ -62,6 +66,5 @@ export class UserprofileComponent implements OnInit {
 
 
 
- 
 
-  
+

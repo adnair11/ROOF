@@ -15,10 +15,29 @@ public class Booking {
 	@Id
 	String bookingId;
 	String propertyId;
+	String propertyName;
+	String imageFolder;
+	public String getPropertyName() {
+		return propertyName;
+	}
+
+	public void setPropertyName(String propertyName) {
+		this.propertyName = propertyName;
+	}
+
+	public String getImageFolder() {
+		return imageFolder;
+	}
+
+	public void setImageFolder(String imageFolder) {
+		this.imageFolder = imageFolder;
+	}
+
 	String ownerId;
 	String usrId;
 	Date fromDate;
 	Date toDate;
+	
 	
 	
 	

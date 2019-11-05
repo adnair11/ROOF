@@ -21,6 +21,8 @@
     "@angular/router": "~8.2.9",
     "@ng-bootstrap/ng-bootstrap": "^5.1.2",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "popper": "^1.0.1",

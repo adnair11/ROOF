@@ -200,7 +200,7 @@ editPassword(name,password){
     
   }
 
-  bookProperty(usrId:any,fromDate:any,toDate:any,ownerId:String,propertyId:String){
+  bookProperty(usrId:any,fromDate:any,toDate:any,ownerId:String,propertyId:String,propertyName:String,imageFolder:String){
     console.log(usrId);
     let uandp = sessionStorage.getItem('usernameandpassword');
     const headers = new HttpHeaders({
@@ -208,7 +208,7 @@ editPassword(name,password){
                                   'Content-Type':  'application/json',
                                   'Authorization': 'Basic ' + btoa(uandp)});
       console.log(headers);
-     return this.http.post("http://localhost:8060/book",{ usrId,fromDate,toDate,ownerId,propertyId},{headers: headers})
+     return this.http.post("http://localhost:8060/book",{ usrId,fromDate,toDate,ownerId,propertyId,propertyName,imageFolder},{headers: headers})
         .toPromise()
         .then((res) => {
           if(res)
