@@ -22,6 +22,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { DeleteBookingComponent } from './delete-booking/delete-booking.component';
+import { RatingBasicComponent } from './rating-basic/rating-basic.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -44,7 +45,8 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'forgot',component:ForgotPasswordComponent},
   {path: 'security/:name',component:ChangePasswordComponent},
-  {path: 'deleteBooking/:_id',component:DeleteBookingComponent}
+  {path: 'deleteBooking/:_id',component:DeleteBookingComponent},
+  {path: 'rating/:_id', component:RatingBasicComponent}
 ];
 
 @NgModule({

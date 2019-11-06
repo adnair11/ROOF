@@ -74,10 +74,33 @@ public class Property {
 	
 List <Review> reviews =new ArrayList();
 	
+	//rate
+
+	int avgRate =0;
+	int totalRate =0;
+	int count =0;
 	
 	
 	
 	
+	public int getAvgRate() {
+		return avgRate;
+	}
+	public void setAvgRate(int avgRate) {
+		this.avgRate = avgRate;
+	}
+	public int getTotalRate() {
+		return totalRate;
+	}
+	public void setTotalRate(int totalRate) {
+		this.totalRate = totalRate;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public List<Review> getReviews() {
 		return reviews;
 	}
@@ -223,7 +246,13 @@ List <Review> reviews =new ArrayList();
 	}
 	
 	
-	
+	public int rateCalc(int rate)
+	{
+		count++;
+		totalRate+=rate;
+		avgRate = totalRate/count;
+		return avgRate;
+	}
 	
 	
 	

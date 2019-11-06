@@ -111,7 +111,18 @@
                           From Date: {{booking.fromDate| date: 'dd/MM/yyyy'}}
                           <br>To Date: {{booking.toDate| date: 'dd/MM/yyyy'}}</p>
                         <div>
+                          <div>
+                              <div class="text-center">
+                            Please rate this property
+                            
+                                <!-- <ngb-rating [(rate)]="currentRate" ></ngb-rating> -->
+                                <!-- <pre>Rate: <b>{{currentRate}}</b></pre> -->
+                                <button class="btn btn-warning btn-sm text-center" routerLink="/rating/{{booking.propertyId}}">Rate</button><br>
+                                </div>
+                          </div>
+                          <br>
                           <div class="btn-group">
+<br>
                             <button type="button" class="btn btn-sm btn-success"
                               routerLink="/review/{{booking.propertyId}}">ADD REVIEW</button>
                             <button type="button" class="btn btn-sm btn-danger"
@@ -238,7 +249,7 @@
                       [(ngModel)]="duplicateUserData.pincode">
                   </div>
                 </div>
-                <div class="form-group row ">
+                <!-- <div class="form-group row ">
                   <label class="col-md-3 col-form-label" for="securityqn">
                     Security Question
                   </label>
@@ -262,7 +273,7 @@
                       [(ngModel)]="duplicateUserData.answer">
                   </div>
                 </div>
-
+ -->
 
 
                 <div class="alert alert-fail" *ngIf="success">

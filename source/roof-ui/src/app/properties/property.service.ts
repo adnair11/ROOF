@@ -33,6 +33,26 @@ export class PropertyService {
 
   }
   
+  addRating(rate,propertyId){
+    let uandp = sessionStorage.getItem('usernameandpassword');
+    const headers = new HttpHeaders({
+                                  
+                                  'Content-Type':  'application/json',
+                                  'Authorization': 'Basic ' + btoa(uandp)});
+      console.log(headers);
+      this.http.put("http://localhost:8060/rating/"+propertyId,rate ,{headers: headers})
+        .toPromise()
+        .then((res) => {
+          if(res)
+          console.log("hellp"+res);
+          return res;
+        })
+        .catch((err) => {
+          console.log("Error"+err);
+          return err;
+        });
+
+  }
 
   createProperty(propertyData: any) {
     console.log(propertyData);

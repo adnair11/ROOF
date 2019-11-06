@@ -121,6 +121,28 @@ public class RoofController {
 		
 	}
 	
+	@PutMapping(value="/rating/{id}",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE})
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> addRating(@PathVariable("id") String id,@RequestBody int rate)
+	{
+		System.out.println(rate);
+		
+		System.out.println("Id-"+id);
+		Property p = roofService.getById(id);
+		System.out.println(p);
+		int avgRate = p.rateCalc(rate);
+		
+		p.setAvgRate(avgRate);
+		roofService.update(p);
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Reviews added successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(p.get_id()).toUri();
+		return ResponseEntity.created(location).body(res);
+		
+	}
+	
+	
 
 	@GetMapping(value="user/book{userId}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public <Booking>List getBookingByUserId(@PathVariable("userId") String userId) 

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { DeleteBookingComponent } from './delete-booking/delete-booking.componen
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { RatingBasicComponent } from './rating-basic/rating-basic.component';
 
 
 export function HttpLoaderFactory(http: HttpClient){
@@ -62,7 +64,8 @@ export function HttpLoaderFactory(http: HttpClient){
     ContactComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    DeleteBookingComponent
+    DeleteBookingComponent,
+    RatingBasicComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +73,7 @@ export function HttpLoaderFactory(http: HttpClient){
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

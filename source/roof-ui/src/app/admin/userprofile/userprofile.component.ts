@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PropertyService } from 'src/app/properties/property.service';
 import { Router } from '@angular/router';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-userprofile',
@@ -19,7 +20,10 @@ export class UserprofileComponent implements OnInit {
   bookingSubscription : Subscription;
   User:string =sessionStorage.getItem('username');
   propId:String;
-  constructor(private propertyService:PropertyService,private router:Router) { }
+  currentRate=0;
+  constructor(config: NgbRatingConfig,private propertyService:PropertyService,private router:Router) {
+    config.max=5;
+   }
 
 
   ngOnInit() {
