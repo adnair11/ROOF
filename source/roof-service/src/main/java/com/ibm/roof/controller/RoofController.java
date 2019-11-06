@@ -339,7 +339,7 @@ public class RoofController {
 	@PutMapping(value="properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
-		updatedProp.set_id(id);
+//		updatedProp.set_id(id);
 		System.out.println("update prop-"+updatedProp);
 		roofService.update(updatedProp);
 		ResponseMessage res;
@@ -354,7 +354,7 @@ public class RoofController {
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> deleteProperty(@PathVariable String id) {
 		ResponseMessage res;
-		res = new ResponseMessage("Success", new String[] {"Employee deleted successfully"});
+		res = new ResponseMessage("Success", new String[] {"Property deleted successfully"});
 		roofService.delete(id);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();

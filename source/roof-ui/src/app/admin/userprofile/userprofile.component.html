@@ -107,7 +107,7 @@
 
                       </div>
                       <div class="card-body">
-                        <p class="card-text">Property Name: {{booking.propertyId}}<br>Owner: {{booking.ownerId}} <br>
+                        <p class="card-text">Property Name: {{booking.propertyName}}<br>Owner: {{booking.ownerId}} <br>
                           From Date: {{booking.fromDate| date: 'dd/MM/yyyy'}}
                           <br>To Date: {{booking.toDate| date: 'dd/MM/yyyy'}}</p>
                         <div>
@@ -280,6 +280,11 @@
                   Update failed !
 
                 </div>
+                <div class="alert alert-success" *ngIf="fail">
+                    Update Successful !
+  
+                  </div>
+                  
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

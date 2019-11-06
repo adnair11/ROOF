@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PropertyService } from '../property.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +20,7 @@ gallery:any=true;
 propertyForm:FormGroup;
 isSaved:boolean;
 
-  constructor(private propertyService:PropertyService,private http: HttpClient) {
+  constructor(private propertyService:PropertyService,private http: HttpClient,private router:Router) {
 
     this.propertyForm=new FormGroup({
       name:new FormControl('',[Validators.required]),
@@ -81,9 +82,11 @@ isSaved:boolean;
 
  async addPropertyHandler(){
 
-    console.log(this.propertyForm.value);
-    let res = await this.propertyService.createProperty(this.propertyForm.value);
-    console.log(res);
+    console.log(this.propertyForm.value + "success");
+    let res:any = await this.propertyService.createProperty(this.propertyForm.value);
+    console.log("status"+res.status);
+    if(res.status==="Success")
+     this.router.navigate(['properties']);
 
   }
 

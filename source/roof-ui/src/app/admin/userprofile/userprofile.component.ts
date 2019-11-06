@@ -12,7 +12,7 @@ import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 export class UserprofileComponent implements OnInit {
   userData:any;
   success:boolean;
-
+  fail:boolean;
 
   duplicateUserData:any;
   userSubscription:Subscription;
@@ -56,11 +56,13 @@ export class UserprofileComponent implements OnInit {
     console.log(formData.value);
     let res:any = await this.propertyService.updateUser(this.User,this.duplicateUserData);
       if(res.status==="Success")
-      {this.router.navigate['myprofile'];
+      {this.fail=true;
       this.success=false;
     }
-      else
+      else{
      this.success=true;
+     this.fail=false;
+      }
   }
 
   
