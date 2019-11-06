@@ -29,6 +29,7 @@ export class AuthenticationService {
 
         
         this.router.navigate(['']);
+        window.location.assign("http://localhost:4200");
         //  window.location.reload();
         console.log(res);
         this.valid=true;
@@ -51,7 +52,7 @@ export class AuthenticationService {
     // } else {
     //   return false;
     // }
-    window.location.reload();
+    
     return this.valid;
   }
 
