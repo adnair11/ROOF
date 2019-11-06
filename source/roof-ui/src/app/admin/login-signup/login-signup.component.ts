@@ -11,7 +11,7 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 export class LoginSignupComponent implements OnInit {
 
-  
+  check:boolean;
 loginForm:  FormGroup; 
   invalidLogin:boolean;
 
@@ -27,14 +27,14 @@ loginForm:  FormGroup;
   }
   checkLogin() {
     console.log(this.loginForm.value.username);
-    if (    this.loginservice.authenticate(this.loginForm.value.username, this.loginForm.value.password)
+    if (  this.loginservice.authenticate(this.loginForm.value.username, this.loginForm.value.password)
     ) {
   
        this.router.navigate(['']);
-     
+     this.check=false;
      this.invalidLogin = false;
     } else if(this.invalidLogin) {
-      alert('Invalid Credentials');
+      this.check=true;
       
     }
   }

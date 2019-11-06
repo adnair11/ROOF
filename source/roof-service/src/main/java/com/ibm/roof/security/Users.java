@@ -2,11 +2,13 @@ package com.ibm.roof.security;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Users {
 	@Id
 	ObjectId _id;
+	@Indexed(unique=true)
 	String name;
 	String password;
 	String firstName;
@@ -23,8 +25,7 @@ public class Users {
 	
 	
 	
-	
-	
+		
 	public String getSecurityqn() {
 		return securityqn;
 	}

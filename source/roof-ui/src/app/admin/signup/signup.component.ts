@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
+  errors:any;
   confirm: boolean = false;
   profileData: any;
   Id: number;
@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
  _value: number;
  mob:boolean;
  mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";  
- pincodePattern = "([1-9])?[0-9]{6}$"
+ pincodePattern = "([1-9])?[0-9]{6}$";
  isValidFormSubmitted = false;  
   constructor(private fb: FormBuilder  , private _router: Router, private http: HttpClient) {  }
   ngOnInit(): void {
@@ -61,9 +61,8 @@ return this.profileForm.controls;
           this.confirm=true;
      else
         {this.confirm = false;
-          if(this.profileForm.value.contact.length != 10)
-            this.mob = true;
-            else{
+          
+           
 
         this.http.post('http://localhost:8060/user/register', this.profileData).subscribe(res => {
            console.log(res);
@@ -71,9 +70,11 @@ return this.profileForm.controls;
              this._router.navigate(['/loginsignup'])
             }, 3000);
            return res;
-        });
+        },error => {
+          this.errors = error;
+      });
 
           }
         }
-}
+
 }

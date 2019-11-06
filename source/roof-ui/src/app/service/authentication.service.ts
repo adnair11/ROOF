@@ -7,6 +7,7 @@ import { HttpClient ,HttpHeaders} from '@angular/common/http';
 export class AuthenticationService {
   REST_API_URL: string = "http://localhost:8060/user/auth";
 
+  valid:boolean;
   constructor(private http: HttpClient) { }
   
   authenticate(username, password) {
@@ -27,12 +28,15 @@ export class AuthenticationService {
         window.location.reload();
         
         console.log(res);
-       if(res)
-       {
-         return true;
-       }
-       return false;
-      });
+        this.valid=true;
+      //  if(res)
+      //  {
+      //    return true;
+      //  }
+      //  else
+      //  return false;
+      
+      },error=>{this.valid=false;});
       // .catch((err) => {
       //   console.log(err);
       //   return err;
@@ -44,7 +48,7 @@ export class AuthenticationService {
     // } else {
     //   return false;
     // }
-    return true;
+    return this.valid;
   }
 
   isUserLoggedIn() {

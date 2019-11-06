@@ -202,10 +202,13 @@
                           routerLink="/loginsignup">
                           Cancel
                         </button>
+                        
 
                       </div>
+
                     </div>
                   </form>
+                  <div *ngIf="errors">Username already exists! Registration failed.</div>
                 </div>
 
               </div>
