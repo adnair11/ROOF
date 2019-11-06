@@ -12,10 +12,15 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
+  confirm: boolean = false;
   profileData: any;
   Id: number;
   profileForm: FormGroup;
-_value: number;
+ _value: number;
+ mob:boolean;
+ mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";  
+ pincodePattern = "([1-9])?[0-9]{6}$"
+ isValidFormSubmitted = false;  
   constructor(private fb: FormBuilder  , private _router: Router, private http: HttpClient) {  }
   ngOnInit(): void {
 this.profileForm = this.fb.group({
@@ -25,6 +30,7 @@ this.profileForm = this.fb.group({
       email: ['', Validators.required],
       contact: ['', Validators.required],
       password: ['', Validators.required],
+      password1:['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
       country: ['', Validators.required],
@@ -51,7 +57,13 @@ return this.profileForm.controls;
 
         console.log(this.profileForm.value.firstName);
         this.profileData = this.profileForm.value;
-
+        if(this.profileForm.value.password != this.profileForm.value.password1)
+          this.confirm=true;
+     else
+        {this.confirm = false;
+          if(this.profileForm.value.contact.length != 10)
+            this.mob = true;
+            else{
 
         this.http.post('http://localhost:8060/user/register', this.profileData).subscribe(res => {
            console.log(res);
@@ -62,4 +74,6 @@ return this.profileForm.controls;
         });
 
           }
+        }
+}
 }

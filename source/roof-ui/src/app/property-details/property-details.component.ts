@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from 'rxjs';
 import { PropertyService } from '../properties/property.service';
 
@@ -10,6 +10,7 @@ import { PropertyService } from '../properties/property.service';
 })
 export class PropertyDetailsComponent implements OnInit {
 
+  delete:boolean=false;
   isCheck:boolean = false;
   id :any;
   duplicatePropertyData : any;
@@ -17,7 +18,7 @@ export class PropertyDetailsComponent implements OnInit {
   isSaved:boolean;
   isTrue:boolean;
   propertySubscription : Subscription;
-  constructor(private propertyService: PropertyService,private route: ActivatedRoute) { }
+  constructor(private propertyService: PropertyService,private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("_id")
@@ -38,12 +39,13 @@ export class PropertyDetailsComponent implements OnInit {
   }
   onEditHandler(){
     this.duplicatePropertyData=JSON.parse(JSON.stringify(this.propertyData));
+    console.log(this.duplicatePropertyData);
   }
 
   async onUpdateHandler(formData){
     console.log(formData);
     console.log(formData.value);
-    let res = await this.propertyService.updateProperty(this.duplicatePropertyData);
+    let res = await this.propertyService.updateProperty(JSON.stringify(this.duplicatePropertyData));
 
   }
   saveProperty(){
@@ -53,7 +55,13 @@ export class PropertyDetailsComponent implements OnInit {
   async onDeleteHandler(){
     console.log(this.id);
     this.id = this.route.snapshot.paramMap.get("_id")
-    this.propertyService.deletePropertiesById(this.id);
+    let res:any = await this.propertyService.deletePropertiesById(this.id);
+    console.log(res.status);
+    if(res.status === "Success")
+    {this.router.navigate(['properties']);
+   this.delete=false;}
+    else
+    this.delete=true;
   }
   ngOnDestroy(){
     console.log("Inside destroy");
