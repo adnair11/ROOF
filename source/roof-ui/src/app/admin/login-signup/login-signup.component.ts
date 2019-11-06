@@ -29,14 +29,16 @@ loginForm:  FormGroup;
     console.log(this.loginForm.value.username);
     if (  this.loginservice.authenticate(this.loginForm.value.username, this.loginForm.value.password)
     ) {
-  
-       this.router.navigate(['']);
+    console.log("navigate");
+    // this.router.navigate(['']);
      this.check=false;
      this.invalidLogin = false;
-    } else if(this.invalidLogin) {
+    } else  {
       this.check=true;
       
     }
+
+    // window.location.reload();
   }
 
 }

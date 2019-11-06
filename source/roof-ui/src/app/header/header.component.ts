@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { AuthenticationService } from '../service/authentication.service';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -7,16 +7,20 @@ import {TranslateService} from '@ngx-translate/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit ,OnChanges {
  redirection: string ="redirect";
  flag: string ="log out";
  pass:string = "hello";
- User:string =sessionStorage.getItem('username');
+ User:string;
+ UserTemp:any;
 
   constructor(
     public translate: TranslateService,
     private loginService:AuthenticationService
     ) {
+      // this.User = sessionStorage.getItem('username');
+      // this.UserTemp =  JSON.stringify(this.User);
+      console.log(this.UserTemp);
     translate.addLangs(['en', 'fr']);
     translate.setDefaultLang('en');
     const browserLang = translate.getBrowserLang();
@@ -30,11 +34,18 @@ export class HeaderComponent implements OnInit {
   closeNav(){
     this.width  = '0px' ;
   }
-
+  ngOnChanges(changes:SimpleChanges){
+    
+    // this.User = sessionStorage.getItem('username');
+  }
   ngOnInit() {
+    // window.location.reload();
     if(this.redirection == "redirect"){
       this.flag="login";
+      this.User = sessionStorage.getItem('username');
     }
+
+    
   }
 
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class AuthenticationService {
   REST_API_URL: string = "http://localhost:8060/user/auth";
 
   valid:boolean;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
   
   authenticate(username, password) {
     console.log("Paras");
@@ -25,8 +26,10 @@ export class AuthenticationService {
         console.log("response: " + JSON.stringify(res));
         console.log("username: " + userObj.principal.username);
         sessionStorage.setItem('username', userObj.principal.username);
-        window.location.reload();
+
         
+        this.router.navigate(['']);
+        //  window.location.reload();
         console.log(res);
         this.valid=true;
       //  if(res)
@@ -48,6 +51,7 @@ export class AuthenticationService {
     // } else {
     //   return false;
     // }
+    window.location.reload();
     return this.valid;
   }
 

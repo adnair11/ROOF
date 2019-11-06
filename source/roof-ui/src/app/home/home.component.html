@@ -192,7 +192,7 @@
           <div class="card-body">
             <p class="card-text">Name: {{property.name}}<br>BHK: {{property.bhk}} <br> Location: {{property.city}}
             <br>Rent: {{property.rent}} INR 
-          <br>Rating:{{property.avgRate}}</p>
+          <br>Rating:<ngb-rating [(rate)]="property.avgRate" ></ngb-rating></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary"
