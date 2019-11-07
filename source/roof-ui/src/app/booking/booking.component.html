@@ -207,7 +207,12 @@
                           placeholder="Enter To Date" required>
                       </div>
                     </div>
-
+                    <div class="alert alert-warning " *ngIf="dateCheck">
+                      From Date should be less than To Date.
+                    </div>
+                    <div class="alert alert-warning " *ngIf="curCheck">
+                        Booking is permitted only from current Date.
+                      </div>
 
                     <div class="alert alert-success" *ngIf="isAvail">
                       Booked successfully!
