@@ -23,8 +23,7 @@ public class Users {
 	String securityqn;
 	String answer;
 	
-	
-	
+		
 		
 	public String getSecurityqn() {
 		return securityqn;

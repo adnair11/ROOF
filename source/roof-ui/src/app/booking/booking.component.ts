@@ -19,6 +19,8 @@ export class BookingComponent implements OnInit {
   isCheck:boolean=false;
   isAvail:boolean;
   user:String;
+  numOfImages:any;
+  noOfSlide:any;
   constructor(private propertyService:PropertyService ,private route: ActivatedRoute) {
     this.bookForm=new FormGroup({
 
@@ -32,6 +34,8 @@ export class BookingComponent implements OnInit {
 
 
   ngOnInit() {
+    this.numOfImages=[];
+    this.noOfSlide=[];
     this.id = this.route.snapshot.paramMap.get("_id")
     console.log(this.id);
     this.user=sessionStorage.getItem('username');
@@ -42,6 +46,14 @@ export class BookingComponent implements OnInit {
         this.propertyData = res;
         console.log(this.propertyData.usrId);
         console.log(this.propertyData.lift);
+        for(let i=1;i<res.noOfImages;i++){
+          this.numOfImages.push(i);
+          console.log(this.numOfImages);
+        }
+        for(let i=0;i<res.noOfImages;i++){
+          this.noOfSlide.push(i);
+          console.log(this.noOfSlide);
+        }
         if(this.propertyData.reviews[0]!=null)
          this.isCheck=true;
         else
