@@ -177,10 +177,10 @@
 
 
 
-
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bookPropertyModal">Book
+<div *ngIf="!(propertyData.usrId===user)">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bookPropertyModal" >Book
             Now</button>
-
+</div>
           <div class="modal fade" id="bookPropertyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -217,7 +217,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Book
+                      <button type="submit" class="btn btn-primary" >Book
                       </button>
                     </div>
                   </form>

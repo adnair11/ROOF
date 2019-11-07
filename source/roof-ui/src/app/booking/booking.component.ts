@@ -18,6 +18,7 @@ export class BookingComponent implements OnInit {
   isNotAvail:boolean;
   isCheck:boolean=false;
   isAvail:boolean;
+  user:String;
   constructor(private propertyService:PropertyService ,private route: ActivatedRoute) {
     this.bookForm=new FormGroup({
 
@@ -33,6 +34,7 @@ export class BookingComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("_id")
     console.log(this.id);
+    this.user=sessionStorage.getItem('username');
     
     this.propertySubscription = this.propertyService.getPropertiesById(this.id)
       .subscribe((res: any) => {

@@ -20,11 +20,13 @@ export class HomeComponent implements OnInit {
   searchForm: FormGroup;
   propertyData: any[];
   allPropertyData: any[];
+  user:String;
   // tslint:disable-next-line: variable-name
 
   constructor(private propertyService: PropertyService,config: NgbRatingConfig) {
     config.max=5;
     config.readonly = true;
+    
     this.searchForm = new FormGroup({
       city: new FormControl('0',Validators.required),
       bhk: new FormControl('0')
@@ -46,6 +48,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.getAllProperties();
+    this.user = sessionStorage.getItem('username');
+    console.log(this.user);
   }
 
 
