@@ -23,6 +23,7 @@ export class PropertyDetailsComponent implements OnInit {
   noOfSlide:any;
   constructor(private propertyService: PropertyService,private route: ActivatedRoute, private router:Router) { }
 
+  
   ngOnInit() {
     this.numOfImages=[];
     this.noOfSlide=[];
