@@ -19,9 +19,14 @@ export class PropertyDetailsComponent implements OnInit {
   isSaved:boolean;
   isTrue:boolean;
   propertySubscription : Subscription;
+  numOfImages:any;
+  noOfSlide:any;
   constructor(private propertyService: PropertyService,private route: ActivatedRoute, private router:Router) { }
 
+  
   ngOnInit() {
+    this.numOfImages=[];
+    this.noOfSlide=[];
     this.id = this.route.snapshot.paramMap.get("_id")
     console.log(this.id);
     this.propertySubscription = this.propertyService.getPropertiesById(this.id)
@@ -29,18 +34,36 @@ export class PropertyDetailsComponent implements OnInit {
         console.log(res);
         this.propertyData = res;
         this.isSaved =true;
-      })
-
-      if(this.propertyData.reviews[0]!=null)
-         this.isCheck=true;
-        else
-        this.isCheck=false;
-        console.log(this.isCheck)
+        console.log(this.propertyData);
+        for(let i=1;i<res.noOfImages;i++){
+          this.numOfImages.push(i);
+          console.log(this.numOfImages);
+        }
+        for(let i=0;i<res.noOfImages;i++){
+          this.noOfSlide.push(i);
+          console.log(this.noOfSlide);
+        }
+        if(this.propertyData.reviews[0]!=null){
+          this.isCheck=true;
+       }
+         else{
+         this.isCheck=false;
+         console.log(this.isCheck);
+         }
+        
+      });
+      
+      
+      
+      
+        // console.log(this.propertyData);
+        
       
   }
   onEditHandler(){
     this.duplicatePropertyData=JSON.parse(JSON.stringify(this.propertyData));
     console.log(this.duplicatePropertyData);
+    
   }
 
   async onUpdateHandler(formData){
