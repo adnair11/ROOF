@@ -81,12 +81,12 @@ public class RoofController {
 		System.out.println("hello piyush");
 		noOfImages=file.length;
 		for(MultipartFile uploadedFile : file) {
-			new File("C:\\Project\\Integration\\ROOF\\source\\roof-service\\media\\"+propertyId).mkdir();
-			File directory=new File("C:\\Project\\Integration\\ROOF\\source\\roof-service\\media\\"+propertyId);
+			new File("C:\\Users\\PiyushDarshan\\Desktop\\final\\ROOF\\source\\roof-service\\media\\"+propertyId).mkdir();
+			File directory=new File("C:\\Users\\PiyushDarshan\\Desktop\\final\\ROOF\\source\\roof-service\\media\\"+propertyId);
 			int fileCount=directory.list().length;
 			System.out.println("File Count:"+fileCount);
 			System.out.println(uploadedFile.getOriginalFilename());
-			File convertFile = new File("C:\\Project\\Integration\\ROOF\\source\\roof-service\\media\\"+propertyId+"\\"+fileCount+".png");
+			File convertFile = new File("C:\\Users\\PiyushDarshan\\Desktop\\final\\ROOF\\source\\roof-service\\media\\"+propertyId+"\\"+fileCount+".png");
 //            File convertFile = new File(uploadingDir + uploadedFile.getOriginalFilename());
             uploadedFile.transferTo(convertFile);
         }
