@@ -3,14 +3,19 @@ import {PropertyService} from '../properties/property.service';
 import { from, Subscription } from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  styleUrls: ['./booking.component.css'],
+  providers: [DatePipe]
 })
 export class BookingComponent implements OnInit {
+  curDate = new Date();
+  curCheck:boolean=false;
   bookForm:FormGroup;
+  dateCheck:boolean=false;
   id:String;
   propertySubscription:Subscription;
   propertyData:any;
@@ -21,7 +26,8 @@ export class BookingComponent implements OnInit {
   user:String;
   numOfImages:any;
   noOfSlide:any;
-  constructor(private propertyService:PropertyService ,private route: ActivatedRoute) {
+  constructor(private propertyService:PropertyService ,private route: ActivatedRoute, private datePipe:DatePipe) {
+    this.curDate = this.datePipe.transform(this.curDate, 'yyyy-MM-dd');
     this.bookForm=new FormGroup({
 
       fromDate:new FormControl('',[Validators.required]),
@@ -66,10 +72,20 @@ export class BookingComponent implements OnInit {
 
 
   async bookProperty(){
+    console.log(this.curDate);
+    console.log(this.bookForm.value.fromDate);
     this.ownerId=this.propertyData.usrId;
     console.log("Ownerid "+this.ownerId);
-    
-
+    if(this.bookForm.value.fromDate<this.curDate)
+    { this.curCheck=true; 
+    console.log("true"); }
+else{
+  this.curCheck=false;
+    if(this.bookForm.value.toDate<this.bookForm.value.fromDate){
+     this.dateCheck=true;
+    }
+    else{
+      this.dateCheck=false;
     let res=await this.propertyService.checkProperty(this.bookForm.value.usrId,this.bookForm.value.fromDate,this.bookForm.value.toDate,this.ownerId,this.id);
     console.log(res.status);
     if(res.status==="Success")
@@ -85,8 +101,10 @@ export class BookingComponent implements OnInit {
     this.isNotAvail=true;
   
     }
+  }
     
   }
+}
 
 
 
