@@ -20,6 +20,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -64,6 +66,8 @@ public class RoofController {
 	long propertyId;
 	int noOfImages;
 	
+	private static Logger log = LoggerFactory.getLogger(RoofController.class) ;
+	
 	@RequestMapping(value="/upload", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestBody MultipartFile[] file) throws IOException {
 //		System.out.println("hello piyush i am here");
@@ -84,8 +88,8 @@ public class RoofController {
 			new File("C:\\Project\\Integration\\ROOF\\source\\roof-service\\media\\"+propertyId).mkdir();
 			File directory=new File("C:\\Project\\Integration\\ROOF\\source\\roof-service\\media\\"+propertyId);
 			int fileCount=directory.list().length;
-			System.out.println("File Count:"+fileCount);
-			System.out.println(uploadedFile.getOriginalFilename());
+			log.debug("File Count:"+fileCount);
+			log.debug(uploadedFile.getOriginalFilename());
 			File convertFile = new File("C:\\Project\\Integration\\ROOF\\source\\roof-service\\media\\"+propertyId+"\\"+fileCount+".png");
 //            File convertFile = new File(uploadingDir + uploadedFile.getOriginalFilename());
             uploadedFile.transferTo(convertFile);
@@ -108,7 +112,7 @@ public class RoofController {
 	{
 		System.out.println(reviews);
 		String id= reviews.getPropertyId();
-		System.out.println("Id-"+id);
+		log.debug("Id-"+id);
 		Property p = roofService.getById(id);
 		System.out.println(p);
 		p.setReviews(reviews);
@@ -150,7 +154,7 @@ public class RoofController {
 	
 	{
 		System.out.println("userId-"+userId);
-		System.out.println("Inside user/book controller");
+		log.debug("Inside user/book controller");
 		return bookingService.getbyUserId(userId);
 		
 	}
@@ -162,7 +166,7 @@ public class RoofController {
 	
 	{
 		System.out.println("ownerId-"+ownerId);
-		System.out.println("Inside user/properties/book controller");
+		log.debug("Inside user/properties/book controller");
 		return bookingService.getbyOwnerId(ownerId);
 		
 	}
@@ -238,7 +242,7 @@ public class RoofController {
 		property.setImageFolder(propertyId);
 		property.setNoOfImages(noOfImages);
 		roofService.addProperty(property);
-		System.out.println("inisde add");
+		log.debug("inisde add");
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(property.get_id()).toUri();
 		return ResponseEntity.created(location).body(res);
@@ -277,7 +281,7 @@ public class RoofController {
 	@CrossOrigin("*")
 	public Principal authenticate(Principal user)
 	{
-		System.out.println("LoggedIn User: " + user);
+		log.debug("LoggedIn User: " + user);
 		
 		
 		return user;
@@ -289,7 +293,7 @@ public class RoofController {
 	@GetMapping(value="/user/login/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Users getUserById(@PathVariable("id") String id)
 	{
-		System.out.println("In user login");
+		log.debug("In user login");
 		return userRepo.findByName(id);
 		
 	}
@@ -300,7 +304,7 @@ public class RoofController {
 	@GetMapping(value="properties/{city}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public <Property>List getByBHK(@PathVariable String city,@RequestParam("bhk") Optional<Integer> bhk){
-		System.out.print("bhk is"+bhk);
+		log.debug("bhk is"+bhk);
 		if(bhk.isPresent())
 		return roofService.getByBhk(city,bhk);
 		else
@@ -331,7 +335,7 @@ public class RoofController {
 			return roofService.getByUsrId(userId);
 		}
 		
-		System.out.println("inside get");
+		log.debug("inside get");
 		return roofService.getAll();
 		
 	}
@@ -371,7 +375,7 @@ public class RoofController {
 	@CrossOrigin("*")
 	public Property getById(@PathVariable String id)
 	{
-		System.out.println("hello piyush");
+		System.out.println("hello ");
 		System.out.println(roofService.getById(id));
 		return roofService.getById(id);
 	}
