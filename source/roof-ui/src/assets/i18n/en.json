@@ -1,0 +1,44 @@
+{
+	"ABOUT": {
+		"A1": "About Us",
+		"A2": "Roof is a Bangalore based real estate search portal that connects flat owners and tenants directly with each other. The company does not charge any brokerage from either parties but they have some service packages range from worth 999 to 5,999.",
+		"A3": "Posting your property...",
+		"A4": "Find tenants and buyers without any brokerage with Roof.",
+		"A5": "Renting property...",
+		"A6": "Rent A Room Sharing Accommodation With Furnishing & Fully Functional Kitchen. House Safety. Guided House Visits. Zero Paperwork.",
+		"A7": "EN"
+	},
+	"CONTACT": {
+		"C1": "  For customer and technical support you can mail us at"
+	},
+	"FOOTER": {
+		"F1": "Features",
+		"F10": "Free Listing",
+		"F11": "Shortlist Without Visit",
+		"F12": "Rental Agreement",
+		"F13": "About",
+		"F14": "Team",
+		"F15": "Locations",
+		"F16": "Privacy",
+		"F17": "Terms",
+		"F2": "Rental Agreement",
+		"F3": "Pay Rent",
+		"F4": "Refer",
+		"F5": "Rent Receipt",
+		"F6": "Packers and Movers",
+		"F7": "For NRIs",
+		"F8": "Why Use Roof",
+		"F9": "Avoid Brokers"
+	},
+	"NAV": {
+		"N1": "Home",
+		"N2": "Properties",
+		"N3": "Login",
+		"N4": "Logout",
+		"N5": "Menu",
+		"N6": "EN"
+	},
+	"TEAM": {
+		"T1": "Our Team"
+	}
+}

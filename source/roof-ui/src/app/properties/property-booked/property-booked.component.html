@@ -1,0 +1,29 @@
+<h2>Booked Properties</h2>
+<div class="album py-5 bg-light" style="margin: 20px;">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-4" *ngFor="let booking of bookingList">
+          <div class="card sm-4 shadow-sm">
+            <div class="card" style="width: 100% ; height: 175px;">
+              <img
+                src="http://localhost:8060/media/{{booking.imageFolder}}/0.png"
+                style="width: 100% ; height: 100%;" class="card-img-top" alt="...">
+
+            </div>
+            <div class="card-body">
+              <p class="card-text">Property Name: {{booking.propertyName}}<br>Rentee Id: {{booking.usrId}} <br> From Date: {{booking.fromDate| date: 'dd/MM/yyyy'}}
+            <br>To Date: {{booking.toDate| date: 'dd/MM/yyyy'}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/properties/{{property._id}}">VIEW DETAILS</button>
+
+                </div> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      

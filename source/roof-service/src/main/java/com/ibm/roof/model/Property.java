@@ -1,6 +1,8 @@
 package com.ibm.roof.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -17,8 +19,22 @@ public class Property {
 	//Auto Generated Mongodb property id
 	@Id
 	String _id;
+	long imageFolder;
+	int noOfImages;
 	
 	
+	public int getNoOfImages() {
+		return noOfImages;
+	}
+	public void setNoOfImages(int noOfImages) {
+		this.noOfImages = noOfImages;
+	}
+	public long getImageFolder() {
+		return imageFolder;
+	}
+	public void setImageFolder(long imageFolder) {
+		this.imageFolder = imageFolder;
+	}
 	//userid of current user
 	String usrId;
 	
@@ -56,6 +72,42 @@ public class Property {
 	String ac;
 	String internet;
 	
+List <Review> reviews =new ArrayList();
+	
+	//rate
+
+	int avgRate =0;
+	int totalRate =0;
+	int count =0;
+	
+	
+	
+	
+	public int getAvgRate() {
+		return avgRate;
+	}
+	public void setAvgRate(int avgRate) {
+		this.avgRate = avgRate;
+	}
+	public int getTotalRate() {
+		return totalRate;
+	}
+	public void setTotalRate(int totalRate) {
+		this.totalRate = totalRate;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public List<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(Review review) {
+		this.reviews.add(review);
+		System.out.println(this.reviews);
+	}
 	
 	
 	
@@ -143,19 +195,19 @@ public class Property {
 	public void setBalconies(int balconies) {
 		this.balconies = balconies;
 	}
-	public String isLift() {
+	public String getLift() {
 		return lift;
 	}
 	public void setLift(String lift) {
 		this.lift = lift;
 	}
-	public String isAc() {
+	public String getAc() {
 		return ac;
 	}
 	public void setAc(String ac) {
 		this.ac = ac;
 	}
-	public String isInternet() {
+	public String getInternet() {
 		return internet;
 	}
 	public void setInternet(String internet) {
@@ -194,7 +246,13 @@ public class Property {
 	}
 	
 	
-	
+	public int rateCalc(int rate)
+	{
+		count++;
+		totalRate+=rate;
+		avgRate = totalRate/count;
+		return avgRate;
+	}
 	
 	
 	

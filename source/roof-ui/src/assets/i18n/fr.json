@@ -1,0 +1,44 @@
+{
+	"ABOUT": {
+		"A1": "À propos de nous",
+		"A2": "Roof est un portail de recherche immobilière basé à Bangalore qui relie directement les propriétaires et les locataires. La société ne facture aucun courtage aux deux parties mais certaines offres de services vont de 999 à 5999",
+		"A3": "Publier votre bien ...",
+		"A4": "Trouvez des locataires et des acheteurs sans intermédiaire avec Roof.",
+		"A5": "Louer une propriété ...",
+		"A6": "Louez une chambre partageant le logement avec la cuisine d'ameublement et entièrement fonctionnelle. Sécurité de la maison. Visites guidées à domicile. Zéro paperasse.",
+		"A7": "FR"
+	},
+	"CONTACT": {
+		"C1": "  Pour le support client et technique, vous pouvez nous envoyer un courrier à"
+	},
+	"FOOTER": {
+		"F1": "caractéristiques",
+		"F10": "Annonce gratuite",
+		"F11": "Liste restreinte sans visite",
+		"F12": "contrat de location",
+		"F13": "sur",
+		"F14": "Équipe",
+		"F15": "Emplacements",
+		"F16": "Intimité",
+		"F17": "Termes",
+		"F2": "contrat de location",
+		"F3": "Payer le loyer",
+		"F4": "Référer",
+		"F5": "Quittance de loyer",
+		"F6": "Packers et Movers",
+		"F7": "Pour NRI",
+		"F8": "Pourquoi utiliser le toit",
+		"F9": "Éviter les courtiers"
+	},
+	"NAV": {
+		"N1": "Accueil",
+		"N2": "Propriétés",
+		"N3": "S'identifier",
+		"N4": "Connectez - Out",
+		"N5": "menu",
+		"N6": "FR"
+	},
+	"TEAM": {
+		"T1": "Notre équipe"
+	}
+}

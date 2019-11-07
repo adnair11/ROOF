@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ibm.roof.model.Property;
 import com.ibm.roof.repository.*;
+import com.ibm.roof.security.UserRepository;
+import com.ibm.roof.security.Users;
 
 
 @Service
@@ -15,7 +18,11 @@ public class RoofService {
 	
 	@Autowired
 	RoofRepository propertyRepo;
-
+	@Autowired
+	UserRepository userRepo;
+	
+	@Autowired
+	PasswordEncoder encoder;
 	
 	
 	public boolean addProperty(Property property)
@@ -59,7 +66,7 @@ public class RoofService {
 	
 	public Property getById(String id) {
 		// TODO Auto-generated method stub
-		return propertyRepo.findById(id).get();
+		return propertyRepo.getBy_id(id);
 	}
 
 
@@ -74,6 +81,15 @@ public class RoofService {
 	public List getByBhk(String city, Optional<Integer> bhk) {
 		// TODO Auto-generated method stub
 		return propertyRepo.getByCityAndBhk(city,bhk);
+	}
+
+
+	public void updatePassword(String name, String password) {
+		// TODO Auto-generated method stub
+		Users user = userRepo.findByName(name);
+		user.setPassword(encoder.encode(password));
+		userRepo.save(user);
+		
 	}
 
 

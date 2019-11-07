@@ -1,7 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {  FormBuilder, Validators, FormControl , FormGroup} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,60 +11,70 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
-  profileData:any;
-  profileForm: any;
+  errors:any;
+  confirm: boolean = false;
+  profileData: any;
   Id: number;
-  // data: IProfile;
-  // tslint:disable-next-line:variable-name
-  constructor(private fb: FormBuilder  , private _router: Router,private http: HttpClient) {  }
+  profileForm: FormGroup;
+ _value: number;
+ mob:boolean;
+ mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";  
+ pincodePattern = "([1-9])?[0-9]{6}$";
+ isValidFormSubmitted = false;  
+  constructor(private fb: FormBuilder  , private _router: Router, private http: HttpClient) {  }
   ngOnInit(): void {
-// this.Id = this.getRandomArbitrary(10, 100);
 this.profileForm = this.fb.group({
-      name: ['', Validators.required],
+      name: new FormControl(null, [Validators.required, Validators.email]),
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email:['', Validators.required],
+      email: ['', Validators.required],
       contact: ['', Validators.required],
       password: ['', Validators.required],
-      city:['', Validators.required],
-      state:['', Validators.required],
-      country:['', Validators.required],
-      pincode:['', Validators.required],
-      // isAbsentee: ['false'],
-      // isActivated: ['false'],
-      // isTardy: ['false'],
-      // isPunctual: ['true'],
-      // isActive: ['false'],
-      // employeeId: [this.Id]
-      });
+      password1:['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      country: ['', Validators.required],
+      pincode: ['', Validators.required],
+      securityqn: ['', Validators.required],
+      answer: ['', Validators.required],
+
+            });
   }
-//  getRandomArbitrary = (min, max) => {
-//     return Math.ceil(Math.random() * (max - min) + min);
-//   }
+set value(newValue: number)  {
+  this._value = newValue;
+
+}
+
   get function()  {
 return this.profileForm.controls;
   }
 
+
+
+
+
   saveProfile() {
-   
+
         console.log(this.profileForm.value.firstName);
         this.profileData = this.profileForm.value;
-        
-      
-        this.http.post("http://localhost:8060/user/register",this.profileData)
-          .toPromise()
-          .then((res) => {
-            console.log(res);
-            return res;
-          })
-          .catch((err) => {
-            return err;
-          })
+        if(this.profileForm.value.password != this.profileForm.value.password1)
+          this.confirm=true;
+     else
+        {this.confirm = false;
+          
+           
 
-    }
+        this.http.post('http://localhost:8060/user/register', this.profileData).subscribe(res => {
+           console.log(res);
+           setTimeout(() => {
+             this._router.navigate(['/loginsignup'])
+            }, 3000);
+           return res;
+        },error => {
+          this.errors = error;
+      });
 
-  
-
+          }
+        }
 
 }

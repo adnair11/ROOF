@@ -2,29 +2,43 @@ package com.ibm.roof.security;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Users {
 	@Id
 	ObjectId _id;
+	@Indexed(unique=true)
 	String name;
 	String password;
 	String firstName;
 	String lastName;
 	String email;
-	int contact;
+	long  contact;
 	String role;
 	String city;
 	String country;
 	String state;
 	int pincode;
+	String securityqn;
+	String answer;
 	
-	
-	
-	
-	
+		
+		
+	public String getSecurityqn() {
+		return securityqn;
+	}
+	public void setSecurityqn(String securityqn) {
+		this.securityqn = securityqn;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 	public Users(ObjectId _id, String name, String password, String firstName, String lastName, String email,
-			int contact, String role, String city, String country, String state, int pincode) {
+		long contact, String role, String city, String country, String state, int pincode) {
 		super();
 		this._id = _id;
 		this.name = name;
@@ -57,10 +71,10 @@ public class Users {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getContact() {
+	public long getContact() {
 		return contact;
 	}
-	public void setContact(int phoneNo) {
+	public void setContact(long phoneNo) {
 		this.contact = phoneNo;
 	}
 	public String getCity() {

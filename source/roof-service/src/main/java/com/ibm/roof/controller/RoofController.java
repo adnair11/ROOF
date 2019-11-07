@@ -1,11 +1,15 @@
 package com.ibm.roof.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import com.ibm.roof.security.*;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.text.ParseException;
@@ -16,6 +20,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,13 +31,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ibm.roof.model.Booking;
 import com.ibm.roof.model.Property;
 import com.ibm.roof.model.ResponseMessage;
+import com.ibm.roof.model.Review;
 import com.ibm.roof.security.UserRepository;
 import com.ibm.roof.security.Users;
 import com.ibm.roof.service.BookingService;
@@ -53,6 +62,115 @@ public class RoofController {
 	
 	@Autowired
 	BookingService bookingService;
+	
+	long propertyId;
+	int noOfImages;
+	
+	private static Logger log = LoggerFactory.getLogger(RoofController.class) ;
+	
+	@RequestMapping(value="/upload", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<ResponseMessage> uploadFile(@RequestBody MultipartFile[] file) throws IOException {
+//		System.out.println("hello piyush i am here");
+//		new File("C:\\piyush\\"+propertyId).mkdir();
+//		
+//		File directory=new File("C:\\piyush\\"+propertyId);
+//	    int fileCount=directory.list().length;
+//	    System.out.println("File Count:"+fileCount);
+//	    
+//		File convertFile = new File("C:\\piyush\\"+propertyId+"\\"+fileCount+".png");
+//		
+//		
+		propertyId=(long) ((Math.random() * ((10000 - 0) + 1)) + 0);
+		System.out.println("file length = "+file.length);
+		System.out.println("hello piyush");
+		noOfImages=file.length;
+		for(MultipartFile uploadedFile : file) {
+			new File("C:\\Project\\Integration\\ROOF\\source\\roof-service\\media\\"+propertyId).mkdir();
+			File directory=new File("C:\\Project\\Integration\\ROOF\\source\\roof-service\\media\\"+propertyId);
+			int fileCount=directory.list().length;
+			System.out.println("File Count:"+fileCount);
+			System.out.println(uploadedFile.getOriginalFilename());
+			File convertFile = new File("C:\\Project\\Integration\\ROOF\\source\\roof-service\\media\\"+propertyId+"\\"+fileCount+".png");
+
+//            File convertFile = new File(uploadingDir + uploadedFile.getOriginalFilename());
+            uploadedFile.transferTo(convertFile);
+        }
+		
+		
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Image Upload sucessfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(1).toUri();
+		return ResponseEntity.created(location).body(res);
+		
+		
+//		return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/review",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE})
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> addReview(@RequestBody Review reviews)
+	{
+		System.out.println(reviews);
+		String id= reviews.getPropertyId();
+		log.debug("Id-"+id);
+		Property p = roofService.getById(id);
+		System.out.println(p);
+		p.setReviews(reviews);
+		roofService.update(p);
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Reviews added successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(reviews.getPropertyId()).toUri();
+		return ResponseEntity.created(location).body(res);
+		
+	}
+	
+	@PutMapping(value="/rating/{id}",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE})
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> addRating(@PathVariable("id") String id,@RequestBody int rate)
+	{
+		System.out.println(rate);
+		
+		System.out.println("Id-"+id);
+		Property p = roofService.getById(id);
+		System.out.println(p);
+		int avgRate = p.rateCalc(rate);
+		
+		p.setAvgRate(avgRate);
+		roofService.update(p);
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Reviews added successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(p.get_id()).toUri();
+		return ResponseEntity.created(location).body(res);
+		
+	}
+	
+	
+
+	@GetMapping(value="user/book{userId}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public <Booking>List getBookingByUserId(@PathVariable("userId") String userId) 
+
+	
+	{
+		System.out.println("userId-"+userId);
+		log.debug("Inside user/book controller");
+		return bookingService.getbyUserId(userId);
+		
+	}
+	
+	
+
+	@GetMapping(value="user/properties/book{ownerId}",produces = {MediaType.APPLICATION_JSON_VALUE})
+	public <Booking>List getBookingByOwnerId(@PathVariable("ownerId") String ownerId) 
+	
+	{
+		System.out.println("ownerId-"+ownerId);
+		log.debug("Inside user/properties/book controller");
+		return bookingService.getbyOwnerId(ownerId);
+		
+	}
 	
 	@PostMapping(value="/check",consumes = { MediaType.APPLICATION_JSON_VALUE ,MediaType.ALL_VALUE} )
 	@CrossOrigin("*")
@@ -121,9 +239,11 @@ public class RoofController {
 	public ResponseEntity<ResponseMessage> add(@RequestBody @Valid Property property)
 	{
 		ResponseMessage res;
-		res = new ResponseMessage("Success", new String[] {"Employee Added successfully"});
+		res = new ResponseMessage("Success", new String[] {"Property Added successfully"});
+		property.setImageFolder(propertyId);
+		property.setNoOfImages(noOfImages);
 		roofService.addProperty(property);
-		System.out.println("inisde put");
+		log.debug("inisde add");
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(property.get_id()).toUri();
 		return ResponseEntity.created(location).body(res);
@@ -150,6 +270,8 @@ public class RoofController {
 		
 		user.set_id(ObjectId.get());
 		user.setPassword(encoder.encode(user.getPassword()));
+		user.setSecurityqn(user.getSecurityqn());
+		user.setAnswer(user.getAnswer());
 		userRepo.save(user);
 		return user;
 		
@@ -160,30 +282,30 @@ public class RoofController {
 	@CrossOrigin("*")
 	public Principal authenticate(Principal user)
 	{
-		System.out.println("LoggedIn User: " + user);
+		log.debug("LoggedIn User: " + user);
 		
 		
 		return user;
 		
 	}
 	
-	
+		
 	//USER LOGIN GET USER BY ID
 	@GetMapping(value="/user/login/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Users getUserById(@PathVariable("id") String id)
 	{
+		log.debug("In user login");
 		return userRepo.findByName(id);
 		
 	}
 	
-	
-	
+		
 	
 	
 	@GetMapping(value="properties/{city}",produces = {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public <Property>List getByBHK(@PathVariable String city,@RequestParam("bhk") Optional<Integer> bhk){
-		System.out.print("bhk is"+bhk);
+		log.debug("bhk is"+bhk);
 		if(bhk.isPresent())
 		return roofService.getByBhk(city,bhk);
 		else
@@ -214,7 +336,7 @@ public class RoofController {
 			return roofService.getByUsrId(userId);
 		}
 		
-		System.out.println("inside get");
+		log.debug("inside get");
 		return roofService.getAll();
 		
 	}
@@ -222,10 +344,11 @@ public class RoofController {
 	@PutMapping(value="properties/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> updateProperty(@PathVariable String id, @RequestBody Property updatedProp) {
-		updatedProp.set_id(id);
+//		updatedProp.set_id(id);
+		System.out.println("update prop-"+updatedProp);
 		roofService.update(updatedProp);
 		ResponseMessage res;
-		res = new ResponseMessage("Success", new String[] {"Employee Updated successfully"});
+		res = new ResponseMessage("Success", new String[] {"Property Updated successfully"});
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();
 		return ResponseEntity.created(location).body(res);
@@ -236,7 +359,7 @@ public class RoofController {
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> deleteProperty(@PathVariable String id) {
 		ResponseMessage res;
-		res = new ResponseMessage("Success", new String[] {"Employee deleted successfully"});
+		res = new ResponseMessage("Success", new String[] {"Property deleted successfully"});
 		roofService.delete(id);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();
@@ -247,18 +370,46 @@ public class RoofController {
 	
 	
 	
-
 //	get property of user by ID
 	
 	@GetMapping(value="rentor/properties/{id}",produces= {MediaType.APPLICATION_JSON_VALUE})
 	@CrossOrigin("*")
 	public Property getById(@PathVariable String id)
 	{
-		System.out.println("hello piyush");
+		System.out.println("hello ");
 		System.out.println(roofService.getById(id));
 		return roofService.getById(id);
 	}
 	
+	@PutMapping(value="forgot/{id}")
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> updateUser(@PathVariable String id, @RequestBody String password) {
+		roofService.updatePassword(id,password);
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"Password Updated successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+		
+	}
 	
+	@PutMapping(value="user/edit/{id}")
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> updateUser(@PathVariable String id, @RequestBody Users updatedUser) {
+		updatedUser.setName(id);
+		userRepo.save(updatedUser);
+		ResponseMessage res;
+		res = new ResponseMessage("Success", new String[] {"User Updated successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+		
+	}
+	
+	
+	
+	
+	
+
 
 }

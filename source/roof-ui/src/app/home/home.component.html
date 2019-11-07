@@ -1,61 +1,203 @@
-<div id="searchBox" style="width: 100%;">
-
+<!-- <div id="searchBox" style="width: 100%;">
   <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSearchPropertyHandler()">
     <div class="form-group "  id="searchbar">
-      <select class="form-control" formControlName="city" placeholder="City" style="width: 200px; height: 50px;">
-        <option>DELHI</option>
+ <select class="custom-select" formControlName="city"  value="selected" style="width: 200px; height: 50px;">
+        <option  >DELHI</option>
         <option>PUNE</option>
         <option>BANGLORE</option>
-
       </select>
-      <div class="form-group" id="searchbar2">
+     <div class="form-group" id="searchbar2">
       <select class="form-control" formControlName="bhk" style="width: 150px;height: 50px"  required>
-        <option aria-activedescendant="searchbar2">bhk</option>
         <option value="1">1-BHK</option>
         <option value="2">2-BHK</option>
         <option value="3">3-BHK</option>
-
       </select>
-
    </div>
-
     <div class="form-group">
-      <button type="submit" class="btn btn-primary" style="width: 100px;height: 50px">Search</button>
+      <button type="submit" class="btn btn-primary" style="width: 100px;height: 50px; ">Search</button>
     </div>
     </div>
   </form>
-</div>
+</div> -->
 
+<div id="demo" class="carousel slide" data-ride="carousel">
 
-
-
-
-<!-- --------------------------------------------------------- -->
-<div class="album py-5 bg-light">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-md-4" *ngFor="let property of allPropertyData">
-        <div class="card mb-4 shadow-sm">
-          <div class="card" style="width: 100% ; height: 225px;">
-            <img
-              src="https://media.istockphoto.com/photos/walkway-leading-along-the-new-colorful-cmplex-of-apartment-buildings-picture-id889473004?k=6&m=889473004&s=612x612&w=0&h=6lQi62MTrabi-GbvPLI966CkIjq7TXL5xGquM-snovw="
-              style="width: 100% ; height: 100%;" class="card-img-top" alt="...">
-
-          </div>
-          <div class="card-body">
-            <p class="card-text">Name: {{property.name}}<br>BHK: {{property.bhk}} <br> Location: {{property.city}}</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="booking/{{property._id}}">View Details</button>
-
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+  
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+  
+      <div class="carousel-item active"
+        style="background: url(http://www.coolhdwallpapers.net/gallery/interior-home-design-wallpaper.jpg);height:750px;background-size: cover;">
+        <div class="container">
+  
+          <div id="searchBox" style="width: 100%;">
+              <!-- <h1>We’ll help you find a place you’ll love.</h1> -->
+            <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSearchPropertyHandler()">
+              <div class="form-group " id="searchbar">
+                <select class="custom-select" formControlName="city" value="selected" style="width: 200px; height: 50px;">
+                  <option value="0">Select-City</option>
+                    <option >DELHI</option>
+                    <option>PUNE</option>
+                    <option>BANGLORE</option>
+  
+  
+                </select>
+  
+  
+  
+                <div class="form-group" id="searchbar2">
+                  <select class="form-control" formControlName="bhk" style="width: 150px;height: 50px" >
+                    <option value="0">Select-BHK</option>
+                    <option value="1">1-BHK</option>
+                    <option value="2">2-BHK</option>
+                    <option value="3">3-BHK</option>
+  
+                  </select>
+  
+                </div>
+  
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary" style="width: 100px;height: 50px; ">Search</button>
+                </div>
               </div>
-
+            </form>
+          </div>
+          <div class="carousel-caption">
+            <h3>Providing you the Best</h3>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item"
+        style="background: url(https://www.elsetge.cat/myimg/f/200-2002568_home-screen-wallpaper-phone-best-inside-house.jpg);height:750px;background-size: cover;">
+        <div class="container">
+            <div id="searchBox" style="width: 100%;">
+  
+                <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSearchPropertyHandler()">
+                    <div class="form-group " id="searchbar">
+                      <select class="custom-select" formControlName="city" value="selected" style="width: 200px; height: 50px;">
+                        <option value="0">Select-City</option>
+                          <option >DELHI</option>
+                          <option>PUNE</option>
+                          <option>BANGLORE</option>
+  
+  
+                      </select>
+  
+  
+  
+                      <div class="form-group" id="searchbar2">
+                        <select class="form-control" formControlName="bhk" style="width: 150px;height: 50px" >
+                          <option value="0">Select-BHK</option>
+                          <option value="1">1-BHK</option>
+                          <option value="2">2-BHK</option>
+                          <option value="3">3-BHK</option>
+  
+                        </select>
+  
+                      </div>
+  
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100px;height: 50px; ">Search</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+            <div class="carousel-caption">
+              <h3>Providing you the Best</h3>
+            </div>
+          </div>
+      </div>
+  
+      <div class="carousel-item"
+        style="background: url(https://media.architecturaldigest.in/wp-content/uploads/2019/10/Noida-Studio-Wood-featured-image.jpg);height: 750px;background-size: cover;" >
+        <div class="container">
+            <div id="searchBox" style="width: 100%;">
+  
+                <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="onSearchPropertyHandler()">
+                    <div class="form-group " id="searchbar">
+                      <select class="custom-select" formControlName="city" value="selected" style="width: 200px; height: 50px;">
+                        <option value="0">Select-City</option>
+                          <option >DELHI</option>
+                          <option>PUNE</option>
+                          <option>BANGLORE</option>
+  
+  
+                      </select>
+  
+  
+  
+                      <div class="form-group" id="searchbar2">
+                        <select class="form-control" formControlName="bhk" style="width: 150px;height: 50px" >
+                          <option value="0">Select-BHK</option>
+                          <option value="1">1-BHK</option>
+                          <option value="2">2-BHK</option>
+                          <option value="3">3-BHK</option>
+  
+                        </select>
+  
+                      </div>
+  
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100px;height: 50px; ">Search</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+            <div class="carousel-caption">
+              <h3>Providing you the Best</h3>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+  
+  
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+  
+  
+  
+  <!-- --------------------------------------------------------- -->
+  
+  <div class="album py-5 bg-light">
+    <div class="container">
+  
+      <div class="row">
+        <div class="col-md-4" *ngFor="let property of allPropertyData">
+          <div class="card mb-4 shadow-sm">
+            <div class="card" style="width: 100% ; height: 225px;">
+              <img
+                src="http://localhost:8060/media/{{property.imageFolder}}/0.png"
+                style="width: 100% ; height: 100%;" class="card-img-top" alt="...">
+  
+            </div>
+            <div class="card-body">
+              <p class="card-text">Name: {{property.name}}<br>BHK: {{property.bhk}} <br> Location: {{property.city}}
+              <br>Rent: {{property.rent}} INR 
+            <br>Rating:<ngb-rating [rate]="property.avgRate" ></ngb-rating></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary"
+                    routerLink="booking/{{property._id}}" >View Details</button>
+  
+                </div>
+  
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-

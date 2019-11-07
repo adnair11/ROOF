@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PropertyService } from '../properties/property.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-property',
@@ -12,7 +13,7 @@ export class AddPropertyComponent implements OnInit {
   isSaved :boolean;
   // Step 1 : create form group
   propertyForm: FormGroup
-  constructor( private propertyService:PropertyService) { 
+  constructor( private propertyService:PropertyService,private router:Router) { 
     this.propertyForm = new FormGroup({
       // Step 2 : Create form control
       name : new FormControl('Piyush',Validators.required),
@@ -22,12 +23,14 @@ export class AddPropertyComponent implements OnInit {
     });
    }
    async onAddPropertyHandler(){
-    console.log(this.propertyForm);
-     console.log(this.propertyForm.value);
+    console.log(this.propertyForm +"hi");
+     console.log(this.propertyForm.value + "helooooooooooooo");
      let res : any = await this.propertyService.createProperty(this.propertyForm.value);
-    //  console.log(res);
+     console.log(res.status+ "status");
      if(res && res.status==="Success"){
       this.isSaved = true;
+      console.log("IN Prop");
+      this.router.navigate(['properties']);
     }
    }
 

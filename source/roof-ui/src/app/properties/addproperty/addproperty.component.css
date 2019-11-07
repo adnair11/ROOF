@@ -7,14 +7,14 @@
     padding: 4%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
-} 
+}
 .contact-info{
     margin-top:10%;
-   
+
 }
 .directives-tab{
     padding: 4%;
-    
+
 }
 .contact-info h2{
     margin-bottom: 10%;
@@ -29,8 +29,6 @@
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 }
-
-
 
 .contact-form label{
     font-weight:600;
@@ -55,4 +53,9 @@
 }
 .nav-tabs{
   font-size: 130%;
+}
+
+.btn{
+  margin-left: 40%;
+  margin-top: 125px;
 }

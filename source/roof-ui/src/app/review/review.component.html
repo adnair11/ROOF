@@ -1,0 +1,20 @@
+<div>
+    <form [formGroup]="reviewForm" (ngSubmit)="onReviewHandler()">
+        <div class="form-group" style="width: 50%">
+            <label for="review"> <h5>ADD REVIEW</h5> </label>
+            <textarea formControlName="text" class="form-control" id="review"  rows="5" placeholder="Write your review here..."></textarea>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button (click)="printmessage()" type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        <div class="alert alert-success" *ngIf="isSaved" style="width:30%" >
+            "Your Review has not been been added."
+        </div>
+
+
+    </form>
+
+</div>

@@ -1,35 +1,54 @@
+
 <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
-    <a class="navbar-brand" routerLink="/">ROOF</a>
-  
+  <div>
+    <img src="assets/img/logo.png" style="height: 50px; width:50px; " alt="" class="img-rounded img-responsive" />
+
+</div>
+
+
+    <a class="navbar-brand" style="margin-left: 10px" routerLink="/">ROOF</a>
+
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/">{{ 'NAV.N1' | translate }}<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/properties" >Properties</a>
+          <a class="nav-link" routerLink="/properties">{{ 'NAV.N2' | translate }}</a>
         </li>
-  
+      
+
       </ul>
-      <div class="nav-item active">
-        <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/loginsignup" class="nav-link">Login</a>
-        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/myprofile" class="nav-link">{{User}}</a>
-        
+
+      <div>
+          <select #langselect (change)="translate.use(langselect.value)">
+              <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+            </select>
+
       </div>
       <div class="nav-item active">
-        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a>
+        <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/loginsignup" class="nav-link">{{ 'NAV.N3' | translate }}</a>
+
+        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/myprofile" class="nav-link" >{{User}}</a>
+
       </div>
       <div class="nav-item active">
-        <button class="nav-link btn btn-default" (click)="openNav()">Menu </button>
+        <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">{{ 'NAV.N4' | translate }}</a>
       </div>
+      <div class="nav-item active">
+        <button class="nav-link btn btn-default" (click)="openNav()">{{ 'NAV.N5' | translate }}</button>
+      </div>
+
+
+
+
     </div>
-  
+
     <div id="mySidenav" [ngStyle]="{'width' : width}" class="sidenav float-right">
       <a routerLink="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-      <a routerLink="/">About</a>
-      <a routerLink="/">Services</a>
-      <a routerLink="/">Clients</a>
-      <a routerLink="/">Contact</a>
+      <a routerLink="/aboutus">About</a>
+      <!-- <a routerLink="/">Services</a> -->
+      <a routerLink="/team">Team</a>
+      <a routerLink="/contact">Contact</a>
     </div>
   </nav>
-  

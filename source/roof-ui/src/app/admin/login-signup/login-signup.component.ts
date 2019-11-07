@@ -11,22 +11,34 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 export class LoginSignupComponent implements OnInit {
 
-  username = 'username'
-  password = 'password'
-  invalidLogin = false
+  check:boolean;
+loginForm:  FormGroup; 
+  invalidLogin:boolean;
 
   constructor(private router: Router,
-    private loginservice: AuthenticationService) { }
+              private loginservice: AuthenticationService,private fb: FormBuilder ) { }
 
   ngOnInit() {
+    this.invalidLogin= true;
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    })
   }
   checkLogin() {
-    if (this.loginservice.authenticate(this.username, this.password)
+    console.log(this.loginForm.value.username);
+    if (  this.loginservice.authenticate(this.loginForm.value.username, this.loginForm.value.password)
     ) {
-      this.router.navigate([''])
-      this.invalidLogin = false
-    } else
-      this.invalidLogin = true
+    console.log("navigate");
+    // this.router.navigate(['']);
+     this.check=false;
+     this.invalidLogin = false;
+    } else  {
+      this.check=true;
+      
+    }
+
+    // window.location.reload();
   }
 
 }

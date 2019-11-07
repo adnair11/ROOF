@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PropertyService } from '../properties/property.service';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -8,41 +9,48 @@ import { PropertyService } from '../properties/property.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  title = "app";
-  selectedValue: string = "";
+  title = 'app';
+  selectedValue = '';
   items = [
-    { value: "0", view: "zero" },
-    { value: "1", view: "one" },
-    { value: "2", view: "Two" }
-  ];                       
+    
+    { value: '1', view: 'one' },
+    { value: '2', view: 'two' },
+    { value: '3', view: 'three' }
+  ];
   searchForm: FormGroup;
   propertyData: any[];
   allPropertyData: any[];
-  
-  constructor(private propertyService:PropertyService) {
+  user:String;
+  // tslint:disable-next-line: variable-name
+
+  constructor(private propertyService: PropertyService,config: NgbRatingConfig) {
+    config.max=5;
+    config.readonly = true;
+    
     this.searchForm = new FormGroup({
-      city: new FormControl(Validators.required),
-      bhk: new FormControl(Validators.required)
+      city: new FormControl('0',Validators.required),
+      bhk: new FormControl('0')
     });
   }
   async onSearchPropertyHandler() {
     console.log(this.searchForm.value.city);
     console.log(this.searchForm.value.bhk);
-    this.propertyData = await this.propertyService.filterProperty(this.searchForm.value.city,this.searchForm.value.bhk);
-    this.allPropertyData = this.propertyData;
-    console.log("Inside filter");
-    console.log(this.propertyData);
     
+    this.propertyData = await this.propertyService.filterProperty(this.searchForm.value.city, this.searchForm.value.bhk);
+    this.allPropertyData = this.propertyData;
+    console.log('Inside filter');
+    console.log(this.propertyData);
+
   }
-  async getAllProperties(){
-    this.allPropertyData = await this.propertyService.getAllProperties(); 
+  async getAllProperties() {
+    this.allPropertyData = await this.propertyService.getAllProperties();
   }
   ngOnInit() {
-   
+
     this.getAllProperties();
-      
-      
-  
+    this.user = sessionStorage.getItem('username');
+    console.log(this.user);
   }
 
-} 
+
+}
