@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PropertyService } from '../properties/property.service';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,9 @@ export class HomeComponent implements OnInit {
   allPropertyData: any[];
   // tslint:disable-next-line: variable-name
 
-  constructor(private propertyService: PropertyService) {
+  constructor(private propertyService: PropertyService,config: NgbRatingConfig) {
+    config.max=5;
+    config.readonly = true;
     this.searchForm = new FormGroup({
       city: new FormControl('0',Validators.required),
       bhk: new FormControl('0')

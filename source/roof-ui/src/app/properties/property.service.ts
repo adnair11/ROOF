@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { map } from 'rxjs/operators'
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +19,20 @@ export class PropertyService {
                                   'Content-Type':  'application/json',
                                   'Authorization': 'Basic ' + btoa(uandp)});
       console.log(headers);
+      let promise = new Promise((resolve, reject) => {
       this.http.post("http://localhost:8060/review", reviewProperty,{headers: headers})
         .toPromise()
         .then((res) => {
           if(res)
           console.log("hellp"+res);
-          return res;
+          resolve(res);
         })
         .catch((err) => {
           console.log("Error"+err);
-          return err;
+          reject(err);
         });
+      });
+      return promise;
 
 
   }
@@ -40,17 +44,20 @@ export class PropertyService {
                                   'Content-Type':  'application/json',
                                   'Authorization': 'Basic ' + btoa(uandp)});
       console.log(headers);
+      let promise = new Promise((resolve, reject) => {
       this.http.put("http://localhost:8060/rating/"+propertyId,rate ,{headers: headers})
         .toPromise()
         .then((res) => {
           if(res)
           console.log("hellp"+res);
-          return res;
+          resolve(res);
         })
         .catch((err) => {
           console.log("Error"+err);
-          return err;
+          reject(err);
         });
+      });
+      return promise;
 
   }
 
@@ -62,18 +69,20 @@ export class PropertyService {
                                   'Content-Type':  'application/json',
                                   'Authorization': 'Basic ' + btoa(uandp)});
       console.log(headers);
+      let promise = new Promise((resolve, reject) => {
       this.http.post(this.REST_API_URL, propertyData,{headers: headers})
         .toPromise()
         .then((res) => {
           console.log("hellp"+res);
-          return res;
+          resolve(res);
         })
         .catch((err) => {
           console.log("Error"+err);
-          return err;
+          reject(err);
         });
         
-    
+      });
+      return promise;
   }
 getSecurity(name){
   console.log("in security");

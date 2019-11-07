@@ -9,7 +9,8 @@ import { PropertyService } from '../properties/property.service';
   styleUrls: ['./property-details.component.css']
 })
 export class PropertyDetailsComponent implements OnInit {
-
+  update:boolean=false;
+  notupdate:boolean=false;
   delete:boolean=false;
   isCheck:boolean = false;
   id :any;
@@ -67,9 +68,17 @@ export class PropertyDetailsComponent implements OnInit {
   async onUpdateHandler(formData){
     console.log(formData);
     console.log(formData.value);
-    let res = await this.propertyService.updateProperty(JSON.stringify(this.duplicatePropertyData));
+    delete this.duplicatePropertyData.reviews;
+    let res:any = await this.propertyService.updateProperty(JSON.stringify(this.duplicatePropertyData));
+    if(res.status==="Success")
+    {this.update = false;
+     this.notupdate = true;
+    }
 
-  }
+    else{
+    this.update = true;
+    this.notupdate = false;
+  }}
   saveProperty(){
     this.isTrue =true;
   }
